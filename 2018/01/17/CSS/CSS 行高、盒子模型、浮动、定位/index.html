@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CSS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="行高 浏览器默认字体大小为16px，默认行高18px 行高单位 行高单位为px：行高与文字无关 行高单位不是px：行高＝文字大小*行高值   父元素行高继承 行高单位是px，子元素的行高等于父元素行高 单位是em／百分比，行高＝父元素字体大小*行高值 无行高单位：行高等于子元素大小*行高值   使文字在父元素居中，设置文字行高等于父元素行高">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS 行高、盒子模型、浮动、定位">
+<meta property="og:url" content="http://yoursite.com/2018/01/17/CSS/CSS 行高、盒子模型、浮动、定位/index.html">
+<meta property="og:site_name" content="SanCola">
+<meta property="og:description" content="行高 浏览器默认字体大小为16px，默认行高18px 行高单位 行高单位为px：行高与文字无关 行高单位不是px：行高＝文字大小*行高值   父元素行高继承 行高单位是px，子元素的行高等于父元素行高 单位是em／百分比，行高＝父元素字体大小*行高值 无行高单位：行高等于子元素大小*行高值   使文字在父元素居中，设置文字行高等于父元素行高">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/zhanggy911/markdown_img/blob/master/line-height.png?raw=true">
+<meta property="og:updated_time" content="2018-01-17T06:13:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS 行高、盒子模型、浮动、定位">
+<meta name="twitter:description" content="行高 浏览器默认字体大小为16px，默认行高18px 行高单位 行高单位为px：行高与文字无关 行高单位不是px：行高＝文字大小*行高值   父元素行高继承 行高单位是px，子元素的行高等于父元素行高 单位是em／百分比，行高＝父元素字体大小*行高值 无行高单位：行高等于子元素大小*行高值   使文字在父元素居中，设置文字行高等于父元素行高">
+<meta name="twitter:image" content="https://github.com/zhanggy911/markdown_img/blob/master/line-height.png?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/17/CSS/CSS 行高、盒子模型、浮动、定位/"/>
+
+
+
+
+
+  <title>CSS 行高、盒子模型、浮动、定位 | SanCola</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SanCola</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life is a Rock N' Roll Train</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/17/CSS/CSS 行高、盒子模型、浮动、定位/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SanCola">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SanCola">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CSS 行高、盒子模型、浮动、定位</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-17T13:21:16+08:00">
+                2018-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="行高"><a href="#行高" class="headerlink" title="行高"></a>行高</h2><ul>
+<li>浏览器默认字体大小为16px，默认行高18px</li>
+<li>行高单位<ul>
+<li>行高单位为px：行高与文字无关</li>
+<li>行高单位不是px：行高＝文字大小*行高值</li>
+</ul>
+</li>
+<li>父元素行高继承<ul>
+<li>行高单位是px，子元素的行高等于父元素行高</li>
+<li>单位是em／百分比，行高＝父元素字体大小*行高值</li>
+<li>无行高单位：行高等于子元素大小*行高值</li>
+</ul>
+</li>
+<li>使文字在父元素居中，设置文字行高等于父元素行高</li>
+</ul>
+<p><img src="https://github.com/zhanggy911/markdown_img/blob/master/line-height.png?raw=true" alt="img"></p>
+<a id="more"></a>
+<h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2><h3 id="border-属性"><a href="#border-属性" class="headerlink" title="border 属性"></a>border 属性</h3><ul>
+<li><code>border-width</code> — 设置边框宽度</li>
+<li><code>border-style</code> — 设置边框样式<ul>
+<li><code>none</code>：无边框</li>
+<li><code>solid</code>：实线</li>
+<li><code>dotted</code>：点线</li>
+</ul>
+</li>
+</ul>
+<p>允许属性连写，无顺序要求</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>:&#123; </span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#000</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="padding-属性"><a href="#padding-属性" class="headerlink" title="padding 属性"></a>padding 属性</h3><ul>
+<li><code>padding</code> — 内边距属性<ul>
+<li><code>left</code></li>
+<li><code>right</code></li>
+<li><code>top</code></li>
+<li><code>bottom</code></li>
+</ul>
+</li>
+<li><code>padding</code>、<code>border</code> 属性会影响盒模型的实际大小<ul>
+<li>实际大小 ＝ 内容宽度＋左右边框＋左右内边距</li>
+<li>实际高度 ＝ 内容高度＋ 上下边框＋ 上下内边距</li>
+</ul>
+</li>
+<li>在元素嵌套时，如果子元素没有设置宽度，那么该子元素设置 <code>padding</code> 值的时候，在父元素的宽度范围内子元素宽度不会发生变化</li>
+</ul>
+<h3 id="margin-属性"><a href="#margin-属性" class="headerlink" title="margin 属性"></a>margin 属性</h3><ul>
+<li><code>margin</code> — 外边距属性<ul>
+<li><code>left</code></li>
+<li><code>right</code></li>
+<li><code>top</code></li>
+<li><code>bottom</code></li>
+</ul>
+</li>
+<li>外边距塌陷<ul>
+<li>当父元素只有内容大小，没有设置浮动，定位等属性，子元素设置了大小，此时给子元素设置margin-top，父元素也会受影响</li>
+<li>解决办法：触发元素的bfc机制，如设置 <code>overflow: hidden</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="margin-padding-属性的连写"><a href="#margin-padding-属性的连写" class="headerlink" title="margin/padding 属性的连写"></a>margin/padding 属性的连写</h3><ul>
+<li>margin/padding的属性连写方法完全相同，以margin为例</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 上下左右没有外边距 */</span></span><br><span class="line"><span class="selector-tag">div</span>&#123; <span class="attribute">margin</span>: <span class="number">0</span>;&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">/* 上下外边距为10px，左右外边距为20px */</span></span><br><span class="line"><span class="selector-tag">div</span>&#123; <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">20px</span>;&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">/* 上外边距为10px，左右外边距为20px，下外边距为30px */</span></span><br><span class="line"><span class="selector-tag">div</span>&#123; <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">20px</span> <span class="number">30px</span>;&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">/* 上外边距为10px，右外边距为20px，下外边距为30px  左外边距为40px*/</span></span><br><span class="line"><span class="selector-tag">div</span>&#123; <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">20px</span> <span class="number">30px</span> <span class="number">40px</span>;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h2><ul>
+<li><code>float</code> — 使元素浮动<ul>
+<li><code>left</code></li>
+<li><code>right</code></li>
+</ul>
+</li>
+<li>特点<ul>
+<li>可以使块级元素在同一行内显示</li>
+<li>设置浮动后元素不占位置</li>
+<li>可实现模式转换（行内元素自动转为块级元素）</li>
+<li>设置了浮动的元素会影响后面的其它元素（因为设置浮动使该元素脱离了标准流）</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">media</span>=<span class="string">"screen"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.div</span>&#123;</span></span><br><span class="line"><span class="undefined">      width: 300px;</span></span><br><span class="line"><span class="undefined">      height: 100px;</span></span><br><span class="line"><span class="undefined">      background-color: blue;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.div</span> &gt; <span class="selector-tag">div</span>&#123;</span></span><br><span class="line"><span class="css">      <span class="comment">/* 可以使两个块级元素在同一行显示，但是俩个元素必须都设置浮动  */</span></span></span><br><span class="line"><span class="undefined">      float: left; </span></span><br><span class="line"><span class="undefined">      width: 100px;</span></span><br><span class="line"><span class="undefined">      height: 100px;</span></span><br><span class="line"><span class="undefined">      background-color: green;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    span&#123;</span></span><br><span class="line"><span class="css">      <span class="comment">/* 自动转换为块级元素 */</span></span></span><br><span class="line"><span class="undefined">      float: left;</span></span><br><span class="line"><span class="undefined">      width: 100px;</span></span><br><span class="line"><span class="undefined">      height: 100px;</span></span><br><span class="line"><span class="undefined">      background-color: red;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">'div'</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>123<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>清除浮动<ul>
+<li>清除浮动就是消除因浮动的影响而造成的父元素塌陷</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 单伪元素清除浮动 */</span></span><br><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">	<span class="attribute">content</span>: <span class="string">""</span>;</span><br><span class="line">	<span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">	<span class="attribute">visibility</span>: hidden;</span><br><span class="line">	<span class="attribute">overflow</span>: hidden;</span><br><span class="line">	<span class="attribute">dispaly</span>: block;		</span><br><span class="line">	<span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br><span class="line">.clearfix &#123;*zoom: 1;&#125;  /*IE67支持*/ </span><br><span class="line"></span><br><span class="line"><span class="comment">/* 双伪元素 小米／淘宝 */</span></span><br><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">:before</span>, <span class="selector-class">.clearfix</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">	<span class="attribute">content</span>: <span class="string">""</span>;</span><br><span class="line">	<span class="attribute">display</span>: table;</span><br><span class="line">&#125;				</span><br><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">:after</span> &#123;<span class="attribute">clear</span>: both;&#125;	</span><br><span class="line">.clearfix &#123;*zoom: 1;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h2><ul>
+<li><code>position</code> — 使用定位的方式实现移动元素<ul>
+<li><code>static</code> — 默认的现实方式</li>
+<li><code>absolute</code> — 绝对定位</li>
+<li><code>relative</code> — 相对定位</li>
+<li><code>fixed</code> — 固定定位</li>
+</ul>
+</li>
+<li><code>position-absolute</code><ul>
+<li>元素设置了绝对定位，其父元素没有设置定位，该元素的绝对定位以浏览器左上角为准</li>
+<li>元素的父元素设置了<strong>其他定位方式</strong>（静态定位除外），那该元素以其父元素的左上角为准</li>
+<li>绝对定位的元素不占位置（脱标），并可以实现模式转换</li>
+</ul>
+</li>
+<li><code>position-relative</code><ul>
+<li>设置了相对定位的元素只能以相对自己的位置设定定位，元素不会脱标，仍然占位置</li>
+</ul>
+</li>
+<li><code>position-fixed</code><ul>
+<li><strong>只以浏览器的左上角</strong>为基准，元素脱标不占位置，可实现模式转换</li>
+</ul>
+</li>
+<li><code>z-index</code><ul>
+<li>使用了定位的元素相互之间具有层级关系</li>
+<li>元素设置了定位，那么此元素的层级高于没有设置定位的元素</li>
+<li>如果都设置了定位，那需要使用 z-index（数值）来调节层级。</li>
+<li>如果父元素设置了定位，那么子元素的层级会跟随父元素。</li>
+</ul>
+</li>
+<li>定位方式的层级关系<ul>
+<li><code>z-index</code> &gt; <code>position</code> &gt; <code>float</code> &gt; 标准流</li>
+<li>后面的会覆盖前面的设置，层级高的覆盖层级低的，子元素层级跟随父元素层级</li>
+<li>只要设置了定位，宽度就不继承</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/17/CSS/CSS 元素特性、分类与转换、部分常用样式/" rel="next" title="CSS 元素特性、分类与转换、部分常用样式">
+                <i class="fa fa-chevron-left"></i> CSS 元素特性、分类与转换、部分常用样式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/17/CSS/CSS 对齐、隐藏、布局方式等/" rel="prev" title="CSS 对齐、隐藏、布局方式等">
+                CSS 对齐、隐藏、布局方式等 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="SanCola" />
+            
+              <p class="site-author-name" itemprop="name">SanCola</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhanggy911" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/zhanggy911" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#行高"><span class="nav-number">1.</span> <span class="nav-text">行高</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#盒子模型"><span class="nav-number">2.</span> <span class="nav-text">盒子模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#border-属性"><span class="nav-number">2.1.</span> <span class="nav-text">border 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#padding-属性"><span class="nav-number">2.2.</span> <span class="nav-text">padding 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#margin-属性"><span class="nav-number">2.3.</span> <span class="nav-text">margin 属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#margin-padding-属性的连写"><span class="nav-number">2.4.</span> <span class="nav-text">margin/padding 属性的连写</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浮动"><span class="nav-number">3.</span> <span class="nav-text">浮动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定位"><span class="nav-number">4.</span> <span class="nav-text">定位</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SanCola</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

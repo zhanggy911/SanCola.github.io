@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="概念运行在客户端浏览器的脚本编程语言 介绍 弱类型语言 属于脚本语言，不需要编译，边解析边运行  组成 ECMAScript DOM BOM">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 概念 数据类型 变量">
+<meta property="og:url" content="http://yoursite.com/2018/01/17/JavaScript/JavaScript 概念 数据类型 变量/index.html">
+<meta property="og:site_name" content="SanCola">
+<meta property="og:description" content="概念运行在客户端浏览器的脚本编程语言 介绍 弱类型语言 属于脚本语言，不需要编译，边解析边运行  组成 ECMAScript DOM BOM">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-17T08:04:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 概念 数据类型 变量">
+<meta name="twitter:description" content="概念运行在客户端浏览器的脚本编程语言 介绍 弱类型语言 属于脚本语言，不需要编译，边解析边运行  组成 ECMAScript DOM BOM">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/17/JavaScript/JavaScript 概念 数据类型 变量/"/>
+
+
+
+
+
+  <title>JavaScript 概念 数据类型 变量 | SanCola</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SanCola</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life is a Rock N' Roll Train</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/17/JavaScript/JavaScript 概念 数据类型 变量/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SanCola">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SanCola">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript 概念 数据类型 变量</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-17T15:41:25+08:00">
+                2018-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>运行在客户端浏览器的脚本编程语言</p>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul>
+<li>弱类型语言</li>
+<li>属于脚本语言，不需要编译，边解析边运行</li>
+</ul>
+<h3 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h3><ul>
+<li>ECMAScript</li>
+<li>DOM</li>
+<li>BOM</li>
+</ul>
+<a id="more"></a>
+<h3 id="书写位置"><a href="#书写位置" class="headerlink" title="书写位置"></a>书写位置</h3><ul>
+<li>内嵌式写法 — 推荐将 js 代码放置在 <code>body</code> 标签内部的最后面</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text-javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  ...</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>外连式写法 — 新建 js 文件，通过 <code>script</code> 标签引入</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascropt"</span> <span class="attr">src</span>=<span class="string">"文件地址"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="script标签属性"><a href="#script标签属性" class="headerlink" title="script标签属性"></a>script标签属性</h3><ul>
+<li><code>src</code> — 引用位置</li>
+<li><code>async</code> — 异步加载</li>
+<li><code>defor</code> — 异步加载</li>
+<li><code>sync</code> — 同步加载</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 浏览器会立即加载并执行指定的脚本，会阻塞后续的加载</span></span><br><span class="line">&lt;script src=<span class="string">"script.js"</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// async异步加载，后续文档元素的加载和渲染将和 script.js 的加载与执行同时进行  </span></span><br><span class="line">&lt;script <span class="keyword">async</span> src=<span class="string">"script.js"</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// defer异步加载，后续文档元素加载和渲染将和 script.js 的加载同时进行，但是 script.js 的执行要在所有元素解析完成之后，DOMContentLoaded 事件触发之前完成。</span></span><br><span class="line">&lt;script defer src=<span class="string">"script.js"</span>&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 只能注释一行代码</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 可以注释多行代码 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 文档注释</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="页面输出消息的几种方法"><a href="#页面输出消息的几种方法" class="headerlink" title="页面输出消息的几种方法"></a>页面输出消息的几种方法</h3><ul>
+<li><code>alert()</code><ul>
+<li>数字类型／变量不需要引号，字符串需要加 ‘’ 号</li>
+</ul>
+</li>
+<li><code>console.log()</code><ul>
+<li>向控制台输出一段信息</li>
+</ul>
+</li>
+<li><code>console.dir()</code><ul>
+<li>在控制台中打印出元素具有哪些变量 </li>
+</ul>
+</li>
+<li><code>document.write()</code><ul>
+<li>直接在页面中输出信息，可以直接写html标签，但是需要添加 ‘ ’ </li>
+</ul>
+</li>
+<li><code>confirm()</code><ul>
+<li>弹出选择框，可以配合条件判断使用</li>
+</ul>
+</li>
+<li><code>prompt()</code><ul>
+<li>弹出输入框，让用户输入信息</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="数据类型分类"><a href="#数据类型分类" class="headerlink" title="数据类型分类"></a>数据类型分类</h3><h4 id="简单类型"><a href="#简单类型" class="headerlink" title="简单类型"></a>简单类型</h4><ul>
+<li><code>Number</code> — 数值类型</li>
+<li><code>String</code> — 字符串类型</li>
+<li><code>Boolean</code> — 布尔类型</li>
+<li><code>Undefined</code> — 未定义／找不到</li>
+<li><code>Null</code> — 不存在</li>
+</ul>
+<h4 id="复杂类型"><a href="#复杂类型" class="headerlink" title="复杂类型"></a>复杂类型</h4><ul>
+<li>内置对象<ul>
+<li><code>function</code></li>
+<li><code>Math</code></li>
+</ul>
+</li>
+<li>构造函数<ul>
+<li><code>Object</code> — 对象</li>
+<li><code>Array</code> — 数组</li>
+<li><code>Date</code> — 时间</li>
+</ul>
+</li>
+</ul>
+<h3 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h3><h4 id="数字类型的表示方法"><a href="#数字类型的表示方法" class="headerlink" title="数字类型的表示方法"></a>数字类型的表示方法</h4><ul>
+<li>十进制 — 0-9</li>
+<li>十六进制 — 0-9 a-f</li>
+<li>八进制 — 0-7</li>
+</ul>
+<h4 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h4><ul>
+<li>科学计数法，例子：5e-324（5*10的-324次方）</li>
+<li>浮点数值的最高精度为17位小数</li>
+<li>不要判断浮点数值是否相等，非要判断的话，需要原数值＊10/100，取整后再进行比较</li>
+<li>最大值：Number.MAX_VALUE</li>
+<li>最小值：Number.MIN_VALUE</li>
+<li>无穷大／小：Infinity／-Infinity</li>
+</ul>
+<h3 id="String"><a href="#String" class="headerlink" title="String"></a>String</h3><p>“ ” 里的内容即是字符串。可以是 ””  也可以使用 ‘ ’</p>
+<h4 id="转译符"><a href="#转译符" class="headerlink" title="转译符"></a>转译符</h4><ul>
+<li>如果需要在字符串内加 ” ”  ，可以切换使用单双引号</li>
+<li>也可以使用转译符：\’（转译单引号）  \” （转译单引号）</li>
+<li>\n  字符串换行</li>
+<li>\t  缩进</li>
+<li>\b  空格</li>
+<li>\r  回车</li>
+<li>\  斜杠</li>
+</ul>
+<h4 id="length-属性"><a href="#length-属性" class="headerlink" title="length 属性"></a>length 属性</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字符串具有length属性，用来获取字符串长度</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'abc'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.length);</span><br></pre></td></tr></table></figure>
+<h4 id="字符串的不可变"><a href="#字符串的不可变" class="headerlink" title="字符串的不可变"></a>字符串的不可变</h4><p>字符串一旦创建，那么它的值就是不可变的，想要改变值，需要在内存中重新开辟新的空间来存储新的值，原来的值／地址仍然会存在一段时间，直到被内存清理机制清除掉，所以字符串赋值时尽量不要用循环语句赋值，应当使用数组赋值</p>
+<h3 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h3><p>Boolean只有两个值，true ／ false，通常用于判断</p>
+<h3 id="Undefined"><a href="#Undefined" class="headerlink" title="Undefined"></a>Undefined</h3><p>如果一个变量没有赋值，那么这个变量的默认值就是 undefined，其对应的数据类型是 Undefined</p>
+<p>Undefined 类型不会使浏览器报错</p>
+<h3 id="Null"><a href="#Null" class="headerlink" title="Null"></a>Null</h3><ul>
+<li>既是简单类型，又是复杂类型（一般还是归类在简单类型中）</li>
+<li>简单类型理由：undefined == null</li>
+<li>复杂类型理由：typeof null</li>
+</ul>
+<h3 id="数据类型的判断"><a href="#数据类型的判断" class="headerlink" title="数据类型的判断"></a>数据类型的判断</h3><h4 id="typeof-值"><a href="#typeof-值" class="headerlink" title="typeof(值)"></a>typeof(值)</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="string">"adc"</span>)); <span class="comment">// string</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="number">123</span>)); <span class="comment">// number   </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> abc); <span class="comment">// undefined,变量未定义</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>此时控制台现实的不再是输入的值，而是判断出值的类型（string，number等）  </li>
+<li>typeof不是函数，而是关键字，后面的括号是为了提升运算优先级，可以不写</li>
+<li>typeof判断复杂类型的时候，只能判断出 Object 和 function</li>
+</ul>
+<h4 id="isNaN-值"><a href="#isNaN-值" class="headerlink" title="isNaN(值)"></a>isNaN(值)</h4><ul>
+<li>判断当前的数值是否是NaN，如果是数字，返回false，如果不是数字，返回的是true</li>
+<li>NaN: not a number  结果为非数字。用来表示数值的一种非正常状态</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">123</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="string">'123'</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(a-b)) <span class="comment">// false</span></span><br><span class="line"><span class="keyword">var</span> c</span><br><span class="line"><span class="keyword">var</span> d</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">isNaN</span>(c-d)) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h3 id="引用类型和值类型"><a href="#引用类型和值类型" class="headerlink" title="引用类型和值类型"></a>引用类型和值类型</h3><h4 id="堆、栈概念"><a href="#堆、栈概念" class="headerlink" title="堆、栈概念"></a>堆、栈概念</h4><ul>
+<li>这个概念只是用来帮助理解，实际上js中应该并不存在堆栈的概念，即使存在，也是在浏览器的js引擎中</li>
+</ul>
+<h4 id="值类型"><a href="#值类型" class="headerlink" title="值类型"></a>值类型</h4><ul>
+<li>直接存储数据本身的数据，就是值类型（就是简单类型）</li>
+</ul>
+<h4 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h4><ul>
+<li>直接存储的是数据的地址，数据的值单独存储的数据，就是引用类型（就是复杂类型）</li>
+</ul>
+<h4 id="值类型和引用类型的赋值特征"><a href="#值类型和引用类型的赋值特征" class="headerlink" title="值类型和引用类型的赋值特征"></a>值类型和引用类型的赋值特征</h4><h5 id="值类型-1"><a href="#值类型-1" class="headerlink" title="值类型"></a>值类型</h5><ul>
+<li>值类型的数据在赋值的时候，会将存储的<strong>数据</strong>复制一份交给新的变量</li>
+<li>两个变量值相等，但是存储的空间不一样，修改其中一个，另外一个不会受影响</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">123</span>;</span><br><span class="line"><span class="keyword">var</span> num1 = num;</span><br><span class="line">num1 = <span class="number">456</span>;</span><br><span class="line"><span class="built_in">console</span>.log(num);  <span class="comment">//123</span></span><br></pre></td></tr></table></figure>
+<h5 id="引用类型-1"><a href="#引用类型-1" class="headerlink" title="引用类型"></a>引用类型</h5><ul>
+<li>引用类型的数据在赋值的时候，会将对象的<strong>地址</strong>复制一份交给新的变量</li>
+<li>此时两个变量同时指向同一个对象，通过其中一个变量对对象进行修改，另外一个变量也会受到影响</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = &#123;</span><br><span class="line">    name:<span class="string">"高富帅"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    obj.name = <span class="string">"矮穷丑"</span></span><br><span class="line">    obj = &#123;</span><br><span class="line">        name : <span class="string">"白富美"</span></span><br><span class="line">    &#125;</span><br><span class="line">    obj.name = <span class="string">"土肥圆"</span>;</span><br><span class="line">&#125;</span><br><span class="line">test(obj1);</span><br><span class="line"><span class="built_in">console</span>.log(obj1.name);  <span class="comment">//矮穷丑</span></span><br></pre></td></tr></table></figure>
+<h4 id="值类型与引用类型的比较"><a href="#值类型与引用类型的比较" class="headerlink" title="值类型与引用类型的比较"></a>值类型与引用类型的比较</h4><ul>
+<li>不能直接比较，在比较运算发生时，引用类型会先调用.valueOf()方法，返回的值如果可以参与运算，就可以进行比较</li>
+<li>如不仍然不能进行运算，会继续调用.toString()方法，用返回值进行比较</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log([] == ![]) <span class="comment">//true, [].valueof.toString = ''；</span></span><br></pre></td></tr></table></figure>
+<h4 id="引用类型之间的比较"><a href="#引用类型之间的比较" class="headerlink" title="引用类型之间的比较"></a>引用类型之间的比较</h4><ul>
+<li><p>引用类型之间的比较是先比较引用类型的地址</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log([] == []); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(&#123;&#125; == &#123;&#125;); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
+<li>变量是用来存储数据的</li>
+<li>一个变量只能保存一个值，且只能保存最后一次赋值的结果</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> password = prompt(<span class="string">'请输入密码'</span>)；</span><br><span class="line"><span class="built_in">console</span>.log(password);</span><br><span class="line"><span class="comment">// 变量赋值都是从右向左赋值</span></span><br><span class="line"><span class="comment">// 执行时先执行 prompt() 并将获取到的用户输入信息赋值给变量 password</span></span><br><span class="line"><span class="comment">// 最终打印出来的是用户输入的密码</span></span><br></pre></td></tr></table></figure>
+<h3 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h3><ul>
+<li>var — 变量声明的关键字</li>
+<li>可以同时声明多个变量</li>
+<li>赋值时，等号右侧允许运算</li>
+<li>未使用 var 声明的变量，都是全局变量，无论该变量出现在全局作用域还是局部作用域</li>
+<li>声明一个全局变量，相当于给window对象添加了一个属性</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">123</span> + <span class="number">345</span></span><br><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">// 468</span></span><br><span class="line"><span class="keyword">var</span> b=<span class="number">1</span>,c=<span class="number">2</span>,d=<span class="number">3</span></span><br><span class="line"><span class="keyword">var</span> e = a+ b+ c+ d</span><br><span class="line"><span class="built_in">console</span>.log(e) <span class="comment">// 474</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = b = c = <span class="number">9</span>，a属于当前作用域，b，c是全局变量</span><br></pre></td></tr></table></figure>
+<h3 id="变量命名规则"><a href="#变量命名规则" class="headerlink" title="变量命名规则"></a>变量命名规则</h3><ul>
+<li>变量只能由字母、数字、下划线、$构成</li>
+<li>数字不能出现在变量名称最前面</li>
+<li>使用驼峰命名法： userName</li>
+<li>区分大小写</li>
+<li>不能使用 javascript 的保留字段及关键字</li>
+</ul>
+<h3 id="关键字／保留字"><a href="#关键字／保留字" class="headerlink" title="关键字／保留字"></a>关键字／保留字</h3><table>
+<thead>
+<tr>
+<th>关键字</th>
+<th></th>
+<th>保留字</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>break</td>
+<td>in</td>
+<td>abstract</td>
+<td>float</td>
+<td>short</td>
+</tr>
+<tr>
+<td>case</td>
+<td>instanceof</td>
+<td>boolean</td>
+<td>goto</td>
+<td>static</td>
+</tr>
+<tr>
+<td>continue</td>
+<td>new</td>
+<td>byte</td>
+<td>implements</td>
+<td>super</td>
+</tr>
+<tr>
+<td>default</td>
+<td>return</td>
+<td>char</td>
+<td>import</td>
+<td>synchronized</td>
+</tr>
+<tr>
+<td>delet</td>
+<td>switch</td>
+<td>class</td>
+<td>int</td>
+<td>throws</td>
+</tr>
+<tr>
+<td>do</td>
+<td>this</td>
+<td>const</td>
+<td>interface</td>
+<td>transient</td>
+</tr>
+<tr>
+<td>else</td>
+<td>throw</td>
+<td>debugger</td>
+<td>long</td>
+<td>volatile</td>
+</tr>
+<tr>
+<td>finally</td>
+<td>try</td>
+<td>double</td>
+<td>native</td>
+<td></td>
+</tr>
+<tr>
+<td>for</td>
+<td>typeof</td>
+<td>enum</td>
+<td>package</td>
+<td></td>
+</tr>
+<tr>
+<td>function</td>
+<td>var</td>
+<td>export</td>
+<td>private</td>
+<td></td>
+</tr>
+<tr>
+<td>if</td>
+<td>void</td>
+<td>extends</td>
+<td>protected</td>
+<td></td>
+</tr>
+<tr>
+<td>while</td>
+<td>with</td>
+<td>final</td>
+<td>public</td>
+</tr>
+</tbody>
+</table>
+<h3 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h3><ul>
+<li>变量类型由赋值决定</li>
+</ul>
+<h3 id="变量值-undefined、null-的判断"><a href="#变量值-undefined、null-的判断" class="headerlink" title="变量值 undefined、null 的判断"></a>变量值 undefined、null 的判断</h3><ul>
+<li>变量的值在什么时候是undefined <ul>
+<li>声明之后未赋值</li>
+<li>手动赋值为undefined</li>
+<li>对象属性不存在，此属性的值为undefined</li>
+</ul>
+</li>
+<li>变量的值在什么时候是null<ul>
+<li>变量不能自动为null，除非手动赋值</li>
+<li>当为其它开发者提供一个返回对象的方法或者函数的时候，会有手动赋值为null的情况</li>
+<li>当函数中创建对象失败，或者获取对象失败，无法正常返回对象的时候，就应该返回null</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/17/canvas/canvas 绘制文本、图片、变换/" rel="next" title="canvas 绘制文本、图片、变换">
+                <i class="fa fa-chevron-left"></i> canvas 绘制文本、图片、变换
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/17/JavaScript/JavaScript 数据类型转换/" rel="prev" title="JavaScript 数据类型转换">
+                JavaScript 数据类型转换 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="SanCola" />
+            
+              <p class="site-author-name" itemprop="name">SanCola</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhanggy911" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/zhanggy911" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组成"><span class="nav-number">1.2.</span> <span class="nav-text">组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#书写位置"><span class="nav-number">1.3.</span> <span class="nav-text">书写位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#script标签属性"><span class="nav-number">1.4.</span> <span class="nav-text">script标签属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注释"><span class="nav-number">1.5.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#页面输出消息的几种方法"><span class="nav-number">1.6.</span> <span class="nav-text">页面输出消息的几种方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">2.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型分类"><span class="nav-number">2.1.</span> <span class="nav-text">数据类型分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简单类型"><span class="nav-number">2.1.1.</span> <span class="nav-text">简单类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复杂类型"><span class="nav-number">2.1.2.</span> <span class="nav-text">复杂类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number"><span class="nav-number">2.2.</span> <span class="nav-text">Number</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数字类型的表示方法"><span class="nav-number">2.2.1.</span> <span class="nav-text">数字类型的表示方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#浮点数"><span class="nav-number">2.2.2.</span> <span class="nav-text">浮点数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-number">2.3.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#转译符"><span class="nav-number">2.3.1.</span> <span class="nav-text">转译符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#length-属性"><span class="nav-number">2.3.2.</span> <span class="nav-text">length 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串的不可变"><span class="nav-number">2.3.3.</span> <span class="nav-text">字符串的不可变</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boolean"><span class="nav-number">2.4.</span> <span class="nav-text">Boolean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Undefined"><span class="nav-number">2.5.</span> <span class="nav-text">Undefined</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Null"><span class="nav-number">2.6.</span> <span class="nav-text">Null</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型的判断"><span class="nav-number">2.7.</span> <span class="nav-text">数据类型的判断</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#typeof-值"><span class="nav-number">2.7.1.</span> <span class="nav-text">typeof(值)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#isNaN-值"><span class="nav-number">2.7.2.</span> <span class="nav-text">isNaN(值)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用类型和值类型"><span class="nav-number">2.8.</span> <span class="nav-text">引用类型和值类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#堆、栈概念"><span class="nav-number">2.8.1.</span> <span class="nav-text">堆、栈概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#值类型"><span class="nav-number">2.8.2.</span> <span class="nav-text">值类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引用类型"><span class="nav-number">2.8.3.</span> <span class="nav-text">引用类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#值类型和引用类型的赋值特征"><span class="nav-number">2.8.4.</span> <span class="nav-text">值类型和引用类型的赋值特征</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#值类型-1"><span class="nav-number">2.8.4.1.</span> <span class="nav-text">值类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#引用类型-1"><span class="nav-number">2.8.4.2.</span> <span class="nav-text">引用类型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#值类型与引用类型的比较"><span class="nav-number">2.8.5.</span> <span class="nav-text">值类型与引用类型的比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引用类型之间的比较"><span class="nav-number">2.8.6.</span> <span class="nav-text">引用类型之间的比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">3.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量声明"><span class="nav-number">3.2.</span> <span class="nav-text">变量声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量命名规则"><span class="nav-number">3.3.</span> <span class="nav-text">变量命名规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键字／保留字"><span class="nav-number">3.4.</span> <span class="nav-text">关键字／保留字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量类型"><span class="nav-number">3.5.</span> <span class="nav-text">变量类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量值-undefined、null-的判断"><span class="nav-number">3.6.</span> <span class="nav-text">变量值 undefined、null 的判断</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SanCola</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

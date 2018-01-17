@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="HTML," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="HTML简介 html，即超级文本标记语言 是标准通用标记语言下的一个分支，是一种符合标准的文档形式 通过 标签 标记要显示的网页中的各个部分。网页文件本身是一种文本文件，通过在文本文件中添加标记符，可以告诉浏览器如何显示其中的内容（如：文字如何处理，画面如何安排，图片如何显示等）。浏览器按顺序阅读网页文件，然后根据标记符解释和显示其标记的内容，对书写出错的标记将不指出其错误，且不停止其解释执行过">
+<meta name="keywords" content="HTML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML 基本介绍、标签">
+<meta property="og:url" content="http://yoursite.com/2018/01/17/HTML/HTML 基本介绍、标签/index.html">
+<meta property="og:site_name" content="SanCola">
+<meta property="og:description" content="HTML简介 html，即超级文本标记语言 是标准通用标记语言下的一个分支，是一种符合标准的文档形式 通过 标签 标记要显示的网页中的各个部分。网页文件本身是一种文本文件，通过在文本文件中添加标记符，可以告诉浏览器如何显示其中的内容（如：文字如何处理，画面如何安排，图片如何显示等）。浏览器按顺序阅读网页文件，然后根据标记符解释和显示其标记的内容，对书写出错的标记将不指出其错误，且不停止其解释执行过">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-17T05:26:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML 基本介绍、标签">
+<meta name="twitter:description" content="HTML简介 html，即超级文本标记语言 是标准通用标记语言下的一个分支，是一种符合标准的文档形式 通过 标签 标记要显示的网页中的各个部分。网页文件本身是一种文本文件，通过在文本文件中添加标记符，可以告诉浏览器如何显示其中的内容（如：文字如何处理，画面如何安排，图片如何显示等）。浏览器按顺序阅读网页文件，然后根据标记符解释和显示其标记的内容，对书写出错的标记将不指出其错误，且不停止其解释执行过">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/17/HTML/HTML 基本介绍、标签/"/>
+
+
+
+
+
+  <title>HTML 基本介绍、标签 | SanCola</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SanCola</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life is a Rock N' Roll Train</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/17/HTML/HTML 基本介绍、标签/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SanCola">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SanCola">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HTML 基本介绍、标签</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-17T11:54:46+08:00">
+                2018-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="HTML简介"><a href="#HTML简介" class="headerlink" title="HTML简介"></a>HTML简介</h2><blockquote>
+<p><strong>html，即超级文本标记语言</strong> 是标准通用标记语言下的一个分支，是一种符合标准的文档形式</p>
+<p>通过 <strong>标签</strong> 标记要显示的网页中的各个部分。网页文件本身是一种文本文件，通过在文本文件中添加标记符，可以告诉浏览器如何显示其中的内容（如：文字如何处理，画面如何安排，图片如何显示等）。浏览器按顺序阅读网页文件，然后根据标记符解释和显示其标记的内容，对书写出错的标记将不指出其错误，且不停止其解释执行过程，需要注意的是，对于不同的浏览器，可能会有不同的显示效果。</p>
+</blockquote>
+<ul>
+<li>HTML 指的是超文本标记语言 (Hyper Text Markup Language)</li>
+<li>HTML 不是一种编程语言，而是一种标记语言 (markup language)</li>
+<li>标记语言是一套标记标签 (markup tag)</li>
+<li>HTML 使用标记标签来描述网页</li>
+</ul>
+<a id="more"></a>
+<h2 id="HTML基本结构"><a href="#HTML基本结构" class="headerlink" title="HTML基本结构"></a>HTML基本结构</h2><p>下面是一个最基本的html文档结构</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Doctype写法及对应html版本"><a href="#Doctype写法及对应html版本" class="headerlink" title="Doctype写法及对应html版本"></a>Doctype写法及对应html版本</h3><blockquote>
+<p>&lt;!DOCTYPE&gt; 不是 HTML 标签。它为浏览器提供一项信息（声明），即 HTML 是用什么版本编写的。只有完全明白页面中使用的确切 HTML 版本，浏览器才能完全正确地显示出 HTML 页面。</p>
+</blockquote>
+<h4 id="html4的三种写法"><a href="#html4的三种写法" class="headerlink" title="html4的三种写法"></a>html4的三种写法</h4><ul>
+<li>HTML 4.01 Strict Emmet语法为: html:4s tab</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>HTML 4.01 Transitional Emmet语法为: html:4t tab</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>HTML 4.01 Frameset </li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd"&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="html5写法"><a href="#html5写法" class="headerlink" title="html5写法"></a>html5写法</h4><p>html5+tab 或 ！+tab</p>
+<h4 id="emmet文档结构"><a href="#emmet文档结构" class="headerlink" title="emmet文档结构"></a>emmet文档结构</h4><ul>
+<li>html:5或!：HTML5文档类型</li>
+<li>html:xt：XHTML过渡型文档类型</li>
+<li>html:xs：XHTML严格型文档类型</li>
+<li>html:4t：HTML4过渡型文档类型</li>
+<li>html:4s：HTML4严格型文档类型</li>
+</ul>
+<h2 id="HTML标签"><a href="#HTML标签" class="headerlink" title="HTML标签"></a>HTML标签</h2><p>HTML 标记标签通常被称为 HTML 标签 (HTML tag)</p>
+<ul>
+<li>HTML 标签是由尖括号包围的关键词，比如 <code>&lt;html&gt;</code></li>
+<li>HTML 标签通常是成对出现的，比如 <code>&lt;b&gt;</code> 和 <code>&lt;/b&gt;</code></li>
+<li>标签对中的第一个标签是开始标签，第二个标签是结束标签</li>
+<li>开始和结束标签也被称为开放标签和闭合标签</li>
+</ul>
+<h3 id="HTML标签属性"><a href="#HTML标签属性" class="headerlink" title="HTML标签属性"></a>HTML标签属性</h3><ul>
+<li>HTML 标签可以拥有属性。属性提供了有关 HTML 元素的更多的信息。</li>
+<li>属性总是以名称/值对的形式出现，比如：<code>name=&quot;value&quot;</code></li>
+<li>属性总是在 HTML 元素的开始标签中规定。</li>
+</ul>
+<h3 id="head标签"><a href="#head标签" class="headerlink" title="head标签"></a>head标签</h3><blockquote>
+<p><code>&lt;head&gt;</code> 标签用于定义文档的头部，它是所有头部元素的容器。</p>
+<p><code>&lt;head&gt;</code> 文档的头部描述了文档的各种属性和信息，包括文档的标题以及和其他文档的关系等。实际上 <code>&lt;head&gt;</code> 标签并不会包含任何用户可见的内容</p>
+</blockquote>
+<h3 id="head内部常用标签"><a href="#head内部常用标签" class="headerlink" title="head内部常用标签"></a>head内部常用标签</h3><h4 id="meta标签"><a href="#meta标签" class="headerlink" title="meta标签"></a>meta标签</h4><ul>
+<li><code>&lt;mata charset=&quot;utf-8&quot;&gt;</code> — 指定文档使用的字符集</li>
+<li><code>&lt;meta name=&quot;keywords&quot; content=&quot;关键字&quot;&gt;</code> — 指定关键字</li>
+<li><code>&lt;meta name=&quot;discription&quot; content=&quot;描述描述&quot;&gt;</code> — 定义搜索引擎描述文本</li>
+<li><code>&lt;meta http-equiv=&quot;Refresh&quot; content=&quot;2；URL=http://www.net.cn/&quot;&gt;</code> — 定义网页重定向</li>
+</ul>
+<h4 id="Base标签"><a href="#Base标签" class="headerlink" title="Base标签"></a>Base标签</h4><ul>
+<li><code>&lt;base target=&quot;_blank&quot;&gt;</code> — 新建页面跳转</li>
+<li><code>&lt;base target=&quot;_self&quot;&gt;</code> — 在网页内跳转，默认值</li>
+</ul>
+<h4 id="Link标签"><a href="#Link标签" class="headerlink" title="Link标签"></a>Link标签</h4><ul>
+<li><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;1.css&quot;&gt;</code> — 引用外部css样式表</li>
+<li><code>&lt;link rel=&quot;icon&quot; href=&quot;favicon.ico&quot;&gt;</code> — 指定网页标签图标”</li>
+<li><code>&lt;link rel=&quot;shortcut icon&quot; href=&quot;favicon.ico&quot;&gt;</code> — 指定网页标签图标”</li>
+</ul>
+<h4 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h4><ul>
+<li><code>hreflang</code> — 被链接文档中文本的语言</li>
+<li><code>media</code> — 被链接文档将被显示在什么设备上</li>
+<li><code>rel</code> — 被链接文档与当前文档之间的关系（常用的有stylesheet和shortcut icon）</li>
+<li><code>sizes</code> — 网站图标的尺寸（仅适用于 rel=”icon”）</li>
+<li><code>target</code> — 被链接文档在哪个窗口或框架中加载</li>
+<li><code>type</code> — 被链接文档类型</li>
+</ul>
+<h3 id="body标签"><a href="#body标签" class="headerlink" title="body标签"></a>body标签</h3><blockquote>
+<p><strong>body 元素是定义文档的主体。</strong></p>
+<p>body 元素包含文档的所有内容（比如文本、超链接、图像、表格和列表等等。）body是用在网页中的一种HTML标签，标签是用在网页中的一种HTML标签，表示网页的主体部分，也<strong>就是用户可以看到的内容</strong>，可以包含文本、图片、音频、视频等各种内容！</p>
+</blockquote>
+<h3 id="body内部常用标签"><a href="#body内部常用标签" class="headerlink" title="body内部常用标签"></a>body内部常用标签</h3><h4 id="基本标签"><a href="#基本标签" class="headerlink" title="基本标签"></a>基本标签</h4><ul>
+<li>注释标签：<code>&lt;!--&gt;&lt;--&gt;</code></li>
+<li>换行标签：<code>&lt;br&gt;</code></li>
+<li>横线标签：<code>&lt;hr&gt;</code></li>
+<li>分段标签：<code>&lt;p&gt;</code></li>
+<li>标题标签：<code>&lt;h1&gt;&lt;/h1&gt;</code></li>
+<li>加粗标签：<code>&lt;strong&gt;&lt;/strong&gt;</code> — <code>&lt;b&gt;&lt;/b&gt;</code></li>
+<li>斜体标签：<code>&lt;em&gt;&lt;/em&gt;</code> — <code>&lt;i&gt;&lt;/i&gt;</code></li>
+<li>删除线标签：<code>&lt;del&gt;&lt;/del&gt;</code> — <code>&lt;s&gt;&lt;/s&gt;</code></li>
+<li>超链接标签：<code>&lt;a&gt;&lt;/a&gt;</code></li>
+<li>区域标签：<code>&lt;div&gt;&lt;/div&gt;</code></li>
+<li>行内区域标签：<code>&lt;span&gt;&lt;/span&gt;</code></li>
+<li>图片引用标签：<code>&lt;img&gt;&lt;img&gt;</code></li>
+</ul>
+<h4 id="基本标签常用属性"><a href="#基本标签常用属性" class="headerlink" title="基本标签常用属性"></a>基本标签常用属性</h4><ul>
+<li>href — 用于建立链接关系，常用<code>&lt;link&gt;</code>，<code>&lt;a&gt;</code> 标签，解析到此处时浏览器不会暂停解析</li>
+<li>src — 用于置换元素，且被置换的元素不受css样式限制，浏览器会暂停解析，如<code>&lt;img&gt;</code>，<code>&lt;script&gt;</code>，<code>&lt;video&gt;</code>等</li>
+<li>alt — 常用于用于图片不能加载时的显示文字</li>
+<li>title — 当鼠标悬停在该标签时出现的提示信息</li>
+</ul>
+<p>注意</p>
+<ul>
+<li>为了做到结构样式分离，<code>i</code>，<code>s</code>，<code>em</code>这几种表示样式的标签已经废弃了</li>
+<li>由于i标签正好是icon图标这个英文单词的首字母，并且只有一个字母，于是bootstrap将其用于表示图标，后来渐渐传开，再后来s 和 em 这些也用来表示图标了。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTML/" rel="tag"># HTML</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/17/HTML/HTML 列表、表格、表单/" rel="prev" title="HTML 列表、表格、表单">
+                HTML 列表、表格、表单 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="SanCola" />
+            
+              <p class="site-author-name" itemprop="name">SanCola</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhanggy911" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/zhanggy911" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML简介"><span class="nav-number">1.</span> <span class="nav-text">HTML简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML基本结构"><span class="nav-number">2.</span> <span class="nav-text">HTML基本结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Doctype写法及对应html版本"><span class="nav-number">2.1.</span> <span class="nav-text">Doctype写法及对应html版本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#html4的三种写法"><span class="nav-number">2.1.1.</span> <span class="nav-text">html4的三种写法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#html5写法"><span class="nav-number">2.1.2.</span> <span class="nav-text">html5写法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#emmet文档结构"><span class="nav-number">2.1.3.</span> <span class="nav-text">emmet文档结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML标签"><span class="nav-number">3.</span> <span class="nav-text">HTML标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML标签属性"><span class="nav-number">3.1.</span> <span class="nav-text">HTML标签属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#head标签"><span class="nav-number">3.2.</span> <span class="nav-text">head标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#head内部常用标签"><span class="nav-number">3.3.</span> <span class="nav-text">head内部常用标签</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#meta标签"><span class="nav-number">3.3.1.</span> <span class="nav-text">meta标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Base标签"><span class="nav-number">3.3.2.</span> <span class="nav-text">Base标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Link标签"><span class="nav-number">3.3.3.</span> <span class="nav-text">Link标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用属性"><span class="nav-number">3.3.4.</span> <span class="nav-text">常用属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#body标签"><span class="nav-number">3.4.</span> <span class="nav-text">body标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#body内部常用标签"><span class="nav-number">3.5.</span> <span class="nav-text">body内部常用标签</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本标签"><span class="nav-number">3.5.1.</span> <span class="nav-text">基本标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本标签常用属性"><span class="nav-number">3.5.2.</span> <span class="nav-text">基本标签常用属性</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SanCola</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

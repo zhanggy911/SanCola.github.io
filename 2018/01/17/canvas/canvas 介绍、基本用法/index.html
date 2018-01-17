@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="canvas," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="canvas 介绍canvas是html5中新增的一个画布标签。这个标签的默认宽高为300*150  使用注意 设置 canvas 标签的宽高需要在 标签内 设置 width 和 height 属性 设置 canvas 标签的宽高不建议使用css样式，因为会将画布拉伸 canvas 标签中的内容，一般写提示信息 canvas 只是用来展示图像的东西，画图需要使用画图工具（画图上下文） 一个页面可以">
+<meta name="keywords" content="canvas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="canvas 介绍、基本用法">
+<meta property="og:url" content="http://yoursite.com/2018/01/17/canvas/canvas 介绍、基本用法/index.html">
+<meta property="og:site_name" content="SanCola">
+<meta property="og:description" content="canvas 介绍canvas是html5中新增的一个画布标签。这个标签的默认宽高为300*150  使用注意 设置 canvas 标签的宽高需要在 标签内 设置 width 和 height 属性 设置 canvas 标签的宽高不建议使用css样式，因为会将画布拉伸 canvas 标签中的内容，一般写提示信息 canvas 只是用来展示图像的东西，画图需要使用画图工具（画图上下文） 一个页面可以">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-17T06:59:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="canvas 介绍、基本用法">
+<meta name="twitter:description" content="canvas 介绍canvas是html5中新增的一个画布标签。这个标签的默认宽高为300*150  使用注意 设置 canvas 标签的宽高需要在 标签内 设置 width 和 height 属性 设置 canvas 标签的宽高不建议使用css样式，因为会将画布拉伸 canvas 标签中的内容，一般写提示信息 canvas 只是用来展示图像的东西，画图需要使用画图工具（画图上下文） 一个页面可以">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/17/canvas/canvas 介绍、基本用法/"/>
+
+
+
+
+
+  <title>canvas 介绍、基本用法 | SanCola</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SanCola</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life is a Rock N' Roll Train</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/17/canvas/canvas 介绍、基本用法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SanCola">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SanCola">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">canvas 介绍、基本用法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-17T14:46:18+08:00">
+                2018-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="canvas-介绍"><a href="#canvas-介绍" class="headerlink" title="canvas 介绍"></a>canvas 介绍</h2><p>canvas是html5中新增的一个画布标签。这个标签的默认宽高为300*150</p>
+<ul>
+<li>使用注意<ul>
+<li>设置 canvas 标签的宽高需要在 <strong>标签内</strong> 设置 width 和 height 属性</li>
+<li>设置 canvas 标签的宽高不建议使用css样式，因为会将画布拉伸</li>
+<li>canvas 标签中的内容，一般写提示信息</li>
+<li>canvas 只是用来展示图像的东西，画图需要使用画图工具（画图上下文）</li>
+<li>一个页面可以写多个信息</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="canvas-基本使用"><a href="#canvas-基本使用" class="headerlink" title="canvas 基本使用"></a>canvas 基本使用</h2><ol>
+<li>首先要有 canvas 标签</li>
+<li>获取 canvas 标签对象</li>
+<li>通过 canvas 对象获取绘图上下文 <code>canvas.getContext(&quot;2d&quot;)</code> ，3d绘图使用 <code>&quot;webgl&quot;</code></li>
+</ol>
+<ul>
+<li>绘制线段<ul>
+<li>通过绘图上下文的 <code>moveTo</code> 方法设置绘图的起始点 <code>ctx.moveTo(x, y)</code></li>
+<li>通过绘图上下文的 <code>lineTo</code> 方法设置画线的终点 <code>ctx.lineTo(x, y)</code></li>
+<li>通过绘图上下文的 <code>stroke</code> 方法描线 <code>ctx.stroke()</code></li>
+</ul>
+</li>
+<li>绘制连续的线段<ul>
+<li><code>lineTo</code> 方法可以将当前这个点保存，做为下次lineTo的起始点</li>
+</ul>
+</li>
+<li>绘制曲线<ul>
+<li>找到x和y的关系，循环遍历所有的x，通过x计算y，画出每一条线段，就能组合出一个曲线</li>
+</ul>
+</li>
+<li><code>closePath</code> 方法<ul>
+<li><code>closePath</code> 可以用来闭合路径，将最后一个 <code>lineTo</code> 的点和最后一个 <code>moveTo</code> 的点连接起来，路径可以手动闭合，但是需要在终点上再拐一个点</li>
+</ul>
+</li>
+<li><code>fill</code> 方法<ul>
+<li>用来填充闭合的图形，如果图形没有闭合，会自动闭合</li>
+</ul>
+</li>
+<li>非零环绕原则<ul>
+<li>在需要判断一个闭合的图形是不是会被填充的时候，从这个闭合的图形中拉出一条直线，判断经过直线的所有线段的方向，如果直线两边相反箭头的数量刚好相同，这个空间就不会被填充，反之则填充</li>
+</ul>
+</li>
+<li>路径的概念<ul>
+<li>路径中包含当前绘图上下文的所有状态，线宽，线的描边样式，填充样式，一个路径中所有的状态都是一致的，想要更改状态，必须重新开辟路径</li>
+</ul>
+</li>
+<li><code>beginPath</code> 方法<ul>
+<li><code>beginPath</code> 方法用来开辟新的路径。<ul>
+<li>在使用 <code>beginPath</code> 开辟新的路径之后，之前的路径状态会被保存，不会重置</li>
+<li>在使用 <code>beginPath</code> 开辟新的路径之后，起始点会被清除，需要重新手动的 <code>moveTo</code> 设置起始点</li>
+<li>如果要使用新的状态，一定要使用 <code>beginPath</code>，否则，会影响之前所有同一路径下的绘图</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>线型、填充相关的属性</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lineWidth</td>
+<td>设置绘图的线条宽度</td>
+</tr>
+<tr>
+<td>lineCap</td>
+<td>设置线两端的样式，可选的值有 butt（默认） round(圆的) square（方的）</td>
+</tr>
+<tr>
+<td>lineJoin</td>
+<td>设置两条线相交的拐点的样式，可选的值有 miter(默认尖的) round 圆的 bevel平的</td>
+</tr>
+<tr>
+<td>strokeStyle</td>
+<td>设置线条的颜色（可以使用所有css支持的颜色格式）</td>
+</tr>
+<tr>
+<td>fillStyle</td>
+<td>设置填充的颜色（可以使用所有css支持的颜色格式）</td>
+</tr>
+<tr>
+<td>setLineDash</td>
+<td>方法，用来设置虚线中空白和实线的宽度，参数为一个数组,数组中的元素，会被循环依次应用到虚线中的每一段线（虚线和实线）上</td>
+</tr>
+<tr>
+<td>getLineDash</td>
+<td>方法，用来获取虚线的宽度设置，获取到值是一个数组，如果不是虚线，就是空数组，否则是这个虚线的宽度设置数组</td>
+</tr>
+<tr>
+<td>lineDashOffset</td>
+<td>属性，设置虚线的偏移量，如果是正的就向左偏移，如果是负的，就向右偏移</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>渐变色</li>
+</ul>
+<p>不直接划一整条线，而是用每一个像素拼起来一条直线，每一个像素线段的颜色根据所在位置去计算</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ctx.lineWidth = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt;= <span class="number">255</span>; i++)&#123;</span><br><span class="line">  ctx.beginPath();</span><br><span class="line">  ctx.moveTo(<span class="number">100</span> + i <span class="number">-1</span>, <span class="number">100</span>);</span><br><span class="line">  ctx.strokeStyle = <span class="string">"rgb("</span>+i+<span class="string">",0,0)"</span>;</span><br><span class="line">  ctx.lineTo(<span class="number">100</span> + i, <span class="number">100</span>);</span><br><span class="line">  ctx.stroke();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/canvas/" rel="tag"># canvas</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/17/CSS/less介绍/" rel="next" title="less介绍">
+                <i class="fa fa-chevron-left"></i> less介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/17/canvas/canvas 保存路径信息、形状绘制/" rel="prev" title="canvas 保存路径信息、形状绘制">
+                canvas 保存路径信息、形状绘制 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="SanCola" />
+            
+              <p class="site-author-name" itemprop="name">SanCola</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhanggy911" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/zhanggy911" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#canvas-介绍"><span class="nav-number">1.</span> <span class="nav-text">canvas 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#canvas-基本使用"><span class="nav-number">2.</span> <span class="nav-text">canvas 基本使用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SanCola</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

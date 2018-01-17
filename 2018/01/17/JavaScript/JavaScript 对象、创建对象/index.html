@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="对象对象的概念 对象是对客观事物的抽象，事物的特征可以用属性表示，事物的行为可以用方法表示 JavaScript中，对象就是无序的键值对的集合 对象就是一种数据类型，通过对象可以方便地对变量和函数进行管理 对象具有属性和方法       属性：用来描述对象的特征 一般是名词 对应变量 方法：用来描述对象的行为 一般是动词 对应函数">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 对象、创建对象">
+<meta property="og:url" content="http://yoursite.com/2018/01/17/JavaScript/JavaScript 对象、创建对象/index.html">
+<meta property="og:site_name" content="SanCola">
+<meta property="og:description" content="对象对象的概念 对象是对客观事物的抽象，事物的特征可以用属性表示，事物的行为可以用方法表示 JavaScript中，对象就是无序的键值对的集合 对象就是一种数据类型，通过对象可以方便地对变量和函数进行管理 对象具有属性和方法       属性：用来描述对象的特征 一般是名词 对应变量 方法：用来描述对象的行为 一般是动词 对应函数">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-17T08:38:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 对象、创建对象">
+<meta name="twitter:description" content="对象对象的概念 对象是对客观事物的抽象，事物的特征可以用属性表示，事物的行为可以用方法表示 JavaScript中，对象就是无序的键值对的集合 对象就是一种数据类型，通过对象可以方便地对变量和函数进行管理 对象具有属性和方法       属性：用来描述对象的特征 一般是名词 对应变量 方法：用来描述对象的行为 一般是动词 对应函数">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/17/JavaScript/JavaScript 对象、创建对象/"/>
+
+
+
+
+
+  <title>JavaScript 对象、创建对象 | SanCola</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SanCola</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life is a Rock N' Roll Train</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/17/JavaScript/JavaScript 对象、创建对象/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SanCola">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SanCola">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript 对象、创建对象</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-17T16:36:16+08:00">
+                2018-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><h3 id="对象的概念"><a href="#对象的概念" class="headerlink" title="对象的概念"></a>对象的概念</h3><ul>
+<li>对象是对客观事物的抽象，事物的特征可以用属性表示，事物的行为可以用方法表示</li>
+<li>JavaScript中，对象就是无序的键值对的集合</li>
+<li>对象就是一种数据类型，通过对象可以方便地对变量和函数进行管理<ul>
+<li>对象具有属性和方法    </li>
+</ul>
+</li>
+<li>属性：用来描述对象的特征 一般是名词 对应变量</li>
+<li>方法：用来描述对象的行为 一般是动词 对应函数</li>
+</ul>
+<a id="more"></a>
+<h3 id="对象键值对"><a href="#对象键值对" class="headerlink" title="对象键值对"></a>对象键值对</h3><ul>
+<li>键值对就是一种对应关系，通过键能够方便地找到值</li>
+<li>键:值    <code>key:value</code>、<code>k:v</code>    </li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// name是键，‘123’是值</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  name:<span class="string">'123'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="访问对象的方式"><a href="#访问对象的方式" class="headerlink" title="访问对象的方式"></a>访问对象的方式</h3><ul>
+<li>点语法</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  name: <span class="string">'123'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(obj.name) <span class="comment">// 123</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>中括号</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  name: <span class="string">'123'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(obj[name]) <span class="comment">// 123</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用循环为对象赋值</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;=<span class="number">5</span>; i++)&#123;</span><br><span class="line">  obj[<span class="string">'n'</span>+ i] = i</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(obj)</span><br></pre></td></tr></table></figure>
+<h3 id="对象的动态特性"><a href="#对象的动态特性" class="headerlink" title="对象的动态特性"></a>对象的动态特性</h3><ul>
+<li>对象被创建出来后，随时可以修改，这被称为对象的动态特性</li>
+<li><code>Object.defineProperty</code> 可以修改属性</li>
+</ul>
+<h3 id="对象的遍历"><a href="#对象的遍历" class="headerlink" title="对象的遍历"></a>对象的遍历</h3><ul>
+<li>使用 <code>for…in</code> 语句对对象进行遍历</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  name: <span class="string">"zs"</span>,</span><br><span class="line">  age: <span class="number">18</span>,</span><br><span class="line">  sayHi: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"大家好"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 此处的k是默认用法</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> k <span class="keyword">in</span> obj) &#123;		</span><br><span class="line">  <span class="built_in">console</span>.log(obj[k])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><h3 id="创建单个对象"><a href="#创建单个对象" class="headerlink" title="创建单个对象"></a>创建单个对象</h3><h4 id="通过内置构造函数声明"><a href="#通过内置构造函数声明" class="headerlink" title="通过内置构造函数声明"></a>通过内置构造函数声明</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建对象</span></span><br><span class="line"><span class="keyword">var</span> obj= <span class="keyword">new</span> <span class="built_in">Object</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 构造函数创建对象</span></span><br><span class="line"><span class="keyword">var</span> hero = <span class="keyword">new</span> <span class="built_in">Object</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为对象添加属性并赋值</span></span><br><span class="line">hero.name = <span class="string">"linlin"</span></span><br><span class="line">hero.level = <span class="number">3</span></span><br><span class="line">hero.moveRight = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"正在往右走"</span>)</span><br><span class="line">&#125;</span><br><span class="line">hero.attack = <span class="function"><span class="keyword">function</span> (<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 函数中的 this 指当前函数所属的对象名称</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">"在打"</span> + name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用函数的属性</span></span><br><span class="line"><span class="built_in">console</span>.log(hero.name)</span><br><span class="line"><span class="comment">// 调用函数的方法</span></span><br><span class="line">hero.moveRight()</span><br></pre></td></tr></table></figure>
+<h4 id="通过字面量声明"><a href="#通过字面量声明" class="headerlink" title="通过字面量声明"></a>通过字面量声明</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建对象并赋值</span></span><br><span class="line"><span class="keyword">var</span> stu = &#123;</span><br><span class="line">  name: <span class="string">"ww"</span>,</span><br><span class="line">  age: <span class="number">18</span>,</span><br><span class="line">  sayHi: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"大家好"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="通过自定义构造函数"><a href="#通过自定义构造函数" class="headerlink" title="通过自定义构造函数"></a>通过自定义构造函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建对象并赋值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name, age, score</span>) </span>&#123;           </span><br><span class="line">  <span class="keyword">this</span>.name = name;                         </span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">  <span class="keyword">this</span>.score = score;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="批量创建对象"><a href="#批量创建对象" class="headerlink" title="批量创建对象"></a>批量创建对象</h3><h4 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h4><ul>
+<li>将创建对象的过程封装进一个函数，只把发生变化的属性作为参数传入</li>
+<li>工厂模式只是创建出来一个普通的对象并将其返回，因此无法判断实例的具体类型</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">student</span>(<span class="params">name, age, score</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> stu = &#123;                       </span><br><span class="line">    name: name,</span><br><span class="line">    age: age,</span><br><span class="line">    score: score,</span><br><span class="line">    sayHi: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"大家好"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> stu</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> st1 = student(<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>)</span><br><span class="line"><span class="keyword">var</span> st2 = student(<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>)</span><br><span class="line"><span class="built_in">console</span>.log(st1)</span><br><span class="line"><span class="built_in">console</span>.log(st2)</span><br></pre></td></tr></table></figure>
+<h4 id="自定义构造函数"><a href="#自定义构造函数" class="headerlink" title="自定义构造函数"></a>自定义构造函数</h4><ul>
+<li>利用 <code>new</code> 关键字可以创建新的对象</li>
+<li><code>new</code> 关键字可以让构造函数中 <code>this</code> 的指向改变，并让构造函数把 <code>this</code> 返回。</li>
+<li>构造函数也是函数，只不过会默认返回一个对象</li>
+<li>通过构造函数创建对象更方便（不需要创建对象并返回）。</li>
+<li>可以通过 <code>instanceof</code> 来判断创建出来的实例是否属于某个对象</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自定义构造函数默认返回一个对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name, age, score</span>) </span>&#123;           </span><br><span class="line">  <span class="keyword">this</span>.name = name                         </span><br><span class="line">  <span class="keyword">this</span>.age = age</span><br><span class="line">  <span class="keyword">this</span>.score = score</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为该构造函数的原型添加一个方法，以便所有该构造函数的实例可以使用该方法</span></span><br><span class="line">Student.prototype.sayHi = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"大家好，我是"</span> + <span class="keyword">this</span>.name)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> st1 = <span class="keyword">new</span> Student(<span class="string">"linlin"</span>, <span class="number">18</span>, <span class="number">100</span>)</span><br><span class="line"><span class="keyword">var</span> st2 = <span class="keyword">new</span> Student(<span class="string">"lin"</span>, <span class="number">18</span>, <span class="number">10</span>)</span><br><span class="line"><span class="keyword">var</span> st3 = <span class="keyword">new</span> Student(<span class="string">"xi"</span>, <span class="number">20</span>, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//判断st1是不是Student的一个实例</span></span><br><span class="line"><span class="built_in">console</span>.log(st1 <span class="keyword">instanceof</span> Student)  <span class="comment">// true         </span></span><br><span class="line"><span class="built_in">console</span>.log(st2 <span class="keyword">instanceof</span> Student)  <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(st1.sayHi === st2.sayHi) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>工厂模式与自定义构造函数的区别<ul>
+<li>工厂模式和自定义构造函数（寄生模式）都可以用来创建对象</li>
+<li>工厂模式是函数调用模式，寄生模式是构造函数调用模式，this的指向并不相同</li>
+</ul>
+</li>
+</ul>
+<h2 id="修改对象"><a href="#修改对象" class="headerlink" title="修改对象"></a>修改对象</h2><ul>
+<li><code>Object.defineProperty</code><ul>
+<li>用来给对象的属性设置访问器、能否修改、遍历等</li>
+<li>语法<ul>
+<li><code>Object.defineProperty(obj, propertyName, descriptor)</code></li>
+<li><code>obj</code> 就是要给谁添加属性</li>
+<li><code>propertyName</code> 要添加的属性名</li>
+<li><code>descriptor</code> 属性的描述信息，也就是特性集合，是一个对象</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>descriptor</code> 对象中的属性<ul>
+<li><code>writable</code> 默认为false，表示属性是否可写</li>
+<li><code>configurable</code> 默认为 false， 表示属性是否可以配置（删除）</li>
+<li><code>enumerable</code> 默认为false， 表示属性是否可以被遍历（for-in）</li>
+<li><code>value</code> 用来设置属性的值</li>
+<li><code>get</code> 和 <code>set</code> 方法，和 <code>writable</code> 一样都可以用来设置属性是否可以写</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/17/JavaScript/JavaScript 循环、数组/" rel="next" title="JavaScript 循环、数组">
+                <i class="fa fa-chevron-left"></i> JavaScript 循环、数组
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/17/JavaScript/JavaScript 原型、对象原型链、面向对象/" rel="prev" title="JavaScript 原型、对象原型链、面向对象">
+                JavaScript 原型、对象原型链、面向对象 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="SanCola" />
+            
+              <p class="site-author-name" itemprop="name">SanCola</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhanggy911" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/zhanggy911" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#对象"><span class="nav-number">1.</span> <span class="nav-text">对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的概念"><span class="nav-number">1.1.</span> <span class="nav-text">对象的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象键值对"><span class="nav-number">1.2.</span> <span class="nav-text">对象键值对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问对象的方式"><span class="nav-number">1.3.</span> <span class="nav-text">访问对象的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的动态特性"><span class="nav-number">1.4.</span> <span class="nav-text">对象的动态特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的遍历"><span class="nav-number">1.5.</span> <span class="nav-text">对象的遍历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建对象"><span class="nav-number">2.</span> <span class="nav-text">创建对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建单个对象"><span class="nav-number">2.1.</span> <span class="nav-text">创建单个对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过内置构造函数声明"><span class="nav-number">2.1.1.</span> <span class="nav-text">通过内置构造函数声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过字面量声明"><span class="nav-number">2.1.2.</span> <span class="nav-text">通过字面量声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过自定义构造函数"><span class="nav-number">2.1.3.</span> <span class="nav-text">通过自定义构造函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#批量创建对象"><span class="nav-number">2.2.</span> <span class="nav-text">批量创建对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#工厂模式"><span class="nav-number">2.2.1.</span> <span class="nav-text">工厂模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义构造函数"><span class="nav-number">2.2.2.</span> <span class="nav-text">自定义构造函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改对象"><span class="nav-number">3.</span> <span class="nav-text">修改对象</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SanCola</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
