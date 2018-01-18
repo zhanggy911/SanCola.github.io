@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="DOM," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="绑定、移除事件绑定事件 on 语法：事件源.事件 = function(){ 事件处理程序 }; 一个元素只能绑定一个事件    12345678// 使用循环为多个元素添加相同的属性for (var i = 0; i &amp;lt; toggle.length; i++) &amp;#123;   // 遍历要控制的a标签  toggle[i].onclick = function () &amp;#123;">
+<meta name="keywords" content="DOM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript DOM 事件操作">
+<meta property="og:url" content="http://yoursite.com/2018/01/17/dom_bom/JavaScript DOM 事件操作/index.html">
+<meta property="og:site_name" content="SanCola">
+<meta property="og:description" content="绑定、移除事件绑定事件 on 语法：事件源.事件 = function(){ 事件处理程序 }; 一个元素只能绑定一个事件    12345678// 使用循环为多个元素添加相同的属性for (var i = 0; i &amp;lt; toggle.length; i++) &amp;#123;   // 遍历要控制的a标签  toggle[i].onclick = function () &amp;#123;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/zhanggy911/markdown_img/blob/master/x-y.png?raw=true">
+<meta property="og:updated_time" content="2018-01-17T15:59:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript DOM 事件操作">
+<meta name="twitter:description" content="绑定、移除事件绑定事件 on 语法：事件源.事件 = function(){ 事件处理程序 }; 一个元素只能绑定一个事件    12345678// 使用循环为多个元素添加相同的属性for (var i = 0; i &amp;lt; toggle.length; i++) &amp;#123;   // 遍历要控制的a标签  toggle[i].onclick = function () &amp;#123;">
+<meta name="twitter:image" content="https://github.com/zhanggy911/markdown_img/blob/master/x-y.png?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/17/dom_bom/JavaScript DOM 事件操作/"/>
+
+
+
+
+
+  <title>JavaScript DOM 事件操作 | SanCola</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SanCola</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life is a Rock N' Roll Train</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/17/dom_bom/JavaScript DOM 事件操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SanCola">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SanCola">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript DOM 事件操作</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-17T23:24:11+08:00">
+                2018-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="绑定、移除事件"><a href="#绑定、移除事件" class="headerlink" title="绑定、移除事件"></a>绑定、移除事件</h2><h3 id="绑定事件"><a href="#绑定事件" class="headerlink" title="绑定事件"></a>绑定事件</h3><ul>
+<li><code>on</code><ul>
+<li>语法：<code>事件源.事件 = function(){ 事件处理程序 };</code></li>
+<li>一个元素只能绑定一个事件</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用循环为多个元素添加相同的属性</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; toggle.length; i++) &#123;   <span class="comment">// 遍历要控制的a标签</span></span><br><span class="line">  toggle[i].onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    chengeImg.src = <span class="keyword">this</span>.href;              <span class="comment">// 通过a标签修改img</span></span><br><span class="line">    des.innerText = <span class="keyword">this</span>.title;             <span class="comment">// 修改图片描述</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;                           <span class="comment">// 禁用a标签跳转</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li><code>addEventListener</code><ul>
+<li>语法：<code>element.addEventListener(&#39;事件类型&#39;，&#39;事件处理函数&#39;，&#39;是否使用捕获&#39;)</code></li>
+<li>一个元素可以绑定多个事件，依次执行</li>
+<li><code>addEventListener</code> 通过回调函数的参数获取</li>
+<li><code>addEventListener</code> 中 this 指向当前 dom 对象</li>
+</ul>
+</li>
+<li><code>attachEvent()</code><ul>
+<li>在 IE 上需要使用 <code>attachEvent()</code></li>
+<li>语法：<code>attachEvent(type, handler)</code></li>
+<li><code>attachEvent</code> 通过 <code>window.event</code> 获取 事件对象</li>
+<li><code>attachEvent</code> 中 this 指向 window</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// addEventListener 和 attachEvent 兼容函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">registerEvent</span>(<span class="params">ele, type, handler</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(ele.addEventListener)&#123;</span><br><span class="line">    ele.addEventListener(type, handler);</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(ele.attachEvent)&#123;</span><br><span class="line">    ele.attachEvent(<span class="string">"on"</span> + type, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      handler.call(ele, <span class="built_in">window</span>.event);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    ele[<span class="string">"on"</span> + type] = handler;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="移除事件"><a href="#移除事件" class="headerlink" title="移除事件"></a>移除事件</h3><ul>
+<li>方式1：<code>element.onclick = null()</code></li>
+<li>方式2：<code>removeEventListener()</code></li>
+<li>如果注册的时候使用的是匿名函数，则无法移除</li>
+<li>通过 <code>innerHTML</code> 清空内容的时候，事件相关函数不会被销毁，因此建议使用 <code>removeChild</code> 来清除</li>
+</ul>
+<h2 id="event对象"><a href="#event对象" class="headerlink" title="event对象"></a>event对象</h2><blockquote>
+<p>在触发事件时，会产生一个事件对象 event，这个对象中包含着与事件有关的信息。所有浏览器都支持 even t对象，但支持的方式不同。比如鼠标操作时候，会添加鼠标位置的相关信息到事件对象中。</p>
+</blockquote>
+<ul>
+<li>事件对象写法</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>)</span><br><span class="line">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(event.clientX)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 普通浏览器支持传入参数event</span></span><br><span class="line"><span class="comment">// IE678 支持 window.event</span></span><br><span class="line"><span class="keyword">var</span> event = event || <span class="built_in">window</span>.event</span><br></pre></td></tr></table></figure>
+<ul>
+<li>event对象属性</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>返回拖拽对象的 URL 字符串</td>
+</tr>
+<tr>
+<td>width</td>
+<td>该窗口或框架的宽度</td>
+</tr>
+<tr>
+<td>height</td>
+<td>该窗口或框架的高度</td>
+</tr>
+<tr>
+<td>pageX</td>
+<td>光标相对于页面的水平坐标（页面整体，包含卷去的宽度）</td>
+</tr>
+<tr>
+<td>pageY</td>
+<td>光标相对于页面的垂直坐标（页面整体，包含卷去的宽度）</td>
+</tr>
+<tr>
+<td>screenX</td>
+<td>光标相对于屏幕的水平坐标（相对于显示器屏幕）</td>
+</tr>
+<tr>
+<td>screenY</td>
+<td>光标相对于屏幕的垂直坐标（相对于显示器屏幕）</td>
+</tr>
+<tr>
+<td>clientX</td>
+<td>光标相对于可视区域的水平坐标（相对于浏览器可视区域）</td>
+</tr>
+<tr>
+<td>clientY</td>
+<td>光标相对于可视区域的垂直坐标（相对于浏览器可视区域）</td>
+</tr>
+<tr>
+<td>target</td>
+<td>该事件被传送到的对象</td>
+</tr>
+<tr>
+<td>type</td>
+<td>事件的类型</td>
+</tr>
+<tr>
+<td>oninvalid</td>
+<td>提交 input 元素值无效时</td>
+</tr>
+<tr>
+<td>oninput</td>
+<td>在输入时</td>
+</tr>
+<tr>
+<td>onchange</td>
+<td>值改变时</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>pageX / pageY 兼容写法</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pageY = event.pageY || event.clientY + <span class="built_in">document</span>.documentElement.scrollTop;</span><br><span class="line"><span class="keyword">var</span> pageX = event.pageX || event.clientX + <span class="built_in">document</span>.documentElement.scrollLeft;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>target 兼容写法</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> target = event.target || event.srcElement;</span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/zhanggy911/markdown_img/blob/master/x-y.png?raw=true" alt="image"></p>
+<h2 id="事件的三个阶段"><a href="#事件的三个阶段" class="headerlink" title="事件的三个阶段"></a>事件的三个阶段</h2><h3 id="捕获阶段"><a href="#捕获阶段" class="headerlink" title="捕获阶段"></a>捕获阶段</h3><ul>
+<li>当某个元素触发某个事件（如onclick），顶层对象document就会发出一个事件流，随着DOM树的节点向目标元素节点流去，直到到达事件真正发生的目标元素。此过程中事件监听函数不会被触发。</li>
+</ul>
+<h3 id="目标阶段"><a href="#目标阶段" class="headerlink" title="目标阶段"></a>目标阶段</h3><ul>
+<li>当到达目标元素之后，执行目标元素该事件相应的处理函数。如果没有绑定监听函数，那就不执行。</li>
+</ul>
+<h3 id="冒泡阶段"><a href="#冒泡阶段" class="headerlink" title="冒泡阶段"></a>冒泡阶段</h3><ul>
+<li>从目标元素开始，往顶层元素传播。途中如果有节点绑定了相应的事件处理函数，这些函数都会被依次触发</li>
+<li>阻止事件冒泡<ul>
+<li>W3C： <code>event.stopPropagation()</code></li>
+<li>IE：<code>event.cancelBubble = true</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 兼容函数</span></span><br><span class="line"><span class="keyword">if</span>(event.stopPropagation)&#123;</span><br><span class="line">  event.stopPropagation();</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  event.cancelBubble = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="事件代理"><a href="#事件代理" class="headerlink" title="事件代理"></a>事件代理</h2><p>当需要对很多元素添加事件时，可以通过将事件委托给其父元素来触发处理函数</p>
+<ul>
+<li>事件代理优点<ul>
+<li>不需要为每个元素都添加监听函数，减少需要管理的函数 </li>
+<li>不需要因为元素的改动而修改事件绑定</li>
+<li>减少 JavaScript 和 DOM 节点之间的关联，也就减少了因循环引用而带来的内存泄漏发生的概率</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取父节点，并为它添加一个click事件</span></span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"List"</span>).addEventListener(<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 检查事件源e.targe是否符合要求</span></span><br><span class="line">  <span class="keyword">if</span>(e.target &amp;&amp; e.target.nodeName == <span class="string">"li"</span>) &#123;</span><br><span class="line">    <span class="comment">// 处理函数</span></span><br><span class="line">    <span class="built_in">console</span>.log(e.target.id)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="常用事件"><a href="#常用事件" class="headerlink" title="常用事件"></a>常用事件</h2><h3 id="常用鼠标事件"><a href="#常用鼠标事件" class="headerlink" title="常用鼠标事件"></a>常用鼠标事件</h3><ul>
+<li><code>onclick</code> — 点击事件 <ul>
+<li>当使用点击跳转时，只能写return false</li>
+</ul>
+</li>
+<li><code>onmouseover</code> — 鼠标移入</li>
+<li><code>onmouseout</code> — 鼠标移出</li>
+<li><code>onmousemove</code> — 鼠标移动</li>
+<li><code>onmouseup</code> — 鼠标抬起</li>
+<li><code>onmousedown</code> — 鼠标按下</li>
+<li><code>onmouseleave</code> — 鼠标离开范围</li>
+</ul>
+<h3 id="常用键盘事件"><a href="#常用键盘事件" class="headerlink" title="常用键盘事件"></a>常用键盘事件</h3><ul>
+<li><code>onkeypress</code> — 输出的对应键盘按键的ASCII码表</li>
+<li><code>onkeydown</code> — 键盘按下，输出键盘码</li>
+<li><code>onkeyup</code> — 键盘抬起，输出键盘码</li>
+</ul>
+<h3 id="焦点事件"><a href="#焦点事件" class="headerlink" title="焦点事件"></a>焦点事件</h3><ul>
+<li><code>onfocus</code> — 获取焦点</li>
+<li><code>onblur</code> — 失去焦点  (不是所有的标签都有这个事件)</li>
+</ul>
+<h3 id="全屏幕"><a href="#全屏幕" class="headerlink" title="全屏幕"></a>全屏幕</h3><ul>
+<li><code>requestFullScreen()</code> — 打开全屏幕</li>
+<li><code>cancleFullScreen()</code> — 关闭全屏幕</li>
+<li>有兼容问题</li>
+</ul>
+<h3 id="文件拖拽"><a href="#文件拖拽" class="headerlink" title="文件拖拽"></a>文件拖拽</h3><ul>
+<li>拖拽元素<ul>
+<li><code>ondrag</code> — 调用数次</li>
+<li><code>ondragstart</code> — 调用一次，在开始时</li>
+<li><code>ondragleave</code> — 调用一次，在离开元素本来范围时</li>
+<li><code>ondragend</code> — 调用一次，在结束时</li>
+</ul>
+</li>
+<li>目标元素<ul>
+<li><code>ondragenter</code> — 调用一次，在进入范围时</li>
+<li><code>ondragover</code> — 调用数次，在停留范围时</li>
+<li><code>ondrop</code> — 调用一次，在松开鼠标时</li>
+<li><code>ondragleave</code> — 调用一次，在离开范围时</li>
+</ul>
+</li>
+<li>如果想要调用 <code>ondrop</code> 事件，必须在 <code>ondragover</code> 事件中使用参数阻止浏览器的默认行为</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">thirdBox.ondragover = <span class="function"><span class="keyword">function</span> (<span class="params">argument</span>) </span>&#123;</span><br><span class="line">  argument.preventDefault();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h3><ul>
+<li>使用 js 对象 FileReader</li>
+<li>配合 File 对象可以指定读取本地文件,可以读取选取的文件,也可以读取 DataTransfor</li>
+<li>获取文件<ul>
+<li>由于 File 标签支持多文件上传,所以我们想要获取到选取的文件,需要配合索引</li>
+</ul>
+</li>
+<li>读取文件<ul>
+<li>读取文件需要使用 js 对象 FileReader </li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader; </span><br><span class="line"><span class="comment">// 以DataURL形式读取文件 获取的值可以用在任意通过链接指定的地方</span></span><br><span class="line">reader.readAsDataURL(<span class="keyword">this</span>.files[<span class="number">0</span>]) </span><br><span class="line"><span class="comment">// 通过onload事件监测加载完毕</span></span><br><span class="line">reader.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;	</span><br><span class="line">  <span class="comment">// result 就是需要的结果</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.result);</span><br><span class="line">  <span class="comment">//可以用在指定连接地址的元素中比如</span></span><br><span class="line">  <span class="comment">// 设置图片</span></span><br><span class="line">  <span class="built_in">document</span>.querySelector(<span class="string">'#img'</span>).src = <span class="keyword">this</span>.result;</span><br><span class="line">  <span class="comment">// 设置图像</span></span><br><span class="line">  <span class="built_in">document</span>.querySelector(<span class="string">"#video"</span>).src= <span class="keyword">this</span>.result;</span><br><span class="line">  <span class="comment">// 设置CSS</span></span><br><span class="line">  <span class="built_in">document</span>.querySelector(<span class="string">"#link"</span>).href = <span class="keyword">this</span>.result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// setData(key,value) 设置数据</span></span><br><span class="line"><span class="comment">// getData(key) 获取数据</span></span><br></pre></td></tr></table></figure>
+<h3 id="数据传递"><a href="#数据传递" class="headerlink" title="数据传递"></a>数据传递</h3><ul>
+<li><code>dataTransfor</code> — 数据改变事件</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.ondragover = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  e.preventDefault();</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.body.ondrop = <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> fileDrop = e.dataTransfer.files[<span class="number">0</span>];</span><br><span class="line">  <span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader;</span><br><span class="line">  reader.readAsDataURL(fileDrop);</span><br><span class="line">  reader.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.body.style.background </span><br><span class="line">      = <span class="string">"url("</span>+ reader.result+<span class="string">") no-repeat center/cover"</span></span><br><span class="line">  &#125;</span><br><span class="line">  e.preventDefault();  <span class="comment">//此处不阻止默认事件会不能平铺</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="视频操作"><a href="#视频操作" class="headerlink" title="视频操作"></a>视频操作</h3><ul>
+<li><code>video.play()</code> — 开始</li>
+<li><code>video.pause()</code> — 暂停</li>
+<li><code>video.onprogress()</code> — 开始时执行</li>
+<li><code>video.ontimeupdate()</code> — 播放时一直执行</li>
+<li><code>video.currentTime()</code> — 当前时间</li>
+<li><code>video.duration()</code> — 视频总长</li>
+</ul>
+<h3 id="节流阀概念"><a href="#节流阀概念" class="headerlink" title="节流阀概念"></a>节流阀概念</h3><p>当事件执行的过于频繁时，可以使用定时器来减少函数的执行次数</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DOM/" rel="tag"># DOM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/17/dom_bom/JavaScript DOM 属性操作/" rel="next" title="JavaScript DOM 属性操作">
+                <i class="fa fa-chevron-left"></i> JavaScript DOM 属性操作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/17/dom_bom/JavaScript DOM 动画/" rel="prev" title="JavaScript DOM 动画">
+                JavaScript DOM 动画 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="SanCola" />
+            
+              <p class="site-author-name" itemprop="name">SanCola</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhanggy911" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/zhanggy911" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定、移除事件"><span class="nav-number">1.</span> <span class="nav-text">绑定、移除事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定事件"><span class="nav-number">1.1.</span> <span class="nav-text">绑定事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移除事件"><span class="nav-number">1.2.</span> <span class="nav-text">移除事件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#event对象"><span class="nav-number">2.</span> <span class="nav-text">event对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件的三个阶段"><span class="nav-number">3.</span> <span class="nav-text">事件的三个阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#捕获阶段"><span class="nav-number">3.1.</span> <span class="nav-text">捕获阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目标阶段"><span class="nav-number">3.2.</span> <span class="nav-text">目标阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡阶段"><span class="nav-number">3.3.</span> <span class="nav-text">冒泡阶段</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件代理"><span class="nav-number">4.</span> <span class="nav-text">事件代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用事件"><span class="nav-number">5.</span> <span class="nav-text">常用事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用鼠标事件"><span class="nav-number">5.1.</span> <span class="nav-text">常用鼠标事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用键盘事件"><span class="nav-number">5.2.</span> <span class="nav-text">常用键盘事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#焦点事件"><span class="nav-number">5.3.</span> <span class="nav-text">焦点事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全屏幕"><span class="nav-number">5.4.</span> <span class="nav-text">全屏幕</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件拖拽"><span class="nav-number">5.5.</span> <span class="nav-text">文件拖拽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件读取"><span class="nav-number">5.6.</span> <span class="nav-text">文件读取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据传递"><span class="nav-number">5.7.</span> <span class="nav-text">数据传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视频操作"><span class="nav-number">5.8.</span> <span class="nav-text">视频操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节流阀概念"><span class="nav-number">5.9.</span> <span class="nav-text">节流阀概念</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SanCola</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Mobile Web," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="viewport属性概念 如果把移动设备的浏览器(也有可能是app中的webview) ，当做相框的话，viewport就相当于相框中的画，可能会比相框小，可能会比相框大，如果刚好一样大，那就最好。  修改viewportemmet写法：meta:vp 1&amp;lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0,">
+<meta name="keywords" content="Mobile Web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端常用设置(1)">
+<meta property="og:url" content="http://yoursite.com/2018/01/18/Mobile Web/移动端常用设置(1)/index.html">
+<meta property="og:site_name" content="SanCola">
+<meta property="og:description" content="viewport属性概念 如果把移动设备的浏览器(也有可能是app中的webview) ，当做相框的话，viewport就相当于相框中的画，可能会比相框小，可能会比相框大，如果刚好一样大，那就最好。  修改viewportemmet写法：meta:vp 1&amp;lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0,">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-18T03:44:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动端常用设置(1)">
+<meta name="twitter:description" content="viewport属性概念 如果把移动设备的浏览器(也有可能是app中的webview) ，当做相框的话，viewport就相当于相框中的画，可能会比相框小，可能会比相框大，如果刚好一样大，那就最好。  修改viewportemmet写法：meta:vp 1&amp;lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0,">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/18/Mobile Web/移动端常用设置(1)/"/>
+
+
+
+
+
+  <title>移动端常用设置(1) | SanCola</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SanCola</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life is a Rock N' Roll Train</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/18/Mobile Web/移动端常用设置(1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SanCola">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SanCola">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">移动端常用设置(1)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-18T11:08:26+08:00">
+                2018-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mobile-Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Mobile Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="viewport属性"><a href="#viewport属性" class="headerlink" title="viewport属性"></a>viewport属性</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><blockquote>
+<p>如果把移动设备的浏览器(也有可能是app中的webview) ，当做相框的话，viewport就相当于相框中的画，可能会比相框小，可能会比相框大，如果刚好一样大，那就最好。</p>
+</blockquote>
+<h3 id="修改viewport"><a href="#修改viewport" class="headerlink" title="修改viewport"></a>修改viewport</h3><p>emmet写法：<code>meta:vp</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="可选值"><a href="#可选值" class="headerlink" title="可选值"></a>可选值</h3><ul>
+<li><code>width</code> — 设置layout viewport 的宽度，为一个正整数，或字符串”width-device”</li>
+<li><code>initial-scale</code> — 设置页面的初始缩放值，为一个数字，可以带小数</li>
+<li><code>minimum-scale</code> — 允许用户的最小缩放值，为一个数字，可以带小数</li>
+<li><code>maximum-scale</code> — 允许用户的最大缩放值，为一个数字，可以带小数</li>
+<li><code>height</code> — 设置layout viewport 的高度，很少使用</li>
+<li><code>user-scalable</code> — 是否允许用户进行缩放，值为”no”或”yes”, no 代表不允许，yes代表允许</li>
+</ul>
+<h3 id="关于缩放比例"><a href="#关于缩放比例" class="headerlink" title="关于缩放比例"></a>关于缩放比例</h3><p>缩放是相对于浏览器宽度来缩放的，缩放值越大，当前viewport的宽度就会越小，反之亦然。例如在iphone中，屏幕宽度是375，如果我们设置 initial-scale=0.5 ，此时viewport的宽度仍然为375，但是却需要750x1334的页面尺寸才能填满。  </p>
+<p>UI设计师通常会在设计时使用750x1334的尺寸，而js，css等获取的屏幕宽度都是375x667（涉及到dpr）  </p>
+<p>缩放的常用用法是根据设备的dpr，动态缩放页面的大小，来达到显示出1px线的问题，参考阿里的开源项目lib-Flexibl。</p>
+<h2 id="touch事件"><a href="#touch事件" class="headerlink" title="touch事件"></a>touch事件</h2><h3 id="touchstart"><a href="#touchstart" class="headerlink" title="touchstart"></a>touchstart</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在触摸开始时执行一次</span></span><br><span class="line"><span class="comment">// 具备clientX，clientY属性（不带单位）（表示相对于整个屏幕的坐标）</span></span><br><span class="line"><span class="built_in">document</span>.body.addEventListener ( <span class="string">' touchstart '</span> , <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123; &#125; )</span><br><span class="line"><span class="built_in">console</span>.log(event.touches[<span class="number">0</span>].clientX+<span class="string">'||'</span>+event.touches[<span class="number">0</span>].clientY)</span><br></pre></td></tr></table></figure>
+<h3 id="touchmove"><a href="#touchmove" class="headerlink" title="touchmove"></a>touchmove</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在移动时始终触发</span></span><br><span class="line"><span class="comment">// 同样具备clientX，clientY属性</span></span><br><span class="line"><span class="built_in">document</span>.body.addEventListener ( <span class="string">' touchmove '</span> , <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123; &#125; )</span><br></pre></td></tr></table></figure>
+<h3 id="touchend"><a href="#touchend" class="headerlink" title="touchend"></a>touchend</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在结束触摸时触发一次</span></span><br><span class="line"><span class="comment">// 不具备clientX，clientY属性；</span></span><br><span class="line"><span class="built_in">document</span>.body.addEventListener ( <span class="string">' touchend '</span> , <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123; &#125; )</span><br></pre></td></tr></table></figure>
+<h2 id="tap事件"><a href="#tap事件" class="headerlink" title="tap事件"></a>tap事件</h2><p>桌面端的click事件自带300ms延时，但是在移动端，添加了viewport属性后，延时会消失，所以为了兼容性，一般会需要封装一个简单的tap函数</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tap</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> isMove = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">var</span> delayTime = <span class="number">100</span>;</span><br><span class="line">  <span class="keyword">var</span> startTime = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">document</span>.body.addEventListener(<span class="string">'touchstart'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    isMove = <span class="literal">false</span>;</span><br><span class="line">    startTime = <span class="built_in">Date</span>.now();</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">document</span>.body.addEventListener(<span class="string">'touchmove'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    isMove = <span class="literal">true</span>;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="built_in">document</span>.body.addEventListener(<span class="string">'touchend'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(isMove == <span class="literal">true</span>)&#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">Date</span>.now()-startTime&gt;delayTime)&#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>zepto等移动端框架一般都会具备封装好的tap事件函数，可以拿来直接使用。</p>
+<h2 id="CSS媒体查询"><a href="#CSS媒体查询" class="headerlink" title="CSS媒体查询"></a>CSS媒体查询</h2><p>使用 @media 查询，以针对不同的屏幕尺寸设置不同的样式，特别是需要设计响应式的页面，@media 是非常有用的。当你重置浏览器大小的过程中，页面也会根据浏览器的宽度和高度重新渲染页面。</p>
+<ul>
+<li>语法</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.header</span> &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">44px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 添加媒体查询 */</span>			</span><br><span class="line">@media screen and (max-width:1100px) &#123;  //小于1100px时会触发</span><br><span class="line">  <span class="selector-class">.header</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: none;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>作用  <ul>
+<li>在媒体查询代码中添加判断代码；满足条件是改变外观；</li>
+<li>类似于<code>if</code>语句，支持使用<code>transition</code>属性添加过渡</li>
+<li>媒体查询也遵循层级关系，如果添加的层级不对，会影响效果是否能够实现</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mobile-Web/" rel="tag"># Mobile Web</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/18/ES6/ES6 Modules/" rel="next" title="ES6 Modules">
+                <i class="fa fa-chevron-left"></i> ES6 Modules
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/18/Mobile Web/移动端常用设置(2)/" rel="prev" title="移动端常用设置(2)">
+                移动端常用设置(2) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="SanCola" />
+            
+              <p class="site-author-name" itemprop="name">SanCola</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhanggy911" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/zhanggy911" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#viewport属性"><span class="nav-number">1.</span> <span class="nav-text">viewport属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概念"><span class="nav-number">1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改viewport"><span class="nav-number">1.2.</span> <span class="nav-text">修改viewport</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可选值"><span class="nav-number">1.3.</span> <span class="nav-text">可选值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于缩放比例"><span class="nav-number">1.4.</span> <span class="nav-text">关于缩放比例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#touch事件"><span class="nav-number">2.</span> <span class="nav-text">touch事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#touchstart"><span class="nav-number">2.1.</span> <span class="nav-text">touchstart</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#touchmove"><span class="nav-number">2.2.</span> <span class="nav-text">touchmove</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#touchend"><span class="nav-number">2.3.</span> <span class="nav-text">touchend</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tap事件"><span class="nav-number">3.</span> <span class="nav-text">tap事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS媒体查询"><span class="nav-number">4.</span> <span class="nav-text">CSS媒体查询</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SanCola</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

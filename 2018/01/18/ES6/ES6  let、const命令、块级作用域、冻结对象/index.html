@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ES6," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="let 命令ES6 新增变量声明方式，用法与 var 相同，但是只在当前代码块有效 1234567&amp;#123;  let a = 10;  var b = 1;&amp;#125;a // ReferenceError: a is not defined.b // 1">
+<meta name="keywords" content="ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6  let、const命令、块级作用域、冻结对象">
+<meta property="og:url" content="http://yoursite.com/2018/01/18/ES6/ES6  let、const命令、块级作用域、冻结对象/index.html">
+<meta property="og:site_name" content="SanCola">
+<meta property="og:description" content="let 命令ES6 新增变量声明方式，用法与 var 相同，但是只在当前代码块有效 1234567&amp;#123;  let a = 10;  var b = 1;&amp;#125;a // ReferenceError: a is not defined.b // 1">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-18T02:44:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6  let、const命令、块级作用域、冻结对象">
+<meta name="twitter:description" content="let 命令ES6 新增变量声明方式，用法与 var 相同，但是只在当前代码块有效 1234567&amp;#123;  let a = 10;  var b = 1;&amp;#125;a // ReferenceError: a is not defined.b // 1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/18/ES6/ES6  let、const命令、块级作用域、冻结对象/"/>
+
+
+
+
+
+  <title>ES6  let、const命令、块级作用域、冻结对象 | SanCola</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SanCola</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life is a Rock N' Roll Train</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/18/ES6/ES6  let、const命令、块级作用域、冻结对象/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SanCola">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SanCola">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ES6  let、const命令、块级作用域、冻结对象</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-18T10:33:43+08:00">
+                2018-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="let-命令"><a href="#let-命令" class="headerlink" title="let 命令"></a>let 命令</h2><p>ES6 新增变量声明方式，用法与 <code>var</code> 相同，但是只在当前代码块有效</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">var</span> b = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a <span class="comment">// ReferenceError: a is not defined.</span></span><br><span class="line">b <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
+<li>不存在变量提升</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// var 的情况</span></span><br><span class="line"><span class="built_in">console</span>.log(foo); <span class="comment">// 输出undefined</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// let 的情况</span></span><br><span class="line"><span class="built_in">console</span>.log(bar); <span class="comment">// 报错ReferenceError</span></span><br><span class="line"><span class="keyword">let</span> bar = <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>同作用域内禁止重复声明</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params">arg</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> arg; <span class="comment">// 报错</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>暂时性死区</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 在代码块内，使用 let 声明变量之前，该变量不可用 */</span></span><br><span class="line"><span class="comment">/* 因为在代码块内部已经使用 let 声明了变量 tmp，声明之前该代码块内部的 tmp 变量不可用 */</span></span><br><span class="line"><span class="keyword">var</span> tmp = <span class="number">123</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  tmp = <span class="string">'abc'</span>; <span class="comment">// ReferenceError</span></span><br><span class="line">  <span class="keyword">let</span> tmp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* let声明之前使用 typeof 判断 let 变量会报错 */</span></span><br><span class="line"><span class="keyword">typeof</span> x; <span class="comment">// ReferenceError</span></span><br><span class="line"><span class="keyword">let</span> x;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 因为上边已经声明了变量x，但是没有声明变量y，属于死区 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">x = y, y = <span class="number">2</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [x, y];</span><br><span class="line">&#125;</span><br><span class="line">bar(); <span class="comment">// 报错</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 只要是在使用 let 声明变量之前，去使用 let 声明的变量都会报错 */</span></span><br><span class="line"><span class="keyword">let</span> x = x </span><br><span class="line"><span class="comment">// ReferenceError: x is not defined</span></span><br></pre></td></tr></table></figure>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><ul>
+<li><code>for</code> 循环变量声明</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 使用 var 声明 */</span></span><br><span class="line"><span class="keyword">var</span> a = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  a[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line">a[<span class="number">6</span>](); <span class="comment">// 10</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 使用 let 声明 */</span></span><br><span class="line"><span class="comment">// 此处使用的 i 变量，只在当前循环有效，每次循环都是一个新的变量 i</span></span><br><span class="line"><span class="comment">// 能够使用 i 的上次循环的值，是因为 js引擎做了操作</span></span><br><span class="line"><span class="keyword">var</span> a = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  a[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line">a[<span class="number">6</span>](); <span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*  for循环的 循环语句部分是一个父作用域，而循环体内部是一个单独的子作用域。 */</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="string">'abc'</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出3次 abc</span></span><br></pre></td></tr></table></figure>
+<h2 id="const命令"><a href="#const命令" class="headerlink" title="const命令"></a>const命令</h2><p>ES6 新增常量声明方式，一旦声明，常量的值不能改变</p>
+<h3 id="特性-1"><a href="#特性-1" class="headerlink" title="特性"></a>特性</h3><ul>
+<li>声明后值不可变</li>
+<li>不能重复声明</li>
+<li>只在块级作用域有效</li>
+<li>不会进行常量提升</li>
+<li>暂时性死区</li>
+<li>一旦声明，必需立即赋值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo;</span><br><span class="line"><span class="comment">// SyntaxError: Missing initializer in const declaration</span></span><br></pre></td></tr></table></figure>
+<h3 id="应用-1"><a href="#应用-1" class="headerlink" title="应用"></a>应用</h3><blockquote>
+<p>const 实际上是将变量指向的那个内存地址锁死。</p>
+<p>简单类型的数据，值就保存在变量指向的那个内存地址，因此等同于常量。</p>
+<p>复合类型的数据，变量指向的内存地址，保存的只是一个指针，const 能保证这个指针是固定的，但是可以改变该复杂类型的数据结构</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 允许添加一个属性</span></span><br><span class="line">foo.prop = <span class="number">123</span>;</span><br><span class="line">foo.prop <span class="comment">// 123</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 改变指针会报错</span></span><br><span class="line">foo = &#123;&#125;; <span class="comment">// TypeError: "foo" is read-only</span></span><br></pre></td></tr></table></figure>
+<h2 id="块级作用域"><a href="#块级作用域" class="headerlink" title="块级作用域"></a>块级作用域</h2><ul>
+<li>ES6 之前的 JavaScript 不存在 块级作用域，会出现一些不合理的问题</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 内层变量覆盖外层变量 */</span></span><br><span class="line"><span class="keyword">var</span> tmp = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(tmp);</span><br><span class="line">  <span class="keyword">if</span> (<span class="literal">false</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> tmp = <span class="string">'hello world'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">f(); <span class="comment">// undefined，因为变量提升，内部的 tmp 变量替代了外部的 tmp 变量</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 循环控制变量泄漏为全局变量 */</span></span><br><span class="line"><span class="keyword">var</span> s = <span class="string">'hello'</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; s.length; i++) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(s[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i); <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>let</code> 实际上为 JavaScript 新增了块级作用域</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 函数执行时，打印出的是外层的变量n，而不是内层的变量n，这两个变量是不同的 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> n = <span class="number">5</span>;</span><br><span class="line">  <span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> n = <span class="number">10</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(n); </span><br><span class="line">&#125;</span><br><span class="line">f1()  <span class="comment">// 5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 内外层可以定义同名变量 */</span></span><br><span class="line">&#123;&#123;&#123;&#123;</span><br><span class="line">  <span class="keyword">let</span> insane = <span class="string">'Hello World'</span>;</span><br><span class="line">  &#123;<span class="keyword">let</span> insane = <span class="string">'Hello World'</span>&#125;</span><br><span class="line">&#125;&#125;&#125;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 外层作用域无法读取内层作用域的变量 */</span></span><br><span class="line">&#123;&#123;&#123;&#123;</span><br><span class="line">  &#123;<span class="keyword">let</span> insane = <span class="string">'Hello World'</span>&#125;</span><br><span class="line">  <span class="built_in">console</span>.log(insane); <span class="comment">// 报错</span></span><br><span class="line">&#125;&#125;&#125;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 块级作用域可以替代立即执行函数IIFE */</span> </span><br><span class="line"><span class="comment">// IIFE 写法</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> tmp = ...;</span><br><span class="line">  ...</span><br><span class="line">&#125;());</span><br><span class="line"><span class="comment">// 块级作用域写法</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> tmp = ...;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>块级作用域与函数声明<ul>
+<li>由于兼容性问题，应该避免在块级作用域内使用函数声明语句</li>
+<li>确实需要可以写成函数表达式的形式</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数声明语句</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="string">'secret'</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数表达式</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="string">'secret'</span>;</span><br><span class="line">  <span class="keyword">let</span> f = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="冻结对象"><a href="#冻结对象" class="headerlink" title="冻结对象"></a>冻结对象</h2><ul>
+<li>使用 Object.freeze() 方法</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = <span class="built_in">Object</span>.freeze(&#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 常规模式时，下面一行不起作用；</span></span><br><span class="line"><span class="comment">// 严格模式时，该行会报错</span></span><br><span class="line">foo.prop = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 彻底冻结对象函数</span></span><br><span class="line"><span class="keyword">var</span> constantize = <span class="function">(<span class="params">obj</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">Object</span>.freeze(obj);</span><br><span class="line">  <span class="built_in">Object</span>.keys(obj).forEach( <span class="function">(<span class="params">key, i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> ( <span class="keyword">typeof</span> obj[key] === <span class="string">'object'</span> ) &#123;</span><br><span class="line">      constantize( obj[key] );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ES6/" rel="tag"># ES6</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/18/Ajax/Ajax 数据格式、跨域/" rel="next" title="Ajax 数据格式、跨域">
+                <i class="fa fa-chevron-left"></i> Ajax 数据格式、跨域
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/18/ES6/ES6  解构赋值/" rel="prev" title="ES6 解构赋值">
+                ES6 解构赋值 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="SanCola" />
+            
+              <p class="site-author-name" itemprop="name">SanCola</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhanggy911" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/zhanggy911" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#let-命令"><span class="nav-number">1.</span> <span class="nav-text">let 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特性"><span class="nav-number">1.1.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用"><span class="nav-number">1.2.</span> <span class="nav-text">应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const命令"><span class="nav-number">2.</span> <span class="nav-text">const命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特性-1"><span class="nav-number">2.1.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用-1"><span class="nav-number">2.2.</span> <span class="nav-text">应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#块级作用域"><span class="nav-number">3.</span> <span class="nav-text">块级作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#冻结对象"><span class="nav-number">4.</span> <span class="nav-text">冻结对象</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SanCola</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

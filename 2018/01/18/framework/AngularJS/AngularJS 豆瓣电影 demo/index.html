@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="AngularJS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="API 接口 https://api.douban.com https://api.douban.com/v2/movie/in_theaters  目录结构 node_modules app config router.js sce.js   in_theaters controller.js filter.js http-service.js view.html   main.js   css">
+<meta name="keywords" content="AngularJS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AngularJS demo">
+<meta property="og:url" content="http://yoursite.com/2018/01/18/framework/AngularJS/AngularJS 豆瓣电影 demo/index.html">
+<meta property="og:site_name" content="SanCola">
+<meta property="og:description" content="API 接口 https://api.douban.com https://api.douban.com/v2/movie/in_theaters  目录结构 node_modules app config router.js sce.js   in_theaters controller.js filter.js http-service.js view.html   main.js   css">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-18T09:00:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AngularJS demo">
+<meta name="twitter:description" content="API 接口 https://api.douban.com https://api.douban.com/v2/movie/in_theaters  目录结构 node_modules app config router.js sce.js   in_theaters controller.js filter.js http-service.js view.html   main.js   css">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/18/framework/AngularJS/AngularJS 豆瓣电影 demo/"/>
+
+
+
+
+
+  <title>AngularJS demo | SanCola</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SanCola</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life is a Rock N' Roll Train</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/18/framework/AngularJS/AngularJS 豆瓣电影 demo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SanCola">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SanCola">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">AngularJS demo</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-18T16:00:11+08:00">
+                2018-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/framework/" itemprop="url" rel="index">
+                    <span itemprop="name">framework</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="API-接口"><a href="#API-接口" class="headerlink" title="API 接口"></a>API 接口</h2><ul>
+<li><a href="https://api.douban.com" target="_blank" rel="noopener">https://api.douban.com</a></li>
+<li><a href="https://api.douban.com/v2/movie/in_theaters" target="_blank" rel="noopener">https://api.douban.com/v2/movie/in_theaters</a></li>
+</ul>
+<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><ul>
+<li>node_modules</li>
+<li>app<ul>
+<li>config<ul>
+<li>router.js</li>
+<li>sce.js</li>
+</ul>
+</li>
+<li>in_theaters<ul>
+<li>controller.js</li>
+<li>filter.js</li>
+<li>http-service.js</li>
+<li>view.html</li>
+</ul>
+</li>
+<li>main.js</li>
+</ul>
+</li>
+<li>css</li>
+<li>img</li>
+<li>index.html</li>
+<li>package.json</li>
+<li>…..<a id="more"></a>
+</li>
+</ul>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="app"><a href="#app" class="headerlink" title="app"></a>app</h3><h4 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// js 入口文件</span></span><br><span class="line">;</span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">angular</span>) </span>&#123;</span><br><span class="line">  angular.module(<span class="string">'app'</span>, [<span class="string">'ngRoute'</span>])</span><br><span class="line">    <span class="comment">// 搜索控制器</span></span><br><span class="line">    .controller(<span class="string">'SearchController'</span>, [<span class="string">'$scope'</span>, <span class="string">'$route'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope, $route</span>) </span>&#123;</span><br><span class="line">      $scope.searchText = <span class="string">''</span></span><br><span class="line">      $scope.search = <span class="function"><span class="keyword">function</span> (<span class="params">searchText</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (searchText.trim() === <span class="string">''</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 当路由规则中没有设定 q 的时候，则 q 会以查询字符串的形式放到请求路径之后</span></span><br><span class="line">        <span class="comment">// 如果路由规则中设定了 :category :page 则会被更新为路径参数部分</span></span><br><span class="line">        $route.updateParams(&#123;</span><br><span class="line">          category: <span class="string">'search'</span>,</span><br><span class="line">          page: <span class="number">1</span>,</span><br><span class="line">          q: searchText</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;])</span><br><span class="line">&#125;)(angular)</span><br></pre></td></tr></table></figure>
+<h4 id="config"><a href="#config" class="headerlink" title="config"></a>config</h4><h5 id="router-js"><a href="#router-js" class="headerlink" title="router.js"></a>router.js</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* app 路由文件，此项目使用 hash 值跳转 */</span></span><br><span class="line">;</span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">angular</span>) </span>&#123;</span><br><span class="line">  angular.module(<span class="string">'app'</span>)</span><br><span class="line">    .config([<span class="string">'$routeProvider'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$routeProvider</span>) </span>&#123;</span><br><span class="line">      $routeProvider</span><br><span class="line">        <span class="comment">// 正在上映，即将上映，豆瓣250</span></span><br><span class="line">        <span class="comment">// 在控制器中可以通过 $route.updateParams 方法更新路径中的动态路径参数</span></span><br><span class="line">        .when(<span class="string">'/list/:category/:page?'</span>, &#123;</span><br><span class="line">          <span class="comment">// 相对于 index.html </span></span><br><span class="line">          templateUrl: <span class="string">'app/in_theaters/view.html'</span>,</span><br><span class="line">          controller: <span class="string">'ListController'</span></span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="comment">// 页面详情</span></span><br><span class="line">        .when(<span class="string">'/subject/:id'</span>, &#123;</span><br><span class="line">          templateUrl: <span class="string">'app/subject/view.html'</span>,</span><br><span class="line">          controller: <span class="string">'SubjectController'</span></span><br><span class="line">        &#125;)</span><br><span class="line">        .otherwise(&#123;</span><br><span class="line">          redirectTo: <span class="string">'/list/in_theaters'</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;])</span><br></pre></td></tr></table></figure>
+<h5 id="sce-js"><a href="#sce-js" class="headerlink" title="sce.js"></a>sce.js</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 白名单配置，否则无法使用 jsonp */</span></span><br><span class="line">;</span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">angular</span>) </span>&#123;</span><br><span class="line">  angular.module(<span class="string">'app'</span>)</span><br><span class="line">    .config([<span class="string">'$sceDelegateProvider'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$sceDelegateProvider</span>) </span>&#123;</span><br><span class="line">      $sceDelegateProvider.resourceUrlWhitelist([</span><br><span class="line">        <span class="string">'self'</span>,</span><br><span class="line">        <span class="string">'https://api.douban.com/v2/**'</span></span><br><span class="line">      ])</span><br><span class="line">    &#125;])</span><br><span class="line">&#125;)(angular)</span><br></pre></td></tr></table></figure>
+<h4 id="in-theaters"><a href="#in-theaters" class="headerlink" title="in_theaters"></a>in_theaters</h4><p>in_theaters 包含 demo 的三个功能模块：正在上映、即将上映、豆瓣250</p>
+<h5 id="controller-js"><a href="#controller-js" class="headerlink" title="controller.js"></a>controller.js</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// in_theaters功能的主控制器：请求数据，控制页码、加载动画，搜索数据</span></span><br><span class="line">;</span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">angular</span>) </span>&#123;</span><br><span class="line">  angular.module(<span class="string">'app'</span>)</span><br><span class="line">    <span class="comment">// 挂载 angular 服务及自定义的 jsonp 服务</span></span><br><span class="line">    .controller(<span class="string">'ListController'</span>, [<span class="string">'$scope'</span>,<span class="string">'$http'</span>,<span class="string">'HttpService'</span>,<span class="string">'$routeParams'</span>,<span class="string">'$route'</span>,</span><br><span class="line">      <span class="comment">// 使用 $routeParams 获取当前请求中的查询字符串</span></span><br><span class="line">      <span class="comment">// ngRoute 把动态路径参数和查询字符串都解析到一个对象上</span></span><br><span class="line">      <span class="function"><span class="keyword">function</span> (<span class="params">$scope, $http, HttpService, $routeParams, $route</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 获取 hash 里面的请求路径中的页码，默认为第 1 页</span></span><br><span class="line">        <span class="keyword">var</span> page = ($routeParams.page &amp;&amp; <span class="built_in">parseInt</span>($routeParams.page)) || <span class="number">1</span> </span><br><span class="line">        <span class="comment">// 每页显示大小</span></span><br><span class="line">        <span class="keyword">var</span> pageSize = <span class="number">5</span></span><br><span class="line">        $scope.page = page</span><br><span class="line">        $scope.pageSize = pageSize</span><br><span class="line">        $scope.totalPage = <span class="number">0</span></span><br><span class="line">        $scope.title = <span class="string">'Loading...'</span></span><br><span class="line">        $scope.movie_list = []</span><br><span class="line">        <span class="comment">// 加载缓冲动画判定</span></span><br><span class="line">        $scope.loading = <span class="literal">true</span></span><br><span class="line">        <span class="comment">// 处理页面跳转</span></span><br><span class="line">        $scope.go = <span class="function"><span class="keyword">function</span> (<span class="params">willPage</span>) </span>&#123;</span><br><span class="line">          <span class="keyword">if</span> (willPage &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span> (willPage &gt; $scope.totalPage) &#123;</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">// 使用 updateParams 更新路由规则中设定的路径参数（不是查询字符串）并重新执行渲染</span></span><br><span class="line">          $route.updateParams(&#123;</span><br><span class="line">            page: willPage</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="comment">// 处理查询数据，有搜索字符就跟上，没有就直接查询</span></span><br><span class="line">        <span class="keyword">var</span> queryData = &#123;</span><br><span class="line">          start: (page - <span class="number">1</span>) * pageSize,</span><br><span class="line">          count: pageSize</span><br><span class="line">        &#125;</span><br><span class="line">        $routeParams.q &amp;&amp; (queryData.q = $routeParams.q)</span><br><span class="line">        <span class="comment">// 使用自定义的 HttpService 服务</span></span><br><span class="line">        HttpService.jsonp(&#123;</span><br><span class="line">            url: <span class="string">'https://api.douban.com/v2/movie/'</span> + $routeParams. category,</span><br><span class="line">            data: queryData</span><br><span class="line">          &#125;)</span><br><span class="line">          <span class="comment">// HttpService 中 promise 对象内部的 resolve 用来接收 then 方法中指定的回调处理函数</span></span><br><span class="line">          .then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            $scope.movie_list = data</span><br><span class="line">            $scope.title = data.title</span><br><span class="line">            <span class="comment">// 关闭缓冲动画</span></span><br><span class="line">            $scope.loading = <span class="literal">false</span></span><br><span class="line">            <span class="comment">// 计算页码</span></span><br><span class="line">            $scope.totalPage = <span class="built_in">Math</span>.ceil(data.total / pageSize)</span><br><span class="line">            <span class="comment">// 自定义异步 API 中，如果修改了 $scope 模型上的数据, 需要通过 $scope.$apply() 强制更新数据</span></span><br><span class="line">            $scope.$apply()</span><br><span class="line">          &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    ])</span><br><span class="line">&#125;)(angular)</span><br></pre></td></tr></table></figure>
+<h5 id="http-server-js"><a href="#http-server-js" class="headerlink" title="http-server.js"></a>http-server.js</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用于请求豆瓣 API 的 自定义 jsonp 服务</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * jsonp 请求过程</span></span><br><span class="line"><span class="comment"> * 1. 向 body 中追加了一个 script 标签</span></span><br><span class="line"><span class="comment"> * 2. 设定标签的 src 为 '请求路径' + '?' + '查询字符串' + 'callback=' + callbackName（回调函数名称）</span></span><br><span class="line"><span class="comment"> * 2. 浏览器会将 script 标签，解析出对应的 src 路径地址，然后发起请求</span></span><br><span class="line"><span class="comment"> * 3. 服务器 API 响应数据 callbackName(data)</span></span><br><span class="line"><span class="comment"> * 4. 浏览器直接解析执行返回的数据，会去全局找到 callbackName 函数并调用</span></span><br><span class="line"><span class="comment"> */</span> </span><br><span class="line"> ;</span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">angular</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 添加一个将对象转换为查询字符串的方法</span></span><br><span class="line">  <span class="built_in">Object</span>.prototype.queryStringify = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> queryString = <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> <span class="keyword">this</span>) &#123;</span><br><span class="line">      <span class="comment">// 过滤掉原型上的属性成员</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.hasOwnProperty(key)) &#123;</span><br><span class="line">        queryString += (key + <span class="string">'='</span> + <span class="keyword">this</span>[key] + <span class="string">'&amp;'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> queryString</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 创建自定义服务</span></span><br><span class="line">  angular.module(<span class="string">'app'</span>)</span><br><span class="line">    .service(<span class="string">'HttpService'</span>, [<span class="string">'$window'</span>, <span class="string">'$document'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$window, $document</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// this 可以直接为该服务添加属性方法</span></span><br><span class="line">      <span class="keyword">this</span>.jsonp = <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 1. 创建全局回调函数</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">          <span class="comment">// 生成随机函数名以解决多次调用后的 callback 覆盖问题</span></span><br><span class="line">          <span class="keyword">var</span> callbackName = <span class="string">'jsonp_'</span> + <span class="built_in">Math</span>.random().toString().substr(<span class="number">2</span>)</span><br><span class="line">          <span class="comment">// 为全局挂载 callback 函数并在调用结束之后，移除 script 标签</span></span><br><span class="line">          $<span class="built_in">window</span>[callbackName] = <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">            resolve(data)</span><br><span class="line">            $<span class="built_in">document</span>[<span class="number">0</span>].body.removeChild(script)</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">// 2.创建 script 标签</span></span><br><span class="line">          <span class="keyword">var</span> script = $<span class="built_in">document</span>[<span class="number">0</span>].createElement(<span class="string">'script'</span>)</span><br><span class="line">          <span class="keyword">if</span> (<span class="keyword">typeof</span> options.data === <span class="string">'object'</span>) &#123; </span><br><span class="line">            <span class="comment">// 对象转换为查询字符串</span></span><br><span class="line">            options.data = options.data.queryStringify()</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123; </span><br><span class="line">            <span class="comment">// 如果调用时没有传入对象则为空字符串</span></span><br><span class="line">            options.data = <span class="string">''</span></span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">// 3. 设定 script 标签的 src = 请求路径?callback=全局回调函数名</span></span><br><span class="line">          script.src = options.url + <span class="string">'?'</span> + options.data + <span class="string">'callback='</span> + callbackName</span><br><span class="line">          <span class="comment">// 4. 将 script 标签追加到 DOM 中，发起请求</span></span><br><span class="line">          $<span class="built_in">document</span>[<span class="number">0</span>].body.appendChild(script)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;])</span><br><span class="line">&#125;)(angular)</span><br></pre></td></tr></table></figure>
+<h5 id="filter-js"><a href="#filter-js" class="headerlink" title="filter.js"></a>filter.js</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自定义过滤器，用于为请求到的数据(导演，演员等)的最后一项去掉顿号，以及计算页码</span></span><br><span class="line"><span class="comment">// &lt;p&gt;导演：&#123;&#123; movie.directors | getNames:'、' &#125;&#125;&lt;/p&gt;</span></span><br><span class="line"><span class="comment">// movie.directors是要过滤的内容，getNames是过滤的方法，'、'是过滤的参数</span></span><br><span class="line">;</span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">angular</span>) </span>&#123;</span><br><span class="line">  angular.module(<span class="string">'app'</span>)</span><br><span class="line">    .filter(<span class="string">'getNames'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 处理过滤的数据及连接符</span></span><br><span class="line">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">directors, join</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> count = directors.length - <span class="number">1</span></span><br><span class="line">        <span class="keyword">var</span> result = <span class="string">''</span></span><br><span class="line">        <span class="comment">// 遍历数据</span></span><br><span class="line">        directors.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">director, index</span>) </span>&#123;</span><br><span class="line">          <span class="comment">// 判断是否是最后一项</span></span><br><span class="line">          <span class="keyword">if</span> (index === count) &#123;</span><br><span class="line">            <span class="keyword">return</span> result += director.name</span><br><span class="line">          &#125;</span><br><span class="line">          result += (director.name + join)</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">// 计算页码</span></span><br><span class="line">    .filter(<span class="string">'getTotalPage'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">total, pageSize</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Math</span>.ceil(total / pageSize)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)(angular)</span><br></pre></td></tr></table></figure>
+<h5 id="view-html"><a href="#view-html" class="headerlink" title="view.html"></a>view.html</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- in_theaters 功能的模板页面 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"sub-header"</span>&gt;</span>&#123;&#123; title &#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">  // 缓存动画处理</span></span><br><span class="line"><span class="comment">  ng-show true 显示 false 隐藏</span></span><br><span class="line"><span class="comment">  ng-hide true 隐藏 false 显示</span></span><br><span class="line"><span class="comment">  ng-if   true 上DOM false 不上DOM</span></span><br><span class="line"><span class="comment">  ng-show 和 ng-hide 就是控制 display 所以如果对于需要频繁的显示隐藏就推荐使用 这两个</span></span><br><span class="line"><span class="comment">  ng-if 如果为 false 则直接就不加载 DOM 了，所以适合只需要控制一次显示或隐藏的元素</span></span><br><span class="line"><span class="comment"> --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"./img/douzi.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span> <span class="attr">ng-show</span>=<span class="string">"loading"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"list-group"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#!/subject/&#123;&#123; movie.id &#125;&#125;"</span> <span class="attr">class</span>=<span class="string">"list-group-item"</span> <span class="attr">ng-repeat</span>=<span class="string">"movie in movie_list.subjects track by $index"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"media"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"media-left"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"media-object"</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; movie.images.small &#125;&#125;"</span> <span class="attr">alt</span>=<span class="string">"..."</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"media-body"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h4</span> <span class="attr">class</span>=<span class="string">"media-heading"</span>&gt;</span>&#123;&#123; movie.title &#125;&#125;<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>赛车手阿浪（邓超 饰）一直对父亲（彭于晏 饰）反对自己的赛车事业耿耿于怀<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>类型：&#123;&#123; movie.genres.join('、') &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 使用过滤器过滤数据 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>导演：&#123;&#123; movie.directors | getNames:'、' &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>主演：&#123;&#123; movie.casts | getNames:'、' &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 分页设置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>总共：&#123;&#123; movie_list.total &#125;&#125;条记录，第&#123;&#123; page &#125;&#125;/&#123;&#123; movie_list.total | getTotalPage : pageSize &#125;&#125;页<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">nav</span> <span class="attr">aria-label</span>=<span class="string">"..."</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"pager"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">      通过 ng-click 为 a 链接设置了点击事件处理函数的时候</span></span><br><span class="line"><span class="comment">      要记得把 href 改为 JavaScript:; ，不要写 # ，否则 a 链接还是有一个默认请求行为</span></span><br><span class="line"><span class="comment">     --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">ng-class</span>=<span class="string">"&#123; disabled: page &lt;= 1 &#125;"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"JavaScript:;"</span> <span class="attr">ng-click</span>=<span class="string">"go(page - 1)"</span>&gt;</span>上一页<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">ng-class</span>=<span class="string">"&#123; disabled: page &gt;= totalPage &#125;"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"JavaScript:;"</span> <span class="attr">ng-click</span>=<span class="string">"go(page + 1)"</span>&gt;</span>下一页<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="subject"><a href="#subject" class="headerlink" title="subject"></a>subject</h4><h5 id="controller-js-1"><a href="#controller-js-1" class="headerlink" title="controller.js"></a>controller.js</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 页面详情控制函数</span></span><br><span class="line">;</span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">angular</span>) </span>&#123;</span><br><span class="line">  angular.module(<span class="string">'app'</span>)</span><br><span class="line">    .controller(<span class="string">'SubjectController'</span>, [</span><br><span class="line">      <span class="string">'$scope'</span>,</span><br><span class="line">      <span class="string">'HttpService'</span>,</span><br><span class="line">      <span class="string">'$routeParams'</span>,</span><br><span class="line">      <span class="function"><span class="keyword">function</span> (<span class="params">$scope, HttpService, $routeParams</span>) </span>&#123;</span><br><span class="line">        $scope.movie = &#123;&#125;</span><br><span class="line">        <span class="keyword">var</span> id = $routeParams.id</span><br><span class="line">        HttpService.jsonp(&#123;</span><br><span class="line">          url: <span class="string">' https://api.douban.com/v2/movie/subject/'</span> + id</span><br><span class="line">        &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">          $scope.movie = data</span><br><span class="line">          <span class="comment">// 自定义回调处理函数中，如果修改了模型数据，需要使用 $scope.$apply() 刷新模型数据</span></span><br><span class="line">          $scope.$apply()</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    ])</span><br><span class="line">&#125;)(angular)</span><br></pre></td></tr></table></figure>
+<h5 id="view-html-1"><a href="#view-html-1" class="headerlink" title="view.html"></a>view.html</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123; movie.title &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"&#123;&#123; movie.images.large &#125;&#125;"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 主页面 --&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-CN"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 让 ie 使用最新的渲染引擎 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 视口 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>豆瓣电影<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- Bootstrap core CSS --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"bower_components/bootstrap/dist/css/bootstrap.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"css/main.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">ng-app</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">"navbar navbar-inverse navbar-fixed-top"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container-fluid"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"navbar-header"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"navbar-toggle collapsed"</span> <span class="attr">data-toggle</span>=<span class="string">"collapse"</span> <span class="attr">data-target</span>=<span class="string">"#navbar"</span> <span class="attr">aria-expanded</span>=<span class="string">"false"</span> <span class="attr">aria-controls</span>=<span class="string">"navbar"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sr-only"</span>&gt;</span>Toggle navigation<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"navbar-brand"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>豆瓣电影<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"navbar"</span> <span class="attr">class</span>=<span class="string">"navbar-collapse collapse"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav navbar-nav navbar-right"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Help<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 搜索控制 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"navbar-form navbar-right"</span> <span class="attr">ng-controller</span>=<span class="string">"SearchController"</span> <span class="attr">ng-submit</span>=<span class="string">"search(searchText)"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ng-model</span>=<span class="string">"searchText"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">placeholder</span>=<span class="string">"Search..."</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 侧边栏 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container-fluid"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-3 col-md-2 sidebar"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav nav-sidebar"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"active"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#!/list/in_theaters"</span>&gt;</span>正在热映<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#!/list/coming_soon"</span>&gt;</span>即将上映<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#!/list/top250"</span>&gt;</span>Top 250<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"</span> <span class="attr">ng-view</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"bower_components/angular/angular.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"bower_components/angular-route/angular-route.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"app/main.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 用来处理被路由匹配到的 in_theaters 中的 view.html 视图的控制器函数 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"app/in_theaters/controller.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 为 app 模块添加了一个自定义过滤器，用来解决 正在热映电影列表中循环数据的格式问题 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"app/in_theaters/filter.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 路由文件模块 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"app/config/router.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 用来配置跨站请求白名单 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"app/config/sce.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 用来为模块提供一个公共的服务：jsonp --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"app/in_theaters/http-service.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 处理电影详情的控制器 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"app/subject/controller.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AngularJS/" rel="tag"># AngularJS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/18/framework/AngularJS/AngularJS 联系人 demo/" rel="next" title="AngularJS 联系人 demo">
+                <i class="fa fa-chevron-left"></i> AngularJS 联系人 demo
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/18/framework/React/React 简介/" rel="prev" title="React 简介（一）">
+                React 简介（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="SanCola" />
+            
+              <p class="site-author-name" itemprop="name">SanCola</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhanggy911" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/zhanggy911" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#API-接口"><span class="nav-number">1.</span> <span class="nav-text">API 接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目录结构"><span class="nav-number">2.</span> <span class="nav-text">目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#app"><span class="nav-number">3.1.</span> <span class="nav-text">app</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#main-js"><span class="nav-number">3.1.1.</span> <span class="nav-text">main.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#config"><span class="nav-number">3.1.2.</span> <span class="nav-text">config</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#router-js"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">router.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#sce-js"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">sce.js</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#in-theaters"><span class="nav-number">3.1.3.</span> <span class="nav-text">in_theaters</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#controller-js"><span class="nav-number">3.1.3.1.</span> <span class="nav-text">controller.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#http-server-js"><span class="nav-number">3.1.3.2.</span> <span class="nav-text">http-server.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#filter-js"><span class="nav-number">3.1.3.3.</span> <span class="nav-text">filter.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#view-html"><span class="nav-number">3.1.3.4.</span> <span class="nav-text">view.html</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#subject"><span class="nav-number">3.1.4.</span> <span class="nav-text">subject</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#controller-js-1"><span class="nav-number">3.1.4.1.</span> <span class="nav-text">controller.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#view-html-1"><span class="nav-number">3.1.4.2.</span> <span class="nav-text">view.html</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#index-html"><span class="nav-number">3.2.</span> <span class="nav-text">index.html</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SanCola</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

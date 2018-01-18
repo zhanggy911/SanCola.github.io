@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Math对象没有构造函数，也无需创建 1. Math对象属性E 描述：算数常量e，即自然对数的底数  1console.log(Math.E)	// 2.718281828459045 LN2 描述：2 的自然对数  1console.log(Math.LN2)	// 0.6931471805599453">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript Math对象">
+<meta property="og:url" content="http://yoursite.com/2018/01/17/JavaScript/JavaScript Math对象/index.html">
+<meta property="og:site_name" content="SanCola">
+<meta property="og:description" content="Math对象没有构造函数，也无需创建 1. Math对象属性E 描述：算数常量e，即自然对数的底数  1console.log(Math.E)	// 2.718281828459045 LN2 描述：2 的自然对数  1console.log(Math.LN2)	// 0.6931471805599453">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-17T14:43:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript Math对象">
+<meta name="twitter:description" content="Math对象没有构造函数，也无需创建 1. Math对象属性E 描述：算数常量e，即自然对数的底数  1console.log(Math.E)	// 2.718281828459045 LN2 描述：2 的自然对数  1console.log(Math.LN2)	// 0.6931471805599453">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/17/JavaScript/JavaScript Math对象/"/>
+
+
+
+
+
+  <title>JavaScript Math对象 | SanCola</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SanCola</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life is a Rock N' Roll Train</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/17/JavaScript/JavaScript Math对象/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SanCola">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SanCola">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript Math对象</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-17T22:42:17+08:00">
+                2018-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Math对象没有构造函数，也无需创建</p>
+<h2 id="1-Math对象属性"><a href="#1-Math对象属性" class="headerlink" title="1. Math对象属性"></a>1. Math对象属性</h2><h3 id="E"><a href="#E" class="headerlink" title="E"></a>E</h3><ul>
+<li>描述：算数常量e，即自然对数的底数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.E)	<span class="comment">// 2.718281828459045</span></span><br></pre></td></tr></table></figure>
+<h3 id="LN2"><a href="#LN2" class="headerlink" title="LN2"></a>LN2</h3><ul>
+<li>描述：2 的自然对数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.LN2)	<span class="comment">// 0.6931471805599453</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="LN10"><a href="#LN10" class="headerlink" title="LN10"></a>LN10</h3><ul>
+<li>描述：10 的自然对数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.LN10)	<span class="comment">// 2.302585092994046</span></span><br></pre></td></tr></table></figure>
+<h3 id="LOG2E"><a href="#LOG2E" class="headerlink" title="LOG2E"></a>LOG2E</h3><ul>
+<li>描述：2 为底 e 的对数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.LOG2E)	<span class="comment">// 1.4426950408889634</span></span><br></pre></td></tr></table></figure>
+<h3 id="LOG10E"><a href="#LOG10E" class="headerlink" title="LOG10E"></a>LOG10E</h3><ul>
+<li>描述：10 为底 e 的对数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.LOG10E)	<span class="comment">// 0.4342944819032518</span></span><br></pre></td></tr></table></figure>
+<h3 id="PI"><a href="#PI" class="headerlink" title="PI"></a>PI</h3><ul>
+<li>描述：圆周率π</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.PI)	<span class="comment">// 3.141592653589793</span></span><br></pre></td></tr></table></figure>
+<h3 id="SQRT1-2"><a href="#SQRT1-2" class="headerlink" title="SQRT1_2"></a>SQRT1_2</h3><ul>
+<li>描述：2 的平方根的倒数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.SQRT1_2)	<span class="comment">// 0.7071067811865476</span></span><br></pre></td></tr></table></figure>
+<h3 id="SQRT2"><a href="#SQRT2" class="headerlink" title="SQRT2"></a>SQRT2</h3><ul>
+<li>描述： 2 的平方根</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.SQRT2)	<span class="comment">// 1.4142135623730951</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-Math对象常用方法"><a href="#2-Math对象常用方法" class="headerlink" title="2. Math对象常用方法"></a>2. Math对象常用方法</h2><h3 id="abs-x"><a href="#abs-x" class="headerlink" title="abs(x)"></a>abs(x)</h3><ul>
+<li>描述：返回一个数得绝对值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.abs(<span class="number">-10</span>))  <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
+<h3 id="pow-x-y"><a href="#pow-x-y" class="headerlink" title="pow(x,y)"></a>pow(x,y)</h3><ul>
+<li>描述：返回x 的 y 次方</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.pow(<span class="number">2</span>,<span class="number">3</span>))  <span class="comment">// 8</span></span><br></pre></td></tr></table></figure>
+<h3 id="sqrt"><a href="#sqrt" class="headerlink" title="sqrt()"></a>sqrt()</h3><ul>
+<li>描述：返回1个数的平方根</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.sqrt(<span class="number">4</span>))  <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<h3 id="ceil-x"><a href="#ceil-x" class="headerlink" title="ceil(x)"></a>ceil(x)</h3><ul>
+<li>描述：向上取整</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.ceil(<span class="number">4.2</span>))  <span class="comment">// 5</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.ceil(<span class="number">-4.2</span>)) <span class="comment">// -4</span></span><br></pre></td></tr></table></figure>
+<h3 id="floor-x"><a href="#floor-x" class="headerlink" title="floor(x)"></a>floor(x)</h3><ul>
+<li>描述：向下取整</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.floor(<span class="number">4.2</span>))  <span class="comment">// 4</span></span><br><span class="line"><span class="built_in">console</span>.log(math.floor(<span class="number">-4.2</span>))  <span class="comment">// -5</span></span><br></pre></td></tr></table></figure>
+<h3 id="max-x-y"><a href="#max-x-y" class="headerlink" title="max(x,y)"></a>max(x,y)</h3><ul>
+<li>描述：返回较大的值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.max(<span class="number">4</span>,<span class="number">2</span>))  <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+<h3 id="min-x-y"><a href="#min-x-y" class="headerlink" title="min(x,y)"></a>min(x,y)</h3><ul>
+<li>描述：返回较小的值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.min(<span class="number">4</span>,<span class="number">2</span>))  <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<h3 id="random"><a href="#random" class="headerlink" title="random()"></a>random()</h3><ul>
+<li>描述：返回0-1之间的一个随机数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.random())  <span class="comment">// 0.232221</span></span><br></pre></td></tr></table></figure>
+<h3 id="round-x"><a href="#round-x" class="headerlink" title="round(x)"></a>round(x)</h3><ul>
+<li>描述：将值四舍五入</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.round(<span class="number">4.2</span>))  <span class="comment">// 4</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.round(<span class="number">-4.2</span>))  <span class="comment">// -4</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.round(<span class="number">-4.6</span>))  <span class="comment">// -5</span></span><br></pre></td></tr></table></figure>
+<h3 id="sin-x"><a href="#sin-x" class="headerlink" title="sin(x)"></a>sin(x)</h3><ul>
+<li>描述：返回角的正弦，x 是弧度表示的角</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.sin(<span class="number">3</span>))  <span class="comment">// 0.1411200080598672</span></span><br></pre></td></tr></table></figure>
+<h3 id="cos-x"><a href="#cos-x" class="headerlink" title="cos(x)"></a>cos(x)</h3><ul>
+<li>描述：返回角的余弦</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.cos(<span class="number">3</span>))  <span class="comment">// -0.9899924966004454</span></span><br></pre></td></tr></table></figure>
+<h3 id="tan-x"><a href="#tan-x" class="headerlink" title="tan(x)"></a>tan(x)</h3><ul>
+<li>描述：返回角的正切</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.tan(<span class="number">5</span>))  <span class="comment">// -3.380515006246586</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/17/JavaScript/JavaScript 正则表达式/" rel="next" title="JavaScript 正则表达式">
+                <i class="fa fa-chevron-left"></i> JavaScript 正则表达式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/17/dom_bom/JavaScript DOM 获取元素、节点操作/" rel="prev" title="JavaScript DOM 获取元素、节点操作">
+                JavaScript DOM 获取元素、节点操作 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="SanCola" />
+            
+              <p class="site-author-name" itemprop="name">SanCola</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhanggy911" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/zhanggy911" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Math对象属性"><span class="nav-number">1.</span> <span class="nav-text">1. Math对象属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#E"><span class="nav-number">1.1.</span> <span class="nav-text">E</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LN2"><span class="nav-number">1.2.</span> <span class="nav-text">LN2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LN10"><span class="nav-number">1.3.</span> <span class="nav-text">LN10</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LOG2E"><span class="nav-number">1.4.</span> <span class="nav-text">LOG2E</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LOG10E"><span class="nav-number">1.5.</span> <span class="nav-text">LOG10E</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PI"><span class="nav-number">1.6.</span> <span class="nav-text">PI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQRT1-2"><span class="nav-number">1.7.</span> <span class="nav-text">SQRT1_2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQRT2"><span class="nav-number">1.8.</span> <span class="nav-text">SQRT2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Math对象常用方法"><span class="nav-number">2.</span> <span class="nav-text">2. Math对象常用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#abs-x"><span class="nav-number">2.1.</span> <span class="nav-text">abs(x)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pow-x-y"><span class="nav-number">2.2.</span> <span class="nav-text">pow(x,y)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sqrt"><span class="nav-number">2.3.</span> <span class="nav-text">sqrt()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ceil-x"><span class="nav-number">2.4.</span> <span class="nav-text">ceil(x)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#floor-x"><span class="nav-number">2.5.</span> <span class="nav-text">floor(x)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#max-x-y"><span class="nav-number">2.6.</span> <span class="nav-text">max(x,y)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#min-x-y"><span class="nav-number">2.7.</span> <span class="nav-text">min(x,y)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#random"><span class="nav-number">2.8.</span> <span class="nav-text">random()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#round-x"><span class="nav-number">2.9.</span> <span class="nav-text">round(x)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sin-x"><span class="nav-number">2.10.</span> <span class="nav-text">sin(x)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cos-x"><span class="nav-number">2.11.</span> <span class="nav-text">cos(x)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tan-x"><span class="nav-number">2.12.</span> <span class="nav-text">tan(x)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SanCola</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

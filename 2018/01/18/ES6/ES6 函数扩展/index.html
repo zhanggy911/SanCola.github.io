@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ES6," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="函数参数的默认值 ES6允许为函数的参数指定默认值  1234567function log(x, y = &apos;World&apos;) &amp;#123;  console.log(x, y);&amp;#125;log(&apos;Hello&apos;) // Hello Worldlog(&apos;Hello&apos;, &apos;China&apos;) // Hello Chinalog(&apos;Hello&apos;, &apos;&apos;) // Hello">
+<meta name="keywords" content="ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6 函数扩展">
+<meta property="og:url" content="http://yoursite.com/2018/01/18/ES6/ES6 函数扩展/index.html">
+<meta property="og:site_name" content="SanCola">
+<meta property="og:description" content="函数参数的默认值 ES6允许为函数的参数指定默认值  1234567function log(x, y = &apos;World&apos;) &amp;#123;  console.log(x, y);&amp;#125;log(&apos;Hello&apos;) // Hello Worldlog(&apos;Hello&apos;, &apos;China&apos;) // Hello Chinalog(&apos;Hello&apos;, &apos;&apos;) // Hello">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-18T02:55:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6 函数扩展">
+<meta name="twitter:description" content="函数参数的默认值 ES6允许为函数的参数指定默认值  1234567function log(x, y = &apos;World&apos;) &amp;#123;  console.log(x, y);&amp;#125;log(&apos;Hello&apos;) // Hello Worldlog(&apos;Hello&apos;, &apos;China&apos;) // Hello Chinalog(&apos;Hello&apos;, &apos;&apos;) // Hello">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/18/ES6/ES6 函数扩展/"/>
+
+
+
+
+
+  <title>ES6 函数扩展 | SanCola</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SanCola</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life is a Rock N' Roll Train</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/18/ES6/ES6 函数扩展/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SanCola">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SanCola">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ES6 函数扩展</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-18T10:42:25+08:00">
+                2018-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="函数参数的默认值"><a href="#函数参数的默认值" class="headerlink" title="函数参数的默认值"></a>函数参数的默认值</h2><ul>
+<li>ES6允许为函数的参数指定默认值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">x, y = <span class="string">'World'</span></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(x, y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">log(<span class="string">'Hello'</span>) <span class="comment">// Hello World</span></span><br><span class="line">log(<span class="string">'Hello'</span>, <span class="string">'China'</span>) <span class="comment">// Hello China</span></span><br><span class="line">log(<span class="string">'Hello'</span>, <span class="string">''</span>) <span class="comment">// Hello</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li>函数参数是默认声明的，函数内部不能使用 let , const 声明函数参数的同名变量</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x = <span class="number">5</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> x = <span class="number">1</span>; <span class="comment">// error</span></span><br><span class="line">  <span class="keyword">const</span> x = <span class="number">2</span>; <span class="comment">// error</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>指定默认值时，函数不能有同名参数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x, x, y = <span class="number">1</span></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// SyntaxError: Duplicate parameter name not allowed in this context</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>参数默认值是惰性求值的</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x = <span class="number">99</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">p = x + <span class="number">1</span></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(p);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo() <span class="comment">// 100</span></span><br><span class="line"></span><br><span class="line">x = <span class="number">100</span>;</span><br><span class="line">foo() <span class="comment">// 101</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>结合解构赋值使用</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fetch</span>(<span class="params">url, &#123; body = <span class="string">''</span>, method = <span class="string">'GET'</span>, headers = &#123;&#125; &#125;</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(method);</span><br><span class="line">&#125;</span><br><span class="line">fetch(<span class="string">'http://example.com'</span>, &#123;&#125;)</span><br><span class="line"><span class="comment">// "GET"</span></span><br><span class="line">fetch(<span class="string">'http://example.com'</span>)</span><br><span class="line"><span class="comment">// 报错</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>参数默认值的位置<ul>
+<li>定义了默认值的参数，应当是函数的尾参数</li>
+<li>无法省略默认值后面的参数</li>
+<li>显示输入 undefined 将触发参数等于默认值</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x = <span class="number">5</span>, y = <span class="number">6</span></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(x, y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(<span class="literal">undefined</span>, <span class="literal">null</span>)</span><br><span class="line"><span class="comment">// 5 null</span></span><br><span class="line"><span class="comment">// null 不会触发参数默认值</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>函数的 length 属性<ul>
+<li>指定函数参数默认值后，函数 length 属性指的是不包含默认值的参数个数</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">a</span>) </span>&#123;&#125;).length <span class="comment">// 1</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">a = <span class="number">5</span></span>) </span>&#123;&#125;).length <span class="comment">// 0</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">a, b, c = <span class="number">5</span></span>) </span>&#123;&#125;).length <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>作用域<ul>
+<li>一旦设置了参数的默认值，函数进行声明初始化时，参数会形成一个单独的作用域（context）</li>
+<li>初始化结束，这个作用域就会消失</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">y = x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> x = <span class="number">2</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(y);</span><br><span class="line">&#125;</span><br><span class="line">f() <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<h2 id="rest-参数"><a href="#rest-参数" class="headerlink" title="rest 参数"></a>rest 参数</h2><blockquote>
+<p>ES6 引入 rest 参数（形式为“…变量名”），用于获取函数的多余参数，这样就不需要使用<code>arguments</code>对象了。rest 参数搭配的变量是一个数组，该变量将多余的参数放入数组中</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">...values</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> val <span class="keyword">of</span> values) &#123;</span><br><span class="line">    sum += val;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line">add(<span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>) <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>rest 只能是最后一个参数</li>
+<li>函数的 length 属性不包含 rest 参数</li>
+</ul>
+<h2 id="扩展运算符"><a href="#扩展运算符" class="headerlink" title="扩展运算符"></a>扩展运算符</h2><p>扩展运算符（spread）是三个点（…）用于将一个数组转为用逗号分隔的参数序列</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(...[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line"><span class="comment">// 1 2 3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>, ...[<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], <span class="number">5</span>)</span><br><span class="line"><span class="comment">// 1 2 3 4 5</span></span><br><span class="line"></span><br><span class="line">[...document.querySelectorAll(<span class="string">'div'</span>)]</span><br><span class="line"><span class="comment">// [&lt;div&gt;, &lt;div&gt;, &lt;div&gt;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 常用于函数调用 */</span> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> numbers = [<span class="number">4</span>, <span class="number">38</span>];</span><br><span class="line">add(...numbers) <span class="comment">// 42</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>用于替代数组的 apply 方法</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES5的写法</span></span><br><span class="line"><span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, [<span class="number">14</span>, <span class="number">3</span>, <span class="number">77</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6的写法</span></span><br><span class="line"><span class="built_in">Math</span>.max(...[<span class="number">14</span>, <span class="number">3</span>, <span class="number">77</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="built_in">Math</span>.max(<span class="number">14</span>, <span class="number">3</span>, <span class="number">77</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><ul>
+<li>允许使用 <code>=&gt;</code> 定义函数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f = <span class="function"><span class="params">v</span> =&gt;</span> v</span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params">v</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> v</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果箭头函数不需要参数或需要多个参数，就使用圆括号代表参数部分</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 如果箭头函数不需要参数或需要多个参数，就使用圆括号代表参数部分 */</span> </span><br><span class="line"><span class="keyword">var</span> f = <span class="function"><span class="params">()</span> =&gt;</span> <span class="number">5</span>;</span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">5</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> sum = <span class="function">(<span class="params">num1, num2</span>) =&gt;</span> num1 + num2;</span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">var</span> sum = <span class="function"><span class="keyword">function</span>(<span class="params">num1, num2</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>如果箭头函数的代码多余一条语句，需要使用大括号并使用 return 返回</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sum = <span class="function">(<span class="params">num1, num2</span>) =&gt;</span> &#123; <span class="keyword">return</span> num1 + num2; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 如果箭头函数返回的是一个对象，则需要在对象外添加圆括号 */</span></span><br><span class="line"><span class="keyword">var</span> getTempItem = <span class="function"><span class="params">id</span> =&gt;</span> (&#123;<span class="attr">id</span>:id,<span class="attr">name</span>:<span class="string">"Temp"</span>&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结合解构赋值使用</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> full = <span class="function">(<span class="params">&#123; first, last &#125;</span>) =&gt;</span> first + <span class="string">' '</span> + last;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">full</span>(<span class="params">person</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> person.first + <span class="string">' '</span> + person.last;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>结合 rest 参数使用</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = <span class="function">(<span class="params">...nums</span>) =&gt;</span> nums;</span><br><span class="line">numbers(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="comment">// [1,2,3,4,5]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> headAndTail = <span class="function">(<span class="params">head, ...tail</span>) =&gt;</span> [head, tail];</span><br><span class="line">headAndTail(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="comment">// [1,[2,3,4,5]]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用注意<ul>
+<li>箭头函数内部 <strong>this指向定义时的对象</strong>而不是使用时的对象，箭头函数不具备 this</li>
+<li>不能作为构造函数</li>
+<li>不能使用 arguments 对象，可以使用 rest 参数替代</li>
+<li>不能使用 yield 命令，不能作为 Generator 函数</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Timer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.s1 = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">this</span>.s2 = <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// 箭头函数</span></span><br><span class="line">  setInterval(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.s1++, <span class="number">1000</span>);</span><br><span class="line">  <span class="comment">// 普通函数</span></span><br><span class="line">  setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.s2++;</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> timer = <span class="keyword">new</span> Timer();</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'s1: '</span>, timer.s1), <span class="number">3100</span>);</span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'s2: '</span>, timer.s2), <span class="number">3100</span>);</span><br><span class="line"><span class="comment">// s1: 3</span></span><br><span class="line"><span class="comment">// s2: 0</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ES6/" rel="tag"># ES6</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/18/ES6/ES6 数组扩展/" rel="next" title="ES6 数组扩展">
+                <i class="fa fa-chevron-left"></i> ES6 数组扩展
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/18/ES6/ES6 for…of循环/" rel="prev" title="ES6 for…of循环">
+                ES6 for…of循环 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="SanCola" />
+            
+              <p class="site-author-name" itemprop="name">SanCola</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhanggy911" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/zhanggy911" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数参数的默认值"><span class="nav-number">1.</span> <span class="nav-text">函数参数的默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rest-参数"><span class="nav-number">2.</span> <span class="nav-text">rest 参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展运算符"><span class="nav-number">3.</span> <span class="nav-text">扩展运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#箭头函数"><span class="nav-number">4.</span> <span class="nav-text">箭头函数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SanCola</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

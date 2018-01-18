@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Date() 描述：返回当天的日期和时间 语法：Date() 返回值：字符串  1console.log(Date())      // &quot;Thu Dec 02 2016 15:48:48 GMT+0800 (CST)&quot; getDate() 描述：返回月份中的某一天 语法：d.getDate() 返回值：数字（1-31）  12var d = new Date()console.log(d.get">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 常用时间方法">
+<meta property="og:url" content="http://yoursite.com/2018/01/17/JavaScript/JavaScript 常用时间方法/index.html">
+<meta property="og:site_name" content="SanCola">
+<meta property="og:description" content="Date() 描述：返回当天的日期和时间 语法：Date() 返回值：字符串  1console.log(Date())      // &quot;Thu Dec 02 2016 15:48:48 GMT+0800 (CST)&quot; getDate() 描述：返回月份中的某一天 语法：d.getDate() 返回值：数字（1-31）  12var d = new Date()console.log(d.get">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-17T14:46:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 常用时间方法">
+<meta name="twitter:description" content="Date() 描述：返回当天的日期和时间 语法：Date() 返回值：字符串  1console.log(Date())      // &quot;Thu Dec 02 2016 15:48:48 GMT+0800 (CST)&quot; getDate() 描述：返回月份中的某一天 语法：d.getDate() 返回值：数字（1-31）  12var d = new Date()console.log(d.get">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/17/JavaScript/JavaScript 常用时间方法/"/>
+
+
+
+
+
+  <title>JavaScript 常用时间方法 | SanCola</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SanCola</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life is a Rock N' Roll Train</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/17/JavaScript/JavaScript 常用时间方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SanCola">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SanCola">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript 常用时间方法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-17T22:40:38+08:00">
+                2018-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Date"><a href="#Date" class="headerlink" title="Date()"></a>Date()</h2><ul>
+<li>描述：返回当天的日期和时间</li>
+<li>语法：<code>Date()</code></li>
+<li>返回值：字符串</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Date</span>())      <span class="comment">// "Thu Dec 02 2016 15:48:48 GMT+0800 (CST)"</span></span><br></pre></td></tr></table></figure>
+<h2 id="getDate"><a href="#getDate" class="headerlink" title="getDate()"></a>getDate()</h2><ul>
+<li>描述：返回月份中的某一天</li>
+<li>语法：<code>d.getDate()</code></li>
+<li>返回值：数字（1-31）</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"><span class="built_in">console</span>.log(d.getDate())      <span class="comment">// 12</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="getDay"><a href="#getDay" class="headerlink" title="getDay()"></a>getDay()</h2><ul>
+<li>描述：返回星期中的某一天</li>
+<li>语法：<code>d.getDay()</code></li>
+<li>返回值：数字（0-6，周日到周六）</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"><span class="built_in">console</span>.log(d.getDay())      <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
+<h2 id="getMonth"><a href="#getMonth" class="headerlink" title="getMonth()"></a>getMonth()</h2><ul>
+<li>描述：返回月份的数字</li>
+<li>语法：<code>d.getMonth()</code></li>
+<li>返回值：数字（0-11，1月到12月）</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"><span class="built_in">console</span>.log(d.getMonth())      <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<h2 id="getFullYear"><a href="#getFullYear" class="headerlink" title="getFullYear()"></a>getFullYear()</h2><ul>
+<li>描述：返回年份的4位数字</li>
+<li>语法：<code>d.getFullYear()</code></li>
+<li>返回值：数字</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"><span class="built_in">console</span>.log(d.getFullYear())      <span class="comment">// 2016</span></span><br></pre></td></tr></table></figure>
+<h2 id="getHours"><a href="#getHours" class="headerlink" title="getHours()"></a>getHours()</h2><ul>
+<li>描述：返回小时</li>
+<li>语法：<code>d.getHours()</code></li>
+<li>返回值：（0-23）</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"><span class="built_in">console</span>.log(d.getHours())    <span class="comment">// 15</span></span><br></pre></td></tr></table></figure>
+<h2 id="getMinutes"><a href="#getMinutes" class="headerlink" title="getMinutes()"></a>getMinutes()</h2><ul>
+<li>描述：返回分钟</li>
+<li>语法：<code>d.getMinutes()</code></li>
+<li>返回值：（0-59）</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"><span class="built_in">console</span>.log(d.getMinutes())    <span class="comment">// 7</span></span><br></pre></td></tr></table></figure>
+<h2 id="getSeconds"><a href="#getSeconds" class="headerlink" title="getSeconds()"></a>getSeconds()</h2><ul>
+<li>描述：返回秒数</li>
+<li>语法：<code>d.getSeconds()</code></li>
+<li>返回值：(0-59)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"><span class="built_in">console</span>.log(d.getSeconds())    <span class="comment">// 32</span></span><br></pre></td></tr></table></figure>
+<h2 id="getMilliseconds"><a href="#getMilliseconds" class="headerlink" title="getMilliseconds()"></a>getMilliseconds()</h2><ul>
+<li>描述：返回当前毫秒数</li>
+<li>语法：<code>d.getMilliseconds()</code></li>
+<li>返回值：（0-999）</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"><span class="built_in">console</span>.log(d.getMilliseconds())    <span class="comment">// 323</span></span><br></pre></td></tr></table></figure>
+<h2 id="getTime"><a href="#getTime" class="headerlink" title="getTime()"></a>getTime()</h2><ul>
+<li>描述：返回自1970年1月1日至当前的毫秒数</li>
+<li>语法：<code>d.getTime()</code></li>
+<li>返回值：数字</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"><span class="built_in">console</span>.log(d.getTime())    <span class="comment">// 1491465255074</span></span><br></pre></td></tr></table></figure>
+<h2 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString()"></a>toString()</h2><ul>
+<li>描述：将 Data 对象转换为字符串并返回结果</li>
+<li>语法：<code>d.toString()</code></li>
+<li>返回值：字符串</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"><span class="built_in">console</span>.log(d.toString())    <span class="comment">// "Thu Dec 02 2016 15:48:48 GMT+0800 (CST)"</span></span><br></pre></td></tr></table></figure>
+<h2 id="toLocalString"><a href="#toLocalString" class="headerlink" title="toLocalString()"></a>toLocalString()</h2><ul>
+<li>描述：将 Data 对象转换为字符串并返回结果</li>
+<li>语法：<code>d.toLocalString()</code></li>
+<li>返回值：字符串</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"><span class="built_in">console</span>.log(d.toLocalString())    <span class="comment">// "2016/12/14 下午3:54:15"</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/17/JavaScript/JavaScript 常用字符串方法/" rel="next" title="JavaScript 常用字符串方法">
+                <i class="fa fa-chevron-left"></i> JavaScript 常用字符串方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/17/JavaScript/JavaScript 正则表达式/" rel="prev" title="JavaScript 正则表达式">
+                JavaScript 正则表达式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="SanCola" />
+            
+              <p class="site-author-name" itemprop="name">SanCola</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhanggy911" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/zhanggy911" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Date"><span class="nav-number">1.</span> <span class="nav-text">Date()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getDate"><span class="nav-number">2.</span> <span class="nav-text">getDate()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getDay"><span class="nav-number">3.</span> <span class="nav-text">getDay()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getMonth"><span class="nav-number">4.</span> <span class="nav-text">getMonth()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getFullYear"><span class="nav-number">5.</span> <span class="nav-text">getFullYear()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getHours"><span class="nav-number">6.</span> <span class="nav-text">getHours()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getMinutes"><span class="nav-number">7.</span> <span class="nav-text">getMinutes()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getSeconds"><span class="nav-number">8.</span> <span class="nav-text">getSeconds()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getMilliseconds"><span class="nav-number">9.</span> <span class="nav-text">getMilliseconds()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getTime"><span class="nav-number">10.</span> <span class="nav-text">getTime()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#toString-NaN"><span class="nav-number">11.</span> <span class="nav-text">toString()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#toLocalString"><span class="nav-number">12.</span> <span class="nav-text">toLocalString()</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SanCola</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

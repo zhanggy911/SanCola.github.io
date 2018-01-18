@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ES6," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="ES6模块不是对象，而是通过 export 命令显示指定输出的代码，再通过 import 命令输入  123// ES6模块// 从 fs 模块加载方法，其他方法不加载import&amp;#123;stat,exists,readFile&amp;#125; from &apos;fs&apos;  模块主要功能由 export 和 import 组成 export 命令用于规定模块对外的接口 import 命令用于导入其他模块">
+<meta name="keywords" content="ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6 Modules">
+<meta property="og:url" content="http://yoursite.com/2018/01/18/ES6/ES6 Modules/index.html">
+<meta property="og:site_name" content="SanCola">
+<meta property="og:description" content="ES6模块不是对象，而是通过 export 命令显示指定输出的代码，再通过 import 命令输入  123// ES6模块// 从 fs 模块加载方法，其他方法不加载import&amp;#123;stat,exists,readFile&amp;#125; from &apos;fs&apos;  模块主要功能由 export 和 import 组成 export 命令用于规定模块对外的接口 import 命令用于导入其他模块">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-18T02:57:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6 Modules">
+<meta name="twitter:description" content="ES6模块不是对象，而是通过 export 命令显示指定输出的代码，再通过 import 命令输入  123// ES6模块// 从 fs 模块加载方法，其他方法不加载import&amp;#123;stat,exists,readFile&amp;#125; from &apos;fs&apos;  模块主要功能由 export 和 import 组成 export 命令用于规定模块对外的接口 import 命令用于导入其他模块">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/18/ES6/ES6 Modules/"/>
+
+
+
+
+
+  <title>ES6 Modules | SanCola</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SanCola</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life is a Rock N' Roll Train</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/18/ES6/ES6 Modules/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SanCola">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SanCola">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ES6 Modules</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-18T10:55:11+08:00">
+                2018-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>ES6模块不是对象，而是通过 export 命令显示指定输出的代码，再通过 import 命令输入</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES6模块</span></span><br><span class="line"><span class="comment">// 从 fs 模块加载方法，其他方法不加载</span></span><br><span class="line"><span class="keyword">import</span>&#123;stat,exists,readFile&#125; <span class="keyword">from</span> <span class="string">'fs'</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>模块主要功能由 export 和 import 组成<ul>
+<li>export 命令用于规定模块对外的接口</li>
+<li>import 命令用于导入其他模块提供的功能</li>
+</ul>
+</li>
+<li>一个模块就是一个独立的文件，该文件内部所有变量，外部无法获取<ul>
+<li>想要在外部获取，就必需使用 export 命令导出变量</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h2><p>ES6 模块自动采用严格模式，所以不应在顶层代码使用 this</p>
+<ul>
+<li>严格模式的限制<ul>
+<li><strong>变量必须声明后再使用</strong></li>
+<li><strong>禁止 this 指向全局对象</strong></li>
+<li><strong>函数的参数不能有同名属性</strong></li>
+<li>不能使用 with 语句</li>
+<li>eval 不会再它的外层作用域引入变量</li>
+<li>eval，arguments 不能重新赋值</li>
+<li>arguments 不会自动反应函数参数的变化</li>
+<li>不能使用 arguments.callee，arguments.caller</li>
+<li>不能对只读属性赋值</li>
+<li>不能删除不可删除的属性</li>
+<li>不能使用前缀 0 表示 8进制 </li>
+</ul>
+</li>
+</ul>
+<h2 id="export"><a href="#export" class="headerlink" title="export"></a>export</h2><ul>
+<li>export 命令用于规定模块对外接口</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 模块输出写法1 */</span> </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> firstName = <span class="string">'Michael'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> lastName = <span class="string">'Jackson'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> year = <span class="number">1958</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 模块输出写法2 */</span></span><br><span class="line"><span class="keyword">var</span> firstName = <span class="string">'Michael'</span>;</span><br><span class="line"><span class="keyword">var</span> lastName = <span class="string">'Jackson'</span>;</span><br><span class="line"><span class="keyword">var</span> year = <span class="number">1958</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;firstName, lastName, year&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可以输出变量，函数以及类（class）</li>
+<li>as关键字可以重命名导出的变量</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">v1</span>(<span class="params"></span>) </span>&#123; ... &#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">v2</span>(<span class="params"></span>) </span>&#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">  v1 <span class="keyword">as</span> streamV1,</span><br><span class="line">  v2 <span class="keyword">as</span> streamV2,</span><br><span class="line">  v2 <span class="keyword">as</span> streamLatestVersion</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>需要注意输出的格式</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 报错</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">export</span> f;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正确</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正确</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">export</span> &#123;f&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>export 输出的接口，应该是动态更新的</li>
+<li>export 应该位于模块顶层作用域</li>
+</ul>
+<h2 id="import"><a href="#import" class="headerlink" title="import"></a>import</h2><p>使用 export 命令定义了模块的对外接口以后，其他 JS 文件就可以通过 import 命令加载这个模块</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">import</span> &#123;firstName, lastName, year&#125; <span class="keyword">from</span> <span class="string">'./profile'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setName</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">  element.textContent = firstName + <span class="string">' '</span> + lastName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>允许使用 as 关键字为导入的变量重命名</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; lastName <span class="keyword">as</span> surname &#125; <span class="keyword">from</span> <span class="string">'./profile'</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>import 命令具备提升效果，直接提升到整个模块的头部</li>
+<li>import 是静态执行的，不能使用表达式和变量进行引入</li>
+<li>可以使用 * 进行文件整体加载</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> circle <span class="keyword">from</span> <span class="string">'./circle'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'圆面积：'</span> + circle.area(<span class="number">4</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'圆周长：'</span> + circle.circumference(<span class="number">14</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="export-default"><a href="#export-default" class="headerlink" title="export default"></a>export default</h2><p>使用 export default 可以为模块指定默认输出，导入时不需要知道模块内部的名称，直接重命名即可</p>
+<ul>
+<li>指定默认输出后，导入时的 import 语句不需要使用大括号</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 指定输出 */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">crc32</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 输出</span></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">import</span> crc32 <span class="keyword">from</span> <span class="string">'crc32'</span>; <span class="comment">// 输入</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 默认输出 */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">crc32</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 输出</span></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">import</span> &#123;crc32&#125; <span class="keyword">from</span> <span class="string">'crc32'</span>; <span class="comment">// 输入</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>一个模块只能使用一次默认输出语句</li>
+<li>export default 与 export 语句可以混合使用</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 模块内部 */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ···</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">each</span>(<span class="params">obj, iterator, context</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ···</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> &#123; each <span class="keyword">as</span> forEach &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 导入模块 */</span></span><br><span class="line"><span class="keyword">import</span> _, &#123; each &#125; <span class="keyword">from</span> <span class="string">'lodash'</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>通过 export default 暴露的接口成员不能定义的同时直接暴露</li>
+</ul>
+<h2 id="export-与-import-的复合写法"><a href="#export-与-import-的复合写法" class="headerlink" title="export 与 import 的复合写法"></a>export 与 import 的复合写法</h2><p>如果在一个模块中，先输入后输出同一模块，import 和 export 可以写在一起</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123; foo, bar &#125; <span class="keyword">from</span> <span class="string">'my_module'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">import</span> &#123; foo, bar &#125; <span class="keyword">from</span> <span class="string">'my_module'</span>;</span><br><span class="line"><span class="keyword">export</span> &#123; foo, bar &#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>模块的接口改名和整体输出写法</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 接口改名</span></span><br><span class="line"><span class="keyword">export</span> &#123; foo <span class="keyword">as</span> myFoo &#125; <span class="keyword">from</span> <span class="string">'my_module'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 整体输出</span></span><br><span class="line"><span class="keyword">export</span> * <span class="keyword">from</span> <span class="string">'my_module'</span>;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ES6/" rel="tag"># ES6</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/18/ES6/ES6 Promise对象/" rel="next" title="ES6 Promise对象">
+                <i class="fa fa-chevron-left"></i> ES6 Promise对象
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/18/Mobile Web/移动端常用设置(1)/" rel="prev" title="移动端常用设置(1)">
+                移动端常用设置(1) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="SanCola" />
+            
+              <p class="site-author-name" itemprop="name">SanCola</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhanggy911" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/zhanggy911" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#严格模式"><span class="nav-number">1.</span> <span class="nav-text">严格模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#export"><span class="nav-number">2.</span> <span class="nav-text">export</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#import"><span class="nav-number">3.</span> <span class="nav-text">import</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#export-default"><span class="nav-number">4.</span> <span class="nav-text">export default</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#export-与-import-的复合写法"><span class="nav-number">5.</span> <span class="nav-text">export 与 import 的复合写法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SanCola</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

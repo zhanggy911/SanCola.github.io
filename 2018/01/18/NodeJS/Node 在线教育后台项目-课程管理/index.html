@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="NodeJS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="公共部分 创建课程数据模型  123456789101112131415// modelsimport mongoose from &apos;mongoose&apos;const Schema = mongoose.Schemaconst courseSchema = new Schema(&amp;#123;  title: &amp;#123; type: String, required: true &amp;#125;,  de">
+<meta name="keywords" content="NodeJS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node 在线教育后台项目-课程管理">
+<meta property="og:url" content="http://yoursite.com/2018/01/18/NodeJS/Node 在线教育后台项目-课程管理/index.html">
+<meta property="og:site_name" content="SanCola">
+<meta property="og:description" content="公共部分 创建课程数据模型  123456789101112131415// modelsimport mongoose from &apos;mongoose&apos;const Schema = mongoose.Schemaconst courseSchema = new Schema(&amp;#123;  title: &amp;#123; type: String, required: true &amp;#125;,  de">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-18T07:03:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node 在线教育后台项目-课程管理">
+<meta name="twitter:description" content="公共部分 创建课程数据模型  123456789101112131415// modelsimport mongoose from &apos;mongoose&apos;const Schema = mongoose.Schemaconst courseSchema = new Schema(&amp;#123;  title: &amp;#123; type: String, required: true &amp;#125;,  de">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/18/NodeJS/Node 在线教育后台项目-课程管理/"/>
+
+
+
+
+
+  <title>Node 在线教育后台项目-课程管理 | SanCola</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SanCola</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life is a Rock N' Roll Train</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/18/NodeJS/Node 在线教育后台项目-课程管理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SanCola">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SanCola">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Node 在线教育后台项目-课程管理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-18T14:57:01+08:00">
+                2018-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NodeJS/" itemprop="url" rel="index">
+                    <span itemprop="name">NodeJS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="公共部分"><a href="#公共部分" class="headerlink" title="公共部分"></a>公共部分</h2><ul>
+<li>创建课程数据模型</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// models</span></span><br><span class="line"><span class="keyword">import</span> mongoose <span class="keyword">from</span> <span class="string">'mongoose'</span></span><br><span class="line"><span class="keyword">const</span> Schema = mongoose.Schema</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> courseSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">  title: &#123; <span class="attr">type</span>: <span class="built_in">String</span>, <span class="attr">required</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  description: &#123; <span class="attr">type</span>: <span class="built_in">String</span>, <span class="attr">default</span>: <span class="string">''</span> &#125;,</span><br><span class="line">  category: &#123; <span class="attr">type</span>: Schema.Types.ObjectId &#125;,</span><br><span class="line">  tags: &#123; <span class="attr">type</span>: <span class="built_in">String</span>, <span class="attr">default</span>: <span class="string">''</span> &#125;,</span><br><span class="line">  image: &#123; <span class="attr">type</span>: <span class="built_in">String</span>, <span class="attr">default</span>: <span class="string">'course.png'</span> &#125;,</span><br><span class="line">  create_time: &#123; <span class="attr">type</span>: <span class="built_in">Date</span>, <span class="attr">default</span>: <span class="built_in">Date</span>.now &#125;,</span><br><span class="line">  last_modified: &#123; <span class="attr">type</span>: <span class="built_in">Date</span>, <span class="attr">default</span>: <span class="built_in">Date</span>.now &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> mongoose.model(<span class="string">'Course'</span>, courseSchema)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建课程分类数据模型，并与创建课程数据模型相关联</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mongoose <span class="keyword">from</span> <span class="string">'mongoose'</span></span><br><span class="line"><span class="keyword">const</span> Schema = mongoose.Schema</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> categorySchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">  name: &#123; <span class="attr">type</span>: <span class="built_in">String</span>, <span class="attr">required</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  <span class="comment">// 保存所属的父级分类(混合类型)</span></span><br><span class="line">  pid: &#123; <span class="attr">type</span>: Schema.Types.Mixed &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> mongoose.model(<span class="string">'Category'</span>, categorySchema)</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li>挂载到公共模型</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// models/index</span></span><br><span class="line"><span class="keyword">import</span> mongoose <span class="keyword">from</span> <span class="string">'mongoose'</span></span><br><span class="line"><span class="keyword">import</span> Manager <span class="keyword">from</span> <span class="string">'./manager'</span></span><br><span class="line"><span class="keyword">import</span> Advert <span class="keyword">from</span> <span class="string">'./advert'</span></span><br><span class="line"><span class="keyword">import</span> Course <span class="keyword">from</span> <span class="string">'./course'</span></span><br><span class="line"><span class="keyword">import</span> categray <span class="keyword">from</span> <span class="string">'./course'</span></span><br><span class="line"></span><br><span class="line">mongoose.connect(<span class="string">'mongodb://localhost/edu'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123; </span><br><span class="line">  Manager,</span><br><span class="line">  Advert,</span><br><span class="line">  Course</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>路由文件提取</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// routers</span></span><br><span class="line"><span class="keyword">import</span> express <span class="keyword">from</span> <span class="string">'express'</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> courseController <span class="keyword">from</span> <span class="string">'../controllers/course'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = express.Router()</span><br><span class="line"></span><br><span class="line">router</span><br><span class="line">  .get(<span class="string">'/course'</span>, courseController.showCourse)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router</span><br></pre></td></tr></table></figure>
+<ul>
+<li>app.js 自动挂载路由</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="keyword">import</span> mountRouter <span class="keyword">from</span> <span class="string">'./middlewares/mount-router'</span></span><br><span class="line"><span class="comment">// 配置自动挂载路由</span></span><br><span class="line">mountRouter.configure(path.join(__dirname, <span class="string">'routes'</span>), &#123;</span><br><span class="line">  express: app</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//middlewares/mount-router</span></span><br><span class="line"><span class="keyword">import</span> fs <span class="keyword">from</span> <span class="string">'fs'</span></span><br><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">'path'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  configure: <span class="function">(<span class="params">routePath, options</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 一次性读取 routers 目录下的所有路由文件并自动挂载</span></span><br><span class="line">    <span class="comment">// fs的api都有相关的同步api，例如 readdir ,readdirSync</span></span><br><span class="line">    <span class="keyword">const</span> files = fs.readdirSync(routePath)</span><br><span class="line">    files.forEach(<span class="function"><span class="params">f</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 通过 require 函数加载模块中通过 export default 暴露的接口对象，必须通过 default 属性去获取</span></span><br><span class="line">      <span class="keyword">const</span> modulePath = path.join(routePath, f)</span><br><span class="line">      <span class="built_in">require</span>(modulePath).default &amp;&amp; options.express.use(<span class="built_in">require</span>(modulePath).default)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>请求处理函数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// controllers</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">showCourse</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createCourse</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">showInfo</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">postInfo</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line"> ...</span><br><span class="line">&#125;</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<h2 id="创建课程"><a href="#创建课程" class="headerlink" title="创建课程"></a>创建课程</h2><p>创建课程页面分为三个步骤</p>
+<ol>
+<li>step1: 输入课程名称</li>
+<li>step2: 输入课程分类、描述等内容</li>
+<li>step3: 上传课程图片并裁切</li>
+</ol>
+<h3 id="step1"><a href="#step1" class="headerlink" title="step1"></a>step1</h3><ul>
+<li>客户端发送创建课程请求</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'form'</span>).on(<span class="string">'submit'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  $.ajax(&#123;</span><br><span class="line">    url: $(<span class="keyword">this</span>).attr(<span class="string">'action'</span>),</span><br><span class="line">    type: $(<span class="keyword">this</span>).attr(<span class="string">'method'</span>),</span><br><span class="line">    data: $(<span class="keyword">this</span>).serialize(),</span><br><span class="line">    dataType: <span class="string">'json'</span></span><br><span class="line">  &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> err_code = data.err_code</span><br><span class="line">    <span class="keyword">switch</span> (err_code) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">        <span class="built_in">window</span>.location.href = data.redirectUrl</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建课程第二页显示输入的课程标题</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 显示创建课程页</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">showCourse</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (req.session.manager) &#123;&#125;</span><br><span class="line">  res.render(<span class="string">'course_add.html'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 处理创建课程请求</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createCourse</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; title &#125; = req.body</span><br><span class="line">  <span class="keyword">new</span> Course(&#123;</span><br><span class="line">    title</span><br><span class="line">  &#125;)</span><br><span class="line">  .save()</span><br><span class="line">  .then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">    res.json(&#123;</span><br><span class="line">      err_code: <span class="number">0</span>,</span><br><span class="line">      <span class="comment">// 返回创建的数据的id，用于渲染 step2 的页面</span></span><br><span class="line">      redirectUrl: <span class="string">`/course/info/<span class="subst">$&#123;result._id&#125;</span>`</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    next(err)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 渲染 step2 页面</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">showInfo</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> categories</span><br><span class="line">  <span class="comment">// 查询课程分类数据模型</span></span><br><span class="line">  Category</span><br><span class="line">    .find()</span><br><span class="line">    .then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">      categories = result</span><br><span class="line">      <span class="comment">// 查询创建课程数据模型</span></span><br><span class="line">      <span class="keyword">return</span> Course.findById(req.params.courseId)</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(<span class="function"><span class="params">course</span> =&gt;</span> &#123;</span><br><span class="line">      res.render(<span class="string">'course_add_step1.html'</span>, &#123;</span><br><span class="line">        <span class="comment">// 传入课程分类等数据</span></span><br><span class="line">        course,</span><br><span class="line">        categories</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="step2"><a href="#step2" class="headerlink" title="step2"></a>step2</h3><ul>
+<li>前端处理</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">""</span> <span class="attr">class</span>=<span class="string">"col-md-2 control-label"</span>&gt;</span>分类<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-md-8"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 分类处理 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">name</span>=<span class="string">"category"</span> <span class="attr">class</span>=<span class="string">"form-control input-sm"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">""</span>&gt;</span>请选择<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"&#123;&#123; course.category &#125;&#125;"</span>&gt;</span>课程分类所属ID<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 循环数据并渲染 --&gt;</span></span><br><span class="line">      &#123;% for category in categories %&#125;</span><br><span class="line">      <span class="comment">&lt;!-- 处理选中信息 --&gt;</span></span><br><span class="line">      &#123;% if course.category.toString() == category._id.toString() %&#125;</span><br><span class="line">      <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"&#123;&#123; category._id &#125;&#125;"</span> <span class="attr">selected</span>&gt;</span>&#123;&#123; category.name &#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span>    </span><br><span class="line">      &#123;% else %&#125;</span><br><span class="line">      <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"&#123;&#123; category._id &#125;&#125;"</span>&gt;</span>&#123;&#123; category.name &#125;&#125;<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">      &#123;% endif %&#125;</span><br><span class="line">      &#123;% endfor %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 提交表单</span></span><br><span class="line">$(<span class="string">'form'</span>).on(<span class="string">'submit'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  $.ajax(&#123;</span><br><span class="line">    url: $(<span class="keyword">this</span>).attr(<span class="string">'action'</span>),</span><br><span class="line">    type: $(<span class="keyword">this</span>).attr(<span class="string">'method'</span>),</span><br><span class="line">    data: $(<span class="keyword">this</span>).serialize(),</span><br><span class="line">    dataType: <span class="string">'json'</span></span><br><span class="line">  &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> err_code = data.err_code</span><br><span class="line">    <span class="keyword">switch</span> (err_code) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">        <span class="comment">// 跳转到 step3</span></span><br><span class="line">        <span class="built_in">window</span>.location.href = <span class="string">'/course/image/'</span> + $(<span class="string">'#_id'</span>).val()</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line"></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>后台处理</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 处理step2表单提交</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">postInfo</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 保存并更新数据库的课程信息</span></span><br><span class="line">  <span class="keyword">const</span> body = req.body</span><br><span class="line">  Course</span><br><span class="line">    .findById(req.body.id)</span><br><span class="line">    .then(<span class="function"><span class="params">course</span> =&gt;</span> &#123;</span><br><span class="line">      course.title = body.title</span><br><span class="line">      course.description = body.description</span><br><span class="line">      course.category = body.category</span><br><span class="line">      course.tags = body.tags</span><br><span class="line">      <span class="keyword">return</span> course.save()</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">      res.json(&#123;</span><br><span class="line">        err_code: <span class="number">0</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">      next(err)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 渲染 step3页面</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">showImage</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  res.render(<span class="string">'course_add_step2.html'</span>, &#123;</span><br><span class="line">    courseId: req.params.courseId</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="step3"><a href="#step3" class="headerlink" title="step3"></a>step3</h3><ul>
+<li>挂载路由</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> express <span class="keyword">from</span> <span class="string">'express'</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> courseController <span class="keyword">from</span> <span class="string">'../controllers/course'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = express.Router()</span><br><span class="line"></span><br><span class="line">router</span><br><span class="line">  .get(<span class="string">'/course'</span>, courseController.showCourse)</span><br><span class="line">  .post(<span class="string">'/course'</span>, courseController.createCourse)</span><br><span class="line">  .get(<span class="string">'/course/info/:courseId'</span>, courseController.showInfo)</span><br><span class="line">  .post(<span class="string">'/course/info'</span>, courseController.postInfo)</span><br><span class="line">  <span class="comment">// 注意：/course/image/crop 一定要放在 /course/image/:courseId 之前</span></span><br><span class="line">  <span class="comment">// 否则 /course/image/:courseId 也能匹配到 /course/image/crop</span></span><br><span class="line">  .get(<span class="string">'/course/image/crop'</span>, courseController.crop)</span><br><span class="line">  .get(<span class="string">'/course/image/:courseId'</span>, courseController.showImage)</span><br><span class="line">  <span class="comment">// 上传图片并预览</span></span><br><span class="line">  .post(<span class="string">'/course/image/preview'</span>, courseController.preview)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router</span><br></pre></td></tr></table></figure>
+<ul>
+<li>异步上传图片并预览（配合 jQuery-cropper）</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"picture col-md-offset-2"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"preview"</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 预览图片 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">img</span> <span class="attr">id</span>=<span class="string">"_img"</span> <span class="attr">src</span>=<span class="string">"./uploads/course.png"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"tips"</span>&gt;</span></span><br><span class="line">      可上传jpg, gif, png格式文件, 图片建议尺寸大于300x150，文件大小不能超过2M。</span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-md-2"</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 上传图片 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"image"</span> <span class="attr">id</span>=<span class="string">"course_img"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-md-12"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span> <span class="attr">id</span>=<span class="string">"_crop"</span> <span class="attr">class</span>=<span class="string">"btn btn-success btn-lg"</span>&gt;</span>保存<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">value</span>=<span class="string">"&#123;&#123; courseId &#125;&#125;"</span> <span class="attr">id</span>=<span class="string">"course_id"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 上传图片事件</span></span><br><span class="line">$(<span class="string">'#course_img'</span>).on(<span class="string">'change'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> formData = <span class="keyword">new</span> FormData()</span><br><span class="line">  formData.append($(<span class="keyword">this</span>).attr(<span class="string">'name'</span>), $(<span class="keyword">this</span>)[<span class="number">0</span>].files[<span class="number">0</span>])</span><br><span class="line">  $.ajax(&#123;</span><br><span class="line">    url: <span class="string">'/course/image/preview'</span>,</span><br><span class="line">    type: <span class="string">'post'</span>,</span><br><span class="line">    data: formData,</span><br><span class="line">    dataType: <span class="string">'json'</span>,</span><br><span class="line">    <span class="comment">// 阻止 jquery 默认事件</span></span><br><span class="line">    processData: <span class="literal">false</span>,</span><br><span class="line">    contentType: <span class="literal">false</span></span><br><span class="line">  &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> err_code = data.err_code  </span><br><span class="line">    <span class="keyword">switch</span> (err_code) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">        $(<span class="string">'#_img'</span>).attr(<span class="string">'src'</span>, data.imageSrc)</span><br><span class="line">        $(<span class="string">'#_img'</span>)</span><br><span class="line">          <span class="comment">// 使用了 jquery-cropper</span></span><br><span class="line">          <span class="comment">// 初始化图片裁切之前先删除，否则不能重复提交图片</span></span><br><span class="line">          .cropper(<span class="string">'destroy'</span>)</span><br><span class="line">          .cropper(&#123;</span><br><span class="line">          <span class="comment">// 固定比例</span></span><br><span class="line">          aspectRatio: <span class="number">16</span> / <span class="number">9</span></span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 展示上传的图片</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">preview</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  pmFormidable(req)</span><br><span class="line">    .then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> [fileds, files] = result</span><br><span class="line">      res.json(&#123;</span><br><span class="line">        err_code: <span class="number">0</span>,</span><br><span class="line">        <span class="comment">// 返回图片访问路径</span></span><br><span class="line">        imageSrc: <span class="string">`/public/uploads/<span class="subst">$&#123;basename(files.image.path)&#125;</span>`</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>裁切图片并上传（需要配合 gm 插件）</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 保存图片</span></span><br><span class="line">$(<span class="string">'#_crop'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 保存裁切数据</span></span><br><span class="line">  <span class="keyword">var</span> data = $(<span class="string">'#_img'</span>).cropper(<span class="string">'getData'</span>)</span><br><span class="line">  data.image = $(<span class="string">'#_img'</span>).attr(<span class="string">'src'</span>)</span><br><span class="line">  data.courseId = $(<span class="string">'#course_id'</span>).val()</span><br><span class="line">  $.ajax(&#123;</span><br><span class="line">    url: <span class="string">'/course/image/crop'</span>,</span><br><span class="line">    type: <span class="string">'get'</span>,</span><br><span class="line">    data: data,</span><br><span class="line">    dataType: <span class="string">'json'</span></span><br><span class="line">  &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> err_code = data.err_code</span><br><span class="line">    <span class="keyword">switch</span> (err_code) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">        <span class="comment">// 防止预览时调用缓存</span></span><br><span class="line">        $(<span class="string">'#crop_image'</span>).attr(<span class="string">'src'</span>, data.imgSrc + <span class="string">'?'</span> + <span class="keyword">new</span> <span class="built_in">Date</span>().getTime())</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 处理裁切图片后的数据上传请求</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">crop</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 根据上传的数据裁切图片</span></span><br><span class="line">  <span class="keyword">const</span> &#123; x, y, width, height, image, courseId &#125; = req.query</span><br><span class="line">  <span class="keyword">const</span> previewImgPath = join(config.uploadDir, basename(image))</span><br><span class="line">  gm(previewImgPath)</span><br><span class="line">    .crop(width, height, x, y)</span><br><span class="line">    .write(previewImgPath, (err) =&gt; &#123;</span><br><span class="line">      <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        <span class="keyword">return</span> next(err)</span><br><span class="line">      &#125;</span><br><span class="line">      Course</span><br><span class="line">        .findById(courseId)</span><br><span class="line">        .then(<span class="function"><span class="params">course</span> =&gt;</span> &#123;</span><br><span class="line">          course.image = basename(image)</span><br><span class="line">          <span class="keyword">return</span> course.save()</span><br><span class="line">        &#125;)</span><br><span class="line">        .then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">          res.json(&#123;</span><br><span class="line">            err_code: <span class="number">0</span>,</span><br><span class="line">            <span class="comment">// 返回图片路径信息用于展示裁切后的效果</span></span><br><span class="line">            imgSrc: <span class="string">`/public/uploads/<span class="subst">$&#123;basename(previewImgPath)&#125;</span>`</span></span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">        .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">          next(err)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NodeJS/" rel="tag"># NodeJS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/18/NodeJS/Node 在线教育后台项目-注册登录/" rel="next" title="Node 在线教育后台项目-注册登录">
+                <i class="fa fa-chevron-left"></i> Node 在线教育后台项目-注册登录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/18/NodeJS/Node 简单爬虫/" rel="prev" title="Node 简单爬虫">
+                Node 简单爬虫 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="SanCola" />
+            
+              <p class="site-author-name" itemprop="name">SanCola</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhanggy911" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/zhanggy911" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#公共部分"><span class="nav-number">1.</span> <span class="nav-text">公共部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建课程"><span class="nav-number">2.</span> <span class="nav-text">创建课程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#step1"><span class="nav-number">2.1.</span> <span class="nav-text">step1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step2"><span class="nav-number">2.2.</span> <span class="nav-text">step2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step3"><span class="nav-number">2.3.</span> <span class="nav-text">step3</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SanCola</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

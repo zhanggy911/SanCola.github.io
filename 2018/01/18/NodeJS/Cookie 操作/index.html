@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="NodeJS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Cookie 是服务器保存在浏览器的一小段文本信息，每个 Cookie 的大小不能超过4kb。浏览器每次向服务器发出请求，就会自动附上这段信息  Cookie的值Cookie可以保存以下方面的信息  Cookie 的名字 Cookie 的值 到期时间 所属域名（默认是当前路径） 生效的路径（默认是当前网址）">
+<meta name="keywords" content="NodeJS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cookie 操作">
+<meta property="og:url" content="http://yoursite.com/2018/01/18/NodeJS/Cookie 操作/index.html">
+<meta property="og:site_name" content="SanCola">
+<meta property="og:description" content="Cookie 是服务器保存在浏览器的一小段文本信息，每个 Cookie 的大小不能超过4kb。浏览器每次向服务器发出请求，就会自动附上这段信息  Cookie的值Cookie可以保存以下方面的信息  Cookie 的名字 Cookie 的值 到期时间 所属域名（默认是当前路径） 生效的路径（默认是当前网址）">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-18T06:34:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cookie 操作">
+<meta name="twitter:description" content="Cookie 是服务器保存在浏览器的一小段文本信息，每个 Cookie 的大小不能超过4kb。浏览器每次向服务器发出请求，就会自动附上这段信息  Cookie的值Cookie可以保存以下方面的信息  Cookie 的名字 Cookie 的值 到期时间 所属域名（默认是当前路径） 生效的路径（默认是当前网址）">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/18/NodeJS/Cookie 操作/"/>
+
+
+
+
+
+  <title>Cookie 操作 | SanCola</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SanCola</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life is a Rock N' Roll Train</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/18/NodeJS/Cookie 操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SanCola">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SanCola">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Cookie 操作</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-18T14:34:23+08:00">
+                2018-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NodeJS/" itemprop="url" rel="index">
+                    <span itemprop="name">NodeJS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>Cookie 是服务器保存在浏览器的一小段文本信息，每个 Cookie 的大小不能超过4kb。浏览器每次向服务器发出请求，就会自动附上这段信息</p>
+</blockquote>
+<h2 id="Cookie的值"><a href="#Cookie的值" class="headerlink" title="Cookie的值"></a>Cookie的值</h2><p>Cookie可以保存以下方面的信息</p>
+<ul>
+<li>Cookie 的名字</li>
+<li>Cookie 的值</li>
+<li>到期时间</li>
+<li>所属域名（默认是当前路径）</li>
+<li>生效的路径（默认是当前网址）</li>
+</ul>
+<a id="more"></a>
+<h2 id="Cookie的分类"><a href="#Cookie的分类" class="headerlink" title="Cookie的分类"></a>Cookie的分类</h2><ul>
+<li>会话 cookie<ul>
+<li>浏览器开启期间使用的 Cookie，并且没有指定过期时间的，就是会话 Cookie</li>
+<li>关闭浏览器后会话 Cookie 会丢失</li>
+</ul>
+</li>
+<li>持久 cookie<ul>
+<li>指定了过期时间的 Cookie 就是持久 Cookie</li>
+<li>关闭浏览器后持久 Cookie 不会丢失，除非手动删除</li>
+</ul>
+</li>
+</ul>
+<h2 id="浏览器操作Cookie"><a href="#浏览器操作Cookie" class="headerlink" title="浏览器操作Cookie"></a>浏览器操作Cookie</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取 Cookie</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCookies</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> cookies = &#123;&#125;</span><br><span class="line">  <span class="built_in">document</span>.cookie.split(<span class="string">';'</span>).forEach(<span class="function"><span class="keyword">function</span> (<span class="params">cookie</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (cookie) &#123;</span><br><span class="line">      <span class="keyword">var</span> item = cookie.split(<span class="string">'='</span>)</span><br><span class="line">      cookies[item[<span class="number">0</span>].trim()] = item[<span class="number">1</span>].trim()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> cookies</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> cookies = getCookies()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断并设定 Cookie</span></span><br><span class="line"><span class="keyword">if</span> (cookies[<span class="string">'username'</span>]) &#123;</span><br><span class="line">  $(<span class="string">'#username'</span>).val(cookies[<span class="string">'username'</span>])</span><br><span class="line">&#125;</span><br><span class="line">$(<span class="string">'form'</span>).on(<span class="string">'submit'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  $.ajax(&#123;</span><br><span class="line">    url: $(<span class="keyword">this</span>).attr(<span class="string">'action'</span>),</span><br><span class="line">    type: $(<span class="keyword">this</span>).attr(<span class="string">'method'</span>),</span><br><span class="line">    data: $(<span class="keyword">this</span>).serialize(),</span><br><span class="line">    dataType: <span class="string">'json'</span></span><br><span class="line">  &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data)</span><br><span class="line">    <span class="keyword">if</span> (data.err_code === <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="built_in">document</span>.cookie = <span class="string">'username='</span> + $(<span class="string">'#username'</span>).val()</span><br><span class="line">      <span class="built_in">window</span>.location.href = <span class="string">'/'</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (data.err_code === <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="built_in">window</span>.alert(<span class="string">'用户名或者密码错误'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="使用-Express-操作-Cookie"><a href="#使用-Express-操作-Cookie" class="headerlink" title="使用 Express 操作 Cookie"></a>使用 Express 操作 Cookie</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置 Cookie</span></span><br><span class="line">res.cookie(<span class="string">'username'</span>, username, &#123;</span><br><span class="line">  <span class="comment">// 指定 Cookie 在 1分钟后过期</span></span><br><span class="line">  maxAge: <span class="number">1000</span> * <span class="number">60</span></span><br><span class="line">  <span class="comment">// 指定使用路径</span></span><br><span class="line">  path: <span class="string">'/login'</span></span><br><span class="line">  domain: <span class="string">'127.0.0.1'</span></span><br><span class="line">  ...</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 清除 Cookie</span></span><br><span class="line">res.clearCookie(<span class="string">'username'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"></span><br><span class="line">http</span><br><span class="line">  .createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 从 HTTP 协议角度使用 Cookie</span></span><br><span class="line">    <span class="comment">// 1. 通过响应报文在报文头中加入一个字段：Set-Cookie 值就是：key=value 的格式</span></span><br><span class="line">    <span class="comment">// 2. 当浏览器收到服务端响应回来的数据的时候，发现响应头中有一个 Set-Cookie </span></span><br><span class="line">    <span class="comment">//    然后浏览器会将该 Cookie 对应的数据保存起来（会话Cookie，持久化）</span></span><br><span class="line">    <span class="comment">// 3. 当下一次浏览器再次访问该服务器的时候，浏览器会自动将保存的所有 Cookie 放到请求报文头中都带上来</span></span><br><span class="line">    <span class="comment">// 4. 然后服务端就可以根据当前客户端的请求报文头中的 cookie 字段来获取进行判断</span></span><br><span class="line">    <span class="keyword">const</span> cookie = req.headers.cookie</span><br><span class="line">    <span class="keyword">if</span> (!cookie) &#123;</span><br><span class="line">      res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">        <span class="string">'Set-Cookie'</span>: <span class="string">'isFirst=true'</span></span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="keyword">return</span> res.end(<span class="string">'hello first'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    res.end(<span class="string">'hello again'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  .listen(<span class="number">5000</span>, () =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'running...'</span>)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NodeJS/" rel="tag"># NodeJS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/18/NodeJS/Nunjucks 模板引擎/" rel="next" title="Nunjucks 模板引擎">
+                <i class="fa fa-chevron-left"></i> Nunjucks 模板引擎
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/18/NodeJS/Session 操作/" rel="prev" title="Session 操作">
+                Session 操作 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="SanCola" />
+            
+              <p class="site-author-name" itemprop="name">SanCola</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhanggy911" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/zhanggy911" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Cookie的值"><span class="nav-number">1.</span> <span class="nav-text">Cookie的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cookie的分类"><span class="nav-number">2.</span> <span class="nav-text">Cookie的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器操作Cookie"><span class="nav-number">3.</span> <span class="nav-text">浏览器操作Cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-Express-操作-Cookie"><span class="nav-number">4.</span> <span class="nav-text">使用 Express 操作 Cookie</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SanCola</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

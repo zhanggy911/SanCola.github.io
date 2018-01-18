@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="React," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="项目初始化拆分组件 组件拆分经常不能一次性划分好，可以先把大的部分拆分出来，哪里有性能问题再去优化。 模块拆分按照从大往小，从外往内的原则划分 组件化开发，代码组织结构是按 UI 界面划分的，而不是按业务功能区组织 按照生命周期的顺序去看待组件，如果具有多个组件，先看export default 导出的模块 注意 css 和 js 文件的命名规范 注意代码健壮性，业务逻辑完整性">
+<meta name="keywords" content="React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React demo">
+<meta property="og:url" content="http://yoursite.com/2018/01/18/framework/React/React demo/index.html">
+<meta property="og:site_name" content="SanCola">
+<meta property="og:description" content="项目初始化拆分组件 组件拆分经常不能一次性划分好，可以先把大的部分拆分出来，哪里有性能问题再去优化。 模块拆分按照从大往小，从外往内的原则划分 组件化开发，代码组织结构是按 UI 界面划分的，而不是按业务功能区组织 按照生命周期的顺序去看待组件，如果具有多个组件，先看export default 导出的模块 注意 css 和 js 文件的命名规范 注意代码健壮性，业务逻辑完整性">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhanggy911/markdown_img/master/React2.png">
+<meta property="og:updated_time" content="2018-01-18T09:07:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React demo">
+<meta name="twitter:description" content="项目初始化拆分组件 组件拆分经常不能一次性划分好，可以先把大的部分拆分出来，哪里有性能问题再去优化。 模块拆分按照从大往小，从外往内的原则划分 组件化开发，代码组织结构是按 UI 界面划分的，而不是按业务功能区组织 按照生命周期的顺序去看待组件，如果具有多个组件，先看export default 导出的模块 注意 css 和 js 文件的命名规范 注意代码健壮性，业务逻辑完整性">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zhanggy911/markdown_img/master/React2.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/18/framework/React/React demo/"/>
+
+
+
+
+
+  <title>React demo | SanCola</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SanCola</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life is a Rock N' Roll Train</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/18/framework/React/React demo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SanCola">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SanCola">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">React demo</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-18T17:03:30+08:00">
+                2018-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/framework/" itemprop="url" rel="index">
+                    <span itemprop="name">framework</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="项目初始化"><a href="#项目初始化" class="headerlink" title="项目初始化"></a>项目初始化</h2><h3 id="拆分组件"><a href="#拆分组件" class="headerlink" title="拆分组件"></a>拆分组件</h3><ul>
+<li>组件拆分经常不能一次性划分好，可以先把大的部分拆分出来，哪里有性能问题再去优化。</li>
+<li>模块拆分按照从大往小，从外往内的原则划分</li>
+<li>组件化开发，代码组织结构是按 UI 界面划分的，而不是按业务功能区组织</li>
+<li>按照生命周期的顺序去看待组件，如果具有多个组件，先看export default 导出的模块</li>
+<li>注意 css 和 js 文件的命名规范</li>
+<li>注意代码健壮性，业务逻辑完整性</li>
+</ul>
+<a id="more"></a>
+<h3 id="确定需求"><a href="#确定需求" class="headerlink" title="确定需求"></a>确定需求</h3><p><img src="https://raw.githubusercontent.com/zhanggy911/markdown_img/master/React2.png" alt=""></p>
+<ul>
+<li>搭建路由</li>
+<li>列表渲染<ul>
+<li>分页</li>
+<li>上拉加载更多</li>
+<li>加载提示</li>
+</ul>
+</li>
+<li>详细页面</li>
+<li>loading组件</li>
+<li>menu菜单的切换，sideBar 切换</li>
+<li>搜索组件</li>
+<li>异步代码加载</li>
+<li>解决 browerHistory 的跨路由访问问题</li>
+<li>部署到服务器</li>
+</ul>
+<h3 id="API-接口"><a href="#API-接口" class="headerlink" title="API 接口"></a>API 接口</h3><ul>
+<li>正在热映：<a href="https://api.douban.com/v2/movie/in_theaters?start=3&amp;count=10" target="_blank" rel="noopener">https://api.douban.com/v2/movie/in_theaters?start=3&amp;count=10</a></li>
+<li>即将上映：<a href="https://api.douban.com/v2/movie/coming_soon?start=6&amp;count=10" target="_blank" rel="noopener">https://api.douban.com/v2/movie/coming_soon?start=6&amp;count=10</a></li>
+<li>top250：<a href="https://api.douban.com/v2/movie/top250?start=6&amp;count=10" target="_blank" rel="noopener">https://api.douban.com/v2/movie/top250?start=6&amp;count=10</a></li>
+<li>详细数据：<a href="https://api.douban.com/v2/movie/subject/25847558" target="_blank" rel="noopener">https://api.douban.com/v2/movie/subject/25847558</a></li>
+<li>搜索数据：<a href="https://api.douban.com/v2/movie/search?q={text}" target="_blank" rel="noopener">https://api.douban.com/v2/movie/search?q={text}</a></li>
+</ul>
+<h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><ul>
+<li>webpack<ul>
+<li><a href="https://webpack.github.io/" target="_blank" rel="noopener">https://webpack.github.io/</a></li>
+</ul>
+</li>
+<li>react<ul>
+<li><a href="https://facebook.github.io/react/" target="_blank" rel="noopener">https://facebook.github.io/react/</a></li>
+<li><a href="http://react-china.org/" target="_blank" rel="noopener">http://react-china.org/</a></li>
+</ul>
+</li>
+<li>react-router<ul>
+<li><a href="https://github.com/ReactTraining/react-router" target="_blank" rel="noopener">https://github.com/ReactTraining/react-router</a></li>
+<li><a href="http://react-guide.github.io/react-router-cn/" target="_blank" rel="noopener">http://react-guide.github.io/react-router-cn/</a></li>
+</ul>
+</li>
+<li>fetch<ul>
+<li><a href="https://my.oschina.net/u/1416844/blog/731749" target="_blank" rel="noopener">https://my.oschina.net/u/1416844/blog/731749</a></li>
+</ul>
+</li>
+<li>sass<ul>
+<li><a href="http://sass.bootcss.com/" target="_blank" rel="noopener">http://sass.bootcss.com/</a></li>
+</ul>
+</li>
+<li>Flex<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool</a></li>
+</ul>
+</li>
+<li>ES6<ul>
+<li><a href="http://es6.ruanyifeng.com/" target="_blank" rel="noopener">http://es6.ruanyifeng.com/</a></li>
+</ul>
+</li>
+<li>YARN<ul>
+<li><a href="http://www.open-open.com/lib/view/open1478485680274.html" target="_blank" rel="noopener">http://www.open-open.com/lib/view/open1478485680274.html</a></li>
+</ul>
+</li>
+<li>PM2<ul>
+<li><a href="https://www.douban.com/note/314200231/" target="_blank" rel="noopener">https://www.douban.com/note/314200231/</a></li>
+</ul>
+</li>
+<li>AVA<ul>
+<li><a href="https://github.com/avajs/ava-docs/blob/master/zh_CN/readme.md" target="_blank" rel="noopener">https://github.com/avajs/ava-docs/blob/master/zh_CN/readme.md</a></li>
+</ul>
+</li>
+<li>TypeScript<ul>
+<li><a href="https://tslang.cn/index.html" target="_blank" rel="noopener">https://tslang.cn/index.html</a></li>
+</ul>
+</li>
+<li>Immutable：<ul>
+<li><a href="http://facebook.github.io/immutable-js/" target="_blank" rel="noopener">http://facebook.github.io/immutable-js/</a></li>
+<li><a href="https://www.w3ctech.com/topic/1595" target="_blank" rel="noopener">https://www.w3ctech.com/topic/1595</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/20295971?columnSlug=purerender" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/20295971?columnSlug=purerender</a></li>
+</ul>
+</li>
+<li>node:<ul>
+<li><a href="https://nodejs.org/dist/latest-v6.x/docs/api/" target="_blank" rel="noopener">https://nodejs.org/dist/latest-v6.x/docs/api/</a></li>
+<li><a href="http://overapi.com/nodejs" target="_blank" rel="noopener">http://overapi.com/nodejs</a></li>
+</ul>
+</li>
+<li>常见react的组件库<ul>
+<li><a href="https://ant.design/index-cn" target="_blank" rel="noopener">https://ant.design/index-cn</a></li>
+<li><a href="https://www.awesomes.cn/subject/react" target="_blank" rel="noopener">https://www.awesomes.cn/subject/react</a></li>
+<li><a href="http://lobos.github.io/react-ui/0.7/#/?_k=x9wruy" target="_blank" rel="noopener">http://lobos.github.io/react-ui/0.7/#/?_k=x9wruy</a></li>
+<li><a href="http://elemental-ui.com/home" target="_blank" rel="noopener">http://elemental-ui.com/home</a></li>
+<li><a href="http://ireact.cn/" target="_blank" rel="noopener">http://ireact.cn/</a></li>
+<li><a href="https://js.coach/" target="_blank" rel="noopener">https://js.coach/</a></li>
+<li><a href="https://www.zhihu.com/question/39452825?sort=created" target="_blank" rel="noopener">https://www.zhihu.com/question/39452825?sort=created</a></li>
+</ul>
+</li>
+<li>JSDoc<ul>
+<li><a href="http://www.css88.com/doc/jsdoc/" target="_blank" rel="noopener">http://www.css88.com/doc/jsdoc/</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="搭建项目结构"><a href="#搭建项目结构" class="headerlink" title="搭建项目结构"></a>搭建项目结构</h2><ul>
+<li>dist</li>
+<li>src<ul>
+<li>components — 通用组件<ul>
+<li>Loading.js</li>
+</ul>
+</li>
+<li>containers — 页面容器<ul>
+<li>AboutContainer.js</li>
+<li>AppContainer.js</li>
+<li>homeContainer.js</li>
+<li>MovieContainer.js</li>
+<li>MovieDetailContainer.js</li>
+<li>MovieSearchContainer.js</li>
+</ul>
+</li>
+<li>images</li>
+<li>js <ul>
+<li>app.js</li>
+<li>Routers.js</li>
+<li>config.js</li>
+</ul>
+</li>
+<li>services<ul>
+<li>movieService.js</li>
+</ul>
+</li>
+<li>styles<ul>
+<li>app.css</li>
+<li>…</li>
+</ul>
+</li>
+<li>index.html</li>
+<li>template.html</li>
+</ul>
+</li>
+<li>gulpfile.js</li>
+<li>package.json</li>
+<li>web pack.develop.config.js</li>
+<li>web pack.publish.config.js</li>
+<li>…</li>
+</ul>
+<h2 id="配置路由"><a href="#配置路由" class="headerlink" title="配置路由"></a>配置路由</h2><h3 id="navBar-导航路由"><a href="#navBar-导航路由" class="headerlink" title="navBar 导航路由"></a>navBar 导航路由</h3><ul>
+<li>js -&gt; app.js</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React,&#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">'react-dom'</span></span><br><span class="line"><span class="comment">// 引入路由组件</span></span><br><span class="line"><span class="keyword">import</span> Routers <span class="keyword">from</span> <span class="string">'./Routers.js'</span></span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;Routers/&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;,</span></span><br><span class="line"><span class="regexp">    document.getElementById('app')</span></span><br><span class="line"><span class="regexp">)</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>js -&gt; Routers.js</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入 React、react-router </span></span><br><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> &#123;Router,Route,browserHistory,hashHistory,IndexRoute,Redirect&#125; <span class="keyword">from</span> <span class="string">'react-router'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// CSS 初始化</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'../styles/root.css'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入实际页面组件</span></span><br><span class="line"><span class="keyword">import</span> AppContainer <span class="keyword">from</span> <span class="string">'../containers/AppContainer.js'</span></span><br><span class="line"><span class="keyword">import</span> HomeContainer <span class="keyword">from</span> <span class="string">'../containers/HomeContainer.js'</span></span><br><span class="line"><span class="keyword">import</span> MovieContainer <span class="keyword">from</span> <span class="string">'../containers/MovieContainer.js'</span></span><br><span class="line"><span class="keyword">import</span> AboutContainer <span class="keyword">from</span> <span class="string">'../containers/AboutContainer.js'</span></span><br><span class="line"><span class="keyword">import</span> MovieListContainer <span class="keyword">from</span> <span class="string">'../containers/MovieListContainer.js'</span></span><br><span class="line"><span class="keyword">import</span> MovieDetailContainer <span class="keyword">from</span> <span class="string">'../containers/MovieDetailContainer.js'</span></span><br><span class="line"><span class="keyword">import</span> MovieSearchContainer <span class="keyword">from</span> <span class="string">'../containers/MovieSearchContainer.js'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义 Routers 组件</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Routers</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props)</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &#123;<span class="comment">/* 通过页面嵌套结构创建 APP 整体路由 */</span>&#125;</span><br><span class="line">      &#123;<span class="comment">/* 使用 browserHistory */</span>&#125;</span><br><span class="line">      &lt;Router history=&#123;browserHistory&#125;&gt;</span><br><span class="line">        &lt;Route path=<span class="string">"/"</span> component=&#123;AppContainer&#125;&gt;</span><br><span class="line">          &#123;<span class="comment">/* 为容器赋予初始组件 */</span>&#125; </span><br><span class="line">          &lt;IndexRoute component=&#123;HomeContainer&#125;/&gt;</span><br><span class="line">          &lt;Route path=<span class="string">"home"</span> component=&#123;HomeContainer&#125;/&gt;</span><br><span class="line">          &lt;Route path=<span class="string">"movie"</span> component=&#123;MovieContainer&#125;&gt;</span><br><span class="line">            &lt;IndexRoute component=&#123;MovieListContainer&#125;/&gt;</span><br><span class="line">            &#123;<span class="comment">/* 通过传入路径参数控制请求内容 */</span>&#125;</span><br><span class="line">            &lt;Route path=<span class="string">"movieList/:movieType"</span> component=&#123;MovieListContainer&#125;/&gt;</span><br><span class="line">            &lt;Route path=<span class="string">"movieDetail/:id"</span> component=&#123;MovieDetailContainer&#125;/&gt;</span><br><span class="line">            &lt;Route path=<span class="string">"movieSearch/:keyword"</span> component=&#123;MovieSearchContainer&#125;/&gt;</span><br><span class="line">          &lt;<span class="regexp">/Route&gt;</span></span><br><span class="line"><span class="regexp">          &lt;Route path="About" component=&#123;AboutContainer&#125;/</span>&gt;</span><br><span class="line">        &lt;<span class="regexp">/Route&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>Router&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>containers -&gt; AppContainer.js</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// navBar 路由配置</span></span><br><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> &#123;Link&#125; <span class="keyword">from</span> <span class="string">'react-router'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入样式文件</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'../styles/app.css'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">AppContainer</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props)</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=<span class="string">"app_container"</span>&gt;</span><br><span class="line">        &#123;<span class="comment">/* navBar */</span>&#125;</span><br><span class="line">        &lt;div className=<span class="string">"app_header"</span>&gt;</span><br><span class="line">          &lt;Link to=<span class="string">"/home"</span>&gt;首页&lt;<span class="regexp">/Link&gt;</span></span><br><span class="line"><span class="regexp">          &lt;Link to="/m</span>ovie<span class="string">"&gt;电影&lt;/Link&gt;</span></span><br><span class="line"><span class="string">          &lt;Link to="</span>/about<span class="string">"&gt;联系我们&lt;/Link&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &#123;/* 页面容器，渲染相应页面 */&#125;</span></span><br><span class="line"><span class="string">        &lt;div className="</span>app_content<span class="string">"&gt;</span></span><br><span class="line"><span class="string">          &#123;/* 此处的 this.props.children 指的是在 Router 组件中，该组件的子组件 */&#125;</span></span><br><span class="line"><span class="string">          &#123;this.props.children&#125;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &#123;/* footer */&#125;</span></span><br><span class="line"><span class="string">        &lt;div className="</span>app_footer<span class="string">"&gt;</span></span><br><span class="line"><span class="string">          &lt;span&gt;v1.1&lt;/span&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">      &lt;/div&gt;</span></span><br><span class="line"><span class="string">    )</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="sideBar-导航路由"><a href="#sideBar-导航路由" class="headerlink" title="sideBar 导航路由"></a>sideBar 导航路由</h3><ul>
+<li>containers -&gt; MovieContainer.js </li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 列表页侧边栏导航路由</span></span><br><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> &#123;Link,browserHistory&#125; <span class="keyword">from</span> <span class="string">'react-router'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'../styles/movie.css'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">MovieContainer</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props)</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;</span><br><span class="line">      <span class="comment">// 搜索关键词，电影类型</span></span><br><span class="line">      keyword:<span class="string">''</span>,  </span><br><span class="line">      movieType:<span class="string">"in_theaters"</span>  </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 修改侧边栏参数，用于重新渲染侧边栏当前选中样式</span></span><br><span class="line">  changeMovieType=<span class="function">(<span class="params">movieType</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">      movieType:movieType</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 修改查询关键字，受控组件必须使用这种方式</span></span><br><span class="line">  changeKeyword=<span class="function">(<span class="params">e</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">      keyword:e.target.value</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 搜索方法</span></span><br><span class="line">  goSearch=<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// 跳转至相应的查询关键字</span></span><br><span class="line">    browserHistory.push(<span class="string">`/movie/movieSearch/<span class="subst">$&#123;<span class="keyword">this</span>.state.keyword&#125;</span>`</span>)</span><br><span class="line">    <span class="comment">// 清空，以便在搜索页面中去掉侧边栏的当前选种样式</span></span><br><span class="line">    <span class="keyword">this</span>.state = &#123;</span><br><span class="line">      keyword:<span class="string">''</span>,</span><br><span class="line">      movieType:<span class="string">''</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=<span class="string">"movie_container"</span>&gt;</span><br><span class="line">        &lt;div className=<span class="string">"movie_left"</span>&gt;</span><br><span class="line">          &lt;Link </span><br><span class="line">            &#123;<span class="comment">/* 点击时更改电影类型 */</span>&#125;</span><br><span class="line">            onClick=&#123;()=&gt;<span class="keyword">this</span>.changeMovieType(<span class="string">'in_theaters'</span>)&#125; </span><br><span class="line">            &#123;<span class="comment">/* 用于切换当前导航样式 */</span>&#125;</span><br><span class="line">            className=&#123;<span class="keyword">this</span>.state.movieType==<span class="string">'in_theaters'</span>?<span class="string">'movie_current'</span>:<span class="string">''</span>&#125;</span><br><span class="line">            to=<span class="string">"/movie/movieList/in_theaters"</span></span><br><span class="line">            &gt;</span><br><span class="line">            正在热映</span><br><span class="line">          &lt;<span class="regexp">/Link&gt;</span></span><br><span class="line"><span class="regexp">          &lt;Link </span></span><br><span class="line"><span class="regexp">            onClick=&#123;()=&gt;this.changeMovieType('coming_soon')&#125; </span></span><br><span class="line"><span class="regexp">            className=&#123;this.state.movieType=='coming_soon'?'movie_current':''&#125;</span></span><br><span class="line"><span class="regexp">            to="/m</span>ovie/movieList/coming_soon<span class="string">"</span></span><br><span class="line"><span class="string">            &gt;</span></span><br><span class="line"><span class="string">            即将上映</span></span><br><span class="line"><span class="string">          &lt;/Link&gt;</span></span><br><span class="line"><span class="string">          &lt;Link </span></span><br><span class="line"><span class="string">            onClick=&#123;()=&gt;this.changeMovieType('top250')&#125; </span></span><br><span class="line"><span class="string">            className=&#123;this.state.movieType=='top250'?'movie_current':''&#125;</span></span><br><span class="line"><span class="string">            to="</span>/movie/movieList/top250<span class="string">"</span></span><br><span class="line"><span class="string">            &gt;</span></span><br><span class="line"><span class="string">            Top250</span></span><br><span class="line"><span class="string">          &lt;/Link&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;div className="</span>movie_right<span class="string">"&gt;</span></span><br><span class="line"><span class="string">          &#123;/* 搜索框 */&#125;</span></span><br><span class="line"><span class="string">          &lt;div className="</span>movie_search<span class="string">"&gt;</span></span><br><span class="line"><span class="string">            &lt;input </span></span><br><span class="line"><span class="string">              type="</span>text<span class="string">" </span></span><br><span class="line"><span class="string">              value=&#123;this.state.keyword&#125; </span></span><br><span class="line"><span class="string">              &#123;/* 改变关键词 */&#125; </span></span><br><span class="line"><span class="string">              onChange=&#123;this.changeKeyword&#125;</span></span><br><span class="line"><span class="string">              /&gt;</span></span><br><span class="line"><span class="string">            &#123;/* 受控表单组件 */&#125; </span></span><br><span class="line"><span class="string">            &lt;button onClick=&#123;this.goSearch&#125;&gt;搜索&lt;/button&gt;</span></span><br><span class="line"><span class="string">          &lt;/div&gt;</span></span><br><span class="line"><span class="string">          &#123;/* 渲染实际电影列表容器 */&#125;</span></span><br><span class="line"><span class="string">          &lt;div className="</span>movie_content<span class="string">"&gt;</span></span><br><span class="line"><span class="string">            &#123;this.props.children&#125;</span></span><br><span class="line"><span class="string">          &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">      &lt;/div&gt;</span></span><br><span class="line"><span class="string">    )</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="在-React-中使用-CSS"><a href="#在-React-中使用-CSS" class="headerlink" title="在 React 中使用 CSS"></a>在 React 中使用 CSS</h2><ul>
+<li><p>styles -&gt; root.css</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 移动端初始设置 */</span></span><br><span class="line"><span class="comment">/* 控制第一层容器都是撑满全屏 */</span></span><br><span class="line"><span class="selector-tag">html</span>,<span class="selector-tag">body</span>&#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#app</span>&#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* react-router 会在最外层包裹一个 div */</span></span><br><span class="line"><span class="selector-id">#app</span> &gt; <span class="selector-pseudo">:nth-child(1)</span>&#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>styles -&gt; app.css</p>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* React 组件化容易存在命名冲突的问题，需要将样式命名详细 */</span></span><br><span class="line"><span class="comment">/* 样式名前加入当前组件名称 */</span></span><br><span class="line"><span class="selector-class">.app_container</span>&#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.app_header</span>&#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">8%</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#00B83F</span>;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* Link 最终会编译成 a 标签 */</span></span><br><span class="line"><span class="selector-class">.app_header</span> <span class="selector-tag">a</span>&#123;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">color</span>: white;</span><br><span class="line">  <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h2 id="抽取公共组件"><a href="#抽取公共组件" class="headerlink" title="抽取公共组件"></a>抽取公共组件</h2><ul>
+<li>components -&gt;Loading.js</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">'./loading.css'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Loading</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props)</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=<span class="string">"loading_container"</span>&gt;</span><br><span class="line">        &lt;a&gt;<span class="xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="请求数据"><a href="#请求数据" class="headerlink" title="请求数据"></a>请求数据</h2><h3 id="使用配置文件"><a href="#使用配置文件" class="headerlink" title="使用配置文件"></a>使用配置文件</h3><ul>
+<li>js -&gt; config.js</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 配置代理服务器地址</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  HTTP:<span class="string">'http://'</span>,</span><br><span class="line">  PORT:<span class="string">'3006'</span>,</span><br><span class="line">  SERVICE_PATH:<span class="string">'127.0.0.1'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用代理服务器"><a href="#使用代理服务器" class="headerlink" title="使用代理服务器"></a>使用代理服务器</h3><ul>
+<li>在项目目录外新建代理服务器项目</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入express</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> request=<span class="built_in">require</span>(<span class="string">'request'</span>)</span><br><span class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">'body-parser'</span>)</span><br><span class="line"><span class="keyword">const</span> port = process.env.PORT || <span class="number">3006</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 挂载 bodyParser</span></span><br><span class="line">app.use(bodyParser.urlencoded(&#123; <span class="attr">extended</span>: <span class="literal">false</span> &#125;))</span><br><span class="line">app.use(bodyParser.json())</span><br><span class="line"></span><br><span class="line"><span class="comment">// cors跨域请求头设置，固定写法</span></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span> (<span class="params">req,res,next</span>) </span>&#123;</span><br><span class="line">  res.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>);</span><br><span class="line">  res.header(<span class="string">"Access-Control-Allow-Headers"</span>, <span class="string">"Content-Type,Content-Length, Authorization, Accept,X-Requested-With"</span>);</span><br><span class="line">  res.header(<span class="string">"Access-Control-Allow-Methods"</span>,<span class="string">"PUT,POST,GET,DELETE,OPTIONS"</span>);</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 约定所有路径请求参数为 message</span></span><br><span class="line"><span class="comment">// 请求电影列表数据</span></span><br><span class="line">app.get(<span class="string">'/getMovieListData'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">req,res,next</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 格式化请求参数</span></span><br><span class="line">  <span class="keyword">let</span> message=<span class="built_in">JSON</span>.parse(req.query.message)</span><br><span class="line">  <span class="comment">// 设定请求路径 (豆瓣 API)</span></span><br><span class="line">  <span class="keyword">var</span> url=<span class="string">`https://api.douban.com/v2/movie/<span class="subst">$&#123;message.movieType&#125;</span>?start=<span class="subst">$&#123;message.start&#125;</span>&amp;count=<span class="subst">$&#123;message.count&#125;</span>`</span></span><br><span class="line">  <span class="comment">// 为 APP 返回数据</span></span><br><span class="line">  request(url, <span class="function"><span class="keyword">function</span> (<span class="params">error, response, body</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!error) &#123;</span><br><span class="line">      res.send(body)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 请求电影详情</span></span><br><span class="line">app.get(<span class="string">'/getMovieDetailData'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">req,res,next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> id=req.query.message</span><br><span class="line">  <span class="keyword">var</span> url=<span class="string">`https://api.douban.com/v2/movie/subject/<span class="subst">$&#123;id&#125;</span>`</span></span><br><span class="line">  request(url, <span class="function"><span class="keyword">function</span> (<span class="params">error, response, body</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!error) &#123;</span><br><span class="line">      res.send(body)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 关键字查询数据</span></span><br><span class="line">app.get(<span class="string">'/searchMovieListData'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">req,res,next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> message=<span class="built_in">JSON</span>.parse(req.query.message)</span><br><span class="line">  <span class="comment">// 防止中文报错</span></span><br><span class="line">  <span class="keyword">let</span> keyword=<span class="built_in">encodeURI</span>(message.keyword)</span><br><span class="line">  <span class="keyword">var</span> url=<span class="string">`https://api.douban.com/v2/movie/search?start=<span class="subst">$&#123;message.start&#125;</span>&amp;count=<span class="subst">$&#123;message.count&#125;</span>&amp;q=<span class="subst">$&#123;keyword&#125;</span>`</span></span><br><span class="line">  request(url, <span class="function"><span class="keyword">function</span> (<span class="params">error, response, body</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!error) &#123;</span><br><span class="line">      res.send(body)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 启动服务器</span></span><br><span class="line"><span class="keyword">const</span> server = app.listen(port, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> host = server.address().address;</span><br><span class="line">  <span class="keyword">const</span> port = server.address().port;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Example app listening at http://%s:%s'</span>, host, port);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="请求数据方法"><a href="#请求数据方法" class="headerlink" title="请求数据方法"></a>请求数据方法</h3><ul>
+<li>services -&gt; movieService.js</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;browserHistory&#125; <span class="keyword">from</span> <span class="string">'react-router'</span></span><br><span class="line"><span class="keyword">import</span> config <span class="keyword">from</span> <span class="string">'../js/config.js'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="comment">// 获取列表数据方法</span></span><br><span class="line">  getMovieListData(message)&#123;</span><br><span class="line">    <span class="comment">// 使用配置项中的请求路径</span></span><br><span class="line">    <span class="keyword">let</span> url=<span class="string">`<span class="subst">$&#123;config.HTTP&#125;</span><span class="subst">$&#123;config.SERVICE_PATH&#125;</span>:<span class="subst">$&#123;config.PORT&#125;</span>/getMovieListData?message=<span class="subst">$&#123;message&#125;</span>`</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve,reject</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 使用 fetch 请求数据</span></span><br><span class="line">      fetch(url)</span><br><span class="line">        .then(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (response.ok) &#123;</span><br><span class="line">          <span class="comment">// 返回数据</span></span><br><span class="line">          <span class="keyword">return</span> response.json()</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.error(<span class="string">'服务器繁忙，请稍后再试；\r\nCode:'</span> + response.status)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="comment">// 修改 promise 状态</span></span><br><span class="line">        .then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">        resolve(data)</span><br><span class="line">      &#125;)</span><br><span class="line">        .catch(<span class="function">(<span class="params">err</span>)=&gt;</span> &#123;</span><br><span class="line">        reject(err)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 获取详细数据方法</span></span><br><span class="line">  getMovieDetailData(id)&#123;</span><br><span class="line">    <span class="keyword">let</span> url=<span class="string">`<span class="subst">$&#123;config.HTTP&#125;</span><span class="subst">$&#123;config.SERVICE_PATH&#125;</span>:<span class="subst">$&#123;config.PORT&#125;</span>/getMovieDetailData?message=<span class="subst">$&#123;id&#125;</span>`</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve,reject</span>) </span>&#123;</span><br><span class="line">      fetch(url)</span><br><span class="line">        .then(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (response.ok) &#123;</span><br><span class="line">          <span class="keyword">return</span> response.json()</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.error(<span class="string">'服务器繁忙，请稍后再试；\r\nCode:'</span> + response.status)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">        .then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">        resolve(data)</span><br><span class="line">      &#125;)</span><br><span class="line">        .catch(<span class="function">(<span class="params">err</span>)=&gt;</span> &#123;</span><br><span class="line">        reject(err)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 查询关键词方法</span></span><br><span class="line">  searchMovieListData(message)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(message)</span><br><span class="line">    <span class="keyword">let</span> url=<span class="string">`<span class="subst">$&#123;config.HTTP&#125;</span><span class="subst">$&#123;config.SERVICE_PATH&#125;</span>:<span class="subst">$&#123;config.PORT&#125;</span>/searchMovieListData?message=<span class="subst">$&#123;message&#125;</span>`</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve,reject</span>) </span>&#123;</span><br><span class="line">      fetch(url)</span><br><span class="line">        .then(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (response.ok) &#123;</span><br><span class="line">          <span class="keyword">return</span> response.json()</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="built_in">console</span>.error(<span class="string">'服务器繁忙，请稍后再试；\r\nCode:'</span> + response.status)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">        .then(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">        resolve(data)</span><br><span class="line">      &#125;)</span><br><span class="line">        .catch(<span class="function">(<span class="params">err</span>)=&gt;</span> &#123;</span><br><span class="line">        reject(err)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用数据"><a href="#使用数据" class="headerlink" title="使用数据"></a>使用数据</h3><ul>
+<li>containers -&gt; MovieContainer</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> &#123;Link,browserHistory&#125; <span class="keyword">from</span> <span class="string">'react-router'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'../styles/movie.css'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">MovieContainer</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props)</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;</span><br><span class="line">      keyword:<span class="string">''</span>,</span><br><span class="line">      movieType:<span class="string">"in_theaters"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 改变电影类型</span></span><br><span class="line">  changeMovieType=<span class="function">(<span class="params">movieType</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">      movieType:movieType</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 改变查询关键字</span></span><br><span class="line">  changeKeyword=<span class="function">(<span class="params">e</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">      keyword:e.target.value</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 搜索方法</span></span><br><span class="line">  goSearch=<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    browserHistory.push(<span class="string">`/movie/movieSearch/<span class="subst">$&#123;<span class="keyword">this</span>.state.keyword&#125;</span>`</span>)</span><br><span class="line">    <span class="comment">// 需要清空搜索框</span></span><br><span class="line">    <span class="keyword">this</span>.state = &#123;</span><br><span class="line">      keyword:<span class="string">''</span>,</span><br><span class="line">      movieType:<span class="string">''</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=<span class="string">"movie_container"</span>&gt;</span><br><span class="line">        &lt;div className=<span class="string">"movie_left"</span>&gt;</span><br><span class="line">          &lt;Link </span><br><span class="line">            &#123;<span class="comment">/* 点击时改变电影类型 */</span>&#125;</span><br><span class="line">            onClick=&#123;()=&gt;<span class="keyword">this</span>.changeMovieType(<span class="string">'in_theaters'</span>)&#125;</span><br><span class="line">            &#123;<span class="comment">/* 切换选中样式 */</span>&#125;</span><br><span class="line">            className=&#123;<span class="keyword">this</span>.state.movieType==<span class="string">'in_theaters'</span>?<span class="string">'movie_current'</span>:<span class="string">''</span>&#125; </span><br><span class="line">            to=<span class="string">"/movie/movieList/in_theaters"</span>&gt;正在热映&lt;<span class="regexp">/Link&gt;</span></span><br><span class="line"><span class="regexp">          &lt;Link </span></span><br><span class="line"><span class="regexp">            onClick=&#123;()=&gt;this.changeMovieType('coming_soon')&#125; </span></span><br><span class="line"><span class="regexp">            className=&#123;this.state.movieType=='coming_soon'?'movie_current':''&#125; </span></span><br><span class="line"><span class="regexp">            to="/m</span>ovie/movieList/coming_soon<span class="string">"&gt;即将上映&lt;/Link&gt;</span></span><br><span class="line"><span class="string">          &lt;Link </span></span><br><span class="line"><span class="string">            onClick=&#123;()=&gt;this.changeMovieType('top250')&#125; </span></span><br><span class="line"><span class="string">            className=&#123;this.state.movieType=='top250'?'movie_current':''&#125; </span></span><br><span class="line"><span class="string">            to="</span>/movie/movieList/top250<span class="string">"&gt;Top250&lt;/Link&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;div className="</span>movie_right<span class="string">"&gt;</span></span><br><span class="line"><span class="string">          &lt;div className="</span>movie_search<span class="string">"&gt;</span></span><br><span class="line"><span class="string">            &lt;input </span></span><br><span class="line"><span class="string">              type="</span>text<span class="string">" </span></span><br><span class="line"><span class="string">              value=&#123;this.state.keyword&#125; </span></span><br><span class="line"><span class="string">              &#123;/* 输入时改变关键字 */&#125;</span></span><br><span class="line"><span class="string">              onChange=&#123;this.changeKeyword&#125;/&gt;</span></span><br><span class="line"><span class="string">            &#123;/* 点击搜索 */&#125;</span></span><br><span class="line"><span class="string">            &lt;button onClick=&#123;this.goSearch&#125;&gt;搜索&lt;/button&gt;</span></span><br><span class="line"><span class="string">          &lt;/div&gt;</span></span><br><span class="line"><span class="string">          &lt;div className="</span>movie_content<span class="string">"&gt;</span></span><br><span class="line"><span class="string">            &#123;this.props.children&#125;</span></span><br><span class="line"><span class="string">          &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">      &lt;/div&gt;</span></span><br><span class="line"><span class="string">    )</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>containers -&gt; MovieListContainer</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 电影列表页</span></span><br><span class="line"><span class="keyword">import</span> React, &#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> &#123;browserHistory&#125; <span class="keyword">from</span> <span class="string">'react-router'</span></span><br><span class="line"><span class="keyword">import</span> service <span class="keyword">from</span> <span class="string">'../services/movieService.js'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'../styles/movieList.css'</span></span><br><span class="line"><span class="keyword">import</span> Loading <span class="keyword">from</span> <span class="string">'../components/Loading.js'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">MovieListContainer</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 数据初始化</span></span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props)</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;</span><br><span class="line">      isLoading: <span class="literal">true</span>,</span><br><span class="line">      isBottom:<span class="literal">false</span>,</span><br><span class="line">      movieListData:[],</span><br><span class="line">      message:&#123;</span><br><span class="line">        movieType:<span class="string">'in_theaters'</span>,</span><br><span class="line">        pageIndex:<span class="number">1</span>,</span><br><span class="line">        start:<span class="number">0</span>,</span><br><span class="line">        count:<span class="number">10</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 请求数据</span></span><br><span class="line">  fetch = <span class="function">(<span class="params">movieType</span>)=&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> _this = <span class="keyword">this</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果当前请求的的电影类型与 state 的电影类型不同，则将组件的 state 复位</span></span><br><span class="line">    <span class="comment">// 用于电影类型的侧边栏切换</span></span><br><span class="line">    <span class="keyword">if</span>(movieType!=<span class="keyword">this</span>.state.message.movieType)&#123;</span><br><span class="line">      <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">        isLoading: <span class="literal">true</span>,</span><br><span class="line">        isBottom:<span class="literal">false</span>,</span><br><span class="line">        movieListData:[],</span><br><span class="line">        message:&#123;</span><br><span class="line">          movieType:movieType,</span><br><span class="line">          pageIndex:<span class="number">1</span>,</span><br><span class="line">          start:<span class="number">0</span>,</span><br><span class="line">          count:<span class="number">10</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 深拷贝当前的电影列表数据以及路径请求参数</span></span><br><span class="line">    <span class="keyword">let</span> movieListData = [].concat(<span class="keyword">this</span>.state.movieListData)</span><br><span class="line">    <span class="keyword">let</span> message = <span class="built_in">Object</span>.assign(&#123;&#125;,<span class="keyword">this</span>.state.message)</span><br><span class="line">    <span class="comment">// 修改新拷贝出的路径请求参数，</span></span><br><span class="line">    message.start = (message.pageIndex<span class="number">-1</span>)*message.count</span><br><span class="line">    message.pageIndex = message.pageIndex+<span class="number">1</span></span><br><span class="line">    <span class="comment">// 格式化复制并修改后的 message</span></span><br><span class="line">    <span class="keyword">let</span> messageStr = <span class="built_in">JSON</span>.stringify(message)</span><br><span class="line">    <span class="comment">// 传入 message 并向代理服务器发起请求</span></span><br><span class="line">    <span class="keyword">let</span> promise=service.getMovieListData(messageStr)</span><br><span class="line"></span><br><span class="line">    promise.then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 判断电影数据列表内是否有数据，如果不为空说明不是第一次请求</span></span><br><span class="line">      <span class="keyword">if</span>(movieListData.length&gt;<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="comment">// 不为空则将请求到的数据与原数据合并</span></span><br><span class="line">        movieListData = movieListData.concat(data.subjects)</span><br><span class="line">      &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 为空则直接复制数据</span></span><br><span class="line">        movieListData = data.subjects</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 如果在请求数据时切换了侧边栏，则需要判断实例是否还存在</span></span><br><span class="line">      <span class="comment">// 如果存在，修改 state，重新渲染组件</span></span><br><span class="line">      <span class="keyword">if</span>(_this._reactInternalInstance)&#123;</span><br><span class="line">        _this.setState(&#123;</span><br><span class="line">          message: message,</span><br><span class="line">          isBottom: <span class="literal">false</span>,</span><br><span class="line">          isLoading: <span class="literal">false</span>,</span><br><span class="line">          movieListData: movieListData</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;    </span><br><span class="line"></span><br><span class="line">  <span class="comment">// 添加滚动监听函数</span></span><br><span class="line">  addScrollEvent = <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> _this = <span class="keyword">this</span></span><br><span class="line">    <span class="comment">// 不能使用 addEventListener，会有重复添加问题</span></span><br><span class="line">    <span class="keyword">this</span>.refs.scrollContainer.onscroll=<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 到达底部判断</span></span><br><span class="line">      <span class="keyword">if</span>(e.target.scrollHeight==e.target.scrollTop+e.target.offsetHeight)&#123;</span><br><span class="line">        <span class="keyword">if</span>(_this.state.isBottom)&#123;</span><br><span class="line">          <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        _this.setState(&#123;</span><br><span class="line">          isBottom:<span class="literal">true</span></span><br><span class="line">        &#125;)</span><br><span class="line">        _this.fetch(_this.state.message.movieType)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 跳转至页面详情</span></span><br><span class="line">  goDetail = <span class="function">(<span class="params">id</span>)=&gt;</span>&#123;</span><br><span class="line">    browserHistory.push(<span class="string">`/movie/movieDetail/<span class="subst">$&#123;id&#125;</span>`</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 组件初次挂载完成，直接请求当前默认的电影列表数据</span></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    <span class="keyword">this</span>.fetch(<span class="keyword">this</span>.state.message.movieType)</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// 已挂载组件接收到新的参数，准备重新渲染，用于切换电影类型</span></span><br><span class="line">componentWillReceiveProps(nextProps)&#123;</span><br><span class="line">  <span class="keyword">this</span>.fetch(nextProps.params.movieType)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 组件更新完成，根据 isLoading 判断请求数据或添加滚动监听函数</span></span><br><span class="line">componentDidUpdate()&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.state.isLoading)&#123;</span><br><span class="line">    <span class="keyword">this</span>.fetch(<span class="keyword">this</span>.state.message.movieType)</span><br><span class="line">  &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.addScrollEvent()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 渲染页面整体加载</span></span><br><span class="line">renderLoading = <span class="function"><span class="params">()</span>=&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> ( <span class="xml"><span class="tag">&lt;<span class="name">Loading</span>/&gt;</span></span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 渲染列表单行</span></span><br><span class="line">renderItem = <span class="function">(<span class="params">item</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="comment">// 添加去往详情页的方法</span></span><br><span class="line">    &lt;div onClick=&#123;()=&gt;<span class="keyword">this</span>.goDetail(item.id)&#125; className=<span class="string">"movieList_item"</span> key=&#123;item.id&#125;&gt;</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;img src=&#123;item.images.small&#125; alt=<span class="string">""</span>/&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;h1&gt;&#123;item.title&#125;&lt;/</span>h1&gt;</span><br><span class="line">        &lt;span&gt;&#123;item.year&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 渲染列表整体</span></span><br><span class="line"><span class="regexp">renderMovieList = ()=&gt; &#123;</span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;div ref="scrollContainer" className="movieList_container"&gt;</span></span><br><span class="line"><span class="regexp">      &#123;/</span>* 渲染页面整体 *<span class="regexp">/&#125;</span></span><br><span class="line"><span class="regexp">      &#123;this.state.movieListData.map(this.renderItem)&#125;</span></span><br><span class="line"><span class="regexp">      &#123;/</span>* 页面滚动到底部时显示正在加载 *<span class="regexp">/&#125;</span></span><br><span class="line"><span class="regexp">      &lt;div className=&#123;this.state.isBottom?"movieList_show":"movieList_hide"&#125;&gt;</span></span><br><span class="line"><span class="regexp">        &lt;span&gt;正在请求数据，请稍等&lt;/</span>span&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 渲染页面</span></span><br><span class="line">render() &#123;</span><br><span class="line">  <span class="comment">// 根据 isLoading 判断渲染页面</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.state.isLoading) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.renderLoading()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.renderMovieList()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>containers -&gt; MovieDetailContainer</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 电影详情页</span></span><br><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> &#123;browserHistory&#125; <span class="keyword">from</span> <span class="string">'react-router'</span></span><br><span class="line"><span class="keyword">import</span> service <span class="keyword">from</span> <span class="string">'../services/movieService.js'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'../styles/movieDetail.css'</span></span><br><span class="line"><span class="keyword">import</span> Loading <span class="keyword">from</span> <span class="string">'../components/Loading.js'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">MovieDetailContainer</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props)</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;</span><br><span class="line">      isLoading: <span class="literal">true</span>,</span><br><span class="line">      movieDetailData:&#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    <span class="keyword">this</span>.fetch()</span><br><span class="line">  &#125;</span><br><span class="line">  fetch = <span class="function"><span class="params">()</span>=&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> _this = <span class="keyword">this</span></span><br><span class="line">    <span class="keyword">let</span> promise=service.getMovieDetailData(<span class="keyword">this</span>.props.params.id)</span><br><span class="line">    promise.then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">      _this.setState(&#123;</span><br><span class="line">        isLoading: <span class="literal">false</span>,</span><br><span class="line">        movieDetailData:data</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 渲染遮罩</span></span><br><span class="line">  renderLoading = <span class="function"><span class="params">()</span>=&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">Loading</span>/&gt;</span></span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 渲染电影详情</span></span><br><span class="line">  renderMovieDetail = <span class="function"><span class="params">()</span>=&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=<span class="string">"movieDetail_container"</span>&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">          &lt;img src=&#123;<span class="keyword">this</span>.state.movieDetailData.images.large&#125; alt=<span class="string">""</span>/&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;div&gt;</span></span><br><span class="line"><span class="regexp">          &lt;h1&gt;&#123;this.state.movieDetailData.title&#125;&lt;/</span>h1&gt;</span><br><span class="line">          &lt;p&gt;&#123;<span class="keyword">this</span>.state.movieDetailData.summary&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>div&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">  render() &#123;</span></span><br><span class="line"><span class="regexp">    if (this.state.isLoading) &#123;</span></span><br><span class="line"><span class="regexp">      return this.renderLoading()</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    else &#123;</span></span><br><span class="line"><span class="regexp">      return this.renderMovieDetail()</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>containers -&gt; MovieSearchContainer</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123;Component&#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> &#123;browserHistory&#125; <span class="keyword">from</span> <span class="string">'react-router'</span></span><br><span class="line"><span class="keyword">import</span> service <span class="keyword">from</span> <span class="string">'../services/movieService.js'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'../styles/movieList.css'</span></span><br><span class="line"><span class="keyword">import</span> Loading <span class="keyword">from</span> <span class="string">'../components/Loading.js'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">MovieSearchContainer</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props)</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;</span><br><span class="line">      isLoading: <span class="literal">true</span>,</span><br><span class="line">      isBottom:<span class="literal">false</span>,</span><br><span class="line">      movieListData:[],</span><br><span class="line">      message:&#123;</span><br><span class="line">        <span class="comment">// 修改关键词</span></span><br><span class="line">        keyword:<span class="keyword">this</span>.props.params.keyword,</span><br><span class="line">        pageIndex:<span class="number">1</span>,</span><br><span class="line">        start:<span class="number">0</span>,</span><br><span class="line">        count:<span class="number">10</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  addScrollEvent=<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> _this=<span class="keyword">this</span></span><br><span class="line">    <span class="keyword">this</span>.refs.scrollContainer.onscroll=<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(e.target.scrollHeight==e.target.scrollTop+e.target.offsetHeight)&#123;</span><br><span class="line">        <span class="keyword">if</span>(_this.state.isBottom)&#123;</span><br><span class="line">          <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        _this.setState(&#123;</span><br><span class="line">          isBottom:<span class="literal">true</span></span><br><span class="line">        &#125;)</span><br><span class="line">        _this.fetch(_this.state.message.keyword)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  fetch = <span class="function">(<span class="params">keyword</span>)=&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> _this = <span class="keyword">this</span></span><br><span class="line">    <span class="keyword">if</span>(keyword!=<span class="keyword">this</span>.state.message.keyword)&#123;</span><br><span class="line">      <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">        isLoading: <span class="literal">true</span>,</span><br><span class="line">        isBottom:<span class="literal">false</span>,</span><br><span class="line">        movieListData:[],</span><br><span class="line">        message:&#123;</span><br><span class="line">          keyword:keyword,</span><br><span class="line">          pageIndex:<span class="number">1</span>,</span><br><span class="line">          start:<span class="number">0</span>,</span><br><span class="line">          count:<span class="number">10</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> movieListData=[].concat(<span class="keyword">this</span>.state.movieListData)</span><br><span class="line">    <span class="keyword">let</span> message=<span class="built_in">Object</span>.assign(&#123;&#125;,<span class="keyword">this</span>.state.message)</span><br><span class="line">    message.start=(message.pageIndex<span class="number">-1</span>)*message.count</span><br><span class="line">    message.pageIndex=message.pageIndex+<span class="number">1</span></span><br><span class="line">    <span class="keyword">let</span> messageStr=<span class="built_in">JSON</span>.stringify(message)</span><br><span class="line">    <span class="keyword">let</span> promise=service.searchMovieListData(messageStr)</span><br><span class="line">    promise.then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(movieListData.length&gt;<span class="number">0</span>)&#123;</span><br><span class="line">        movieListData=movieListData.concat(data.subjects)</span><br><span class="line">      &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        movieListData=data.subjects</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(_this._reactInternalInstance)&#123;</span><br><span class="line">        _this.setState(&#123;</span><br><span class="line">          message:message,</span><br><span class="line">          isBottom:<span class="literal">false</span>,</span><br><span class="line">          isLoading: <span class="literal">false</span>,</span><br><span class="line">          movieListData:movieListData</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  goDetail=<span class="function">(<span class="params">id</span>)=&gt;</span>&#123;</span><br><span class="line">    browserHistory.push(<span class="string">`/movie/movieDetail/<span class="subst">$&#123;id&#125;</span>`</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 更新关键词事重新请求数据</span></span><br><span class="line">  componentWillReceiveProps(nextProps)&#123;</span><br><span class="line">    <span class="keyword">this</span>.fetch(nextProps.params.keyword)</span><br><span class="line">  &#125;</span><br><span class="line">componentDidMount() &#123;</span><br><span class="line">  <span class="keyword">this</span>.fetch(<span class="keyword">this</span>.state.message.keyword)</span><br><span class="line">&#125;</span><br><span class="line">componentDidUpdate()&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">this</span>.state.isLoading)&#123;</span><br><span class="line">    <span class="keyword">this</span>.fetch(<span class="keyword">this</span>.state.message.keyword)</span><br><span class="line">  &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.addScrollEvent()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">renderLoading = <span class="function"><span class="params">()</span>=&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">Loading</span>/&gt;</span></span>)</span><br><span class="line">&#125;</span><br><span class="line">renderItem=<span class="function">(<span class="params">item</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div onClick=&#123;()=&gt;<span class="keyword">this</span>.goDetail(item.id)&#125; className=<span class="string">"movieList_item"</span> key=&#123;item.id&#125;&gt;</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;img src=&#123;item.images.small&#125; alt=<span class="string">""</span>/&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;h1&gt;&#123;item.title&#125;&lt;/</span>h1&gt;</span><br><span class="line">        &lt;span&gt;&#123;item.year&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">renderMovieList = ()=&gt; &#123;</span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;div ref="scrollContainer" className="movieList_container"&gt;</span></span><br><span class="line"><span class="regexp">      &#123;this.state.movieListData.map(this.renderItem)&#125;</span></span><br><span class="line"><span class="regexp">      &lt;div className=&#123;this.state.isBottom?"movieList_show":"movieList_hide"&#125;&gt;</span></span><br><span class="line"><span class="regexp">        &lt;span&gt;正在请求数据，请稍等&lt;/</span>span&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line">render() &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.state.isLoading) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.renderLoading()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.renderMovieList()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码异步加载"><a href="#代码异步加载" class="headerlink" title="代码异步加载"></a>代码异步加载</h2><ul>
+<li>将代码改为按需加载</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// js -&gt; Routers.js</span></span><br><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> &#123;Router,Route,browserHistory,hashHistory,IndexRoute,Redirect&#125; <span class="keyword">from</span> <span class="string">'react-router'</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'../styles/root.css'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 首页不用的模块不需要挂载</span></span><br><span class="line"><span class="keyword">import</span> AppContainer <span class="keyword">from</span> <span class="string">'../containers/AppContainer.js'</span></span><br><span class="line"><span class="keyword">import</span> HomeContainer <span class="keyword">from</span> <span class="string">'../containers/HomeContainer.js'</span></span><br><span class="line"><span class="comment">// import MovieContainer from '../containers/MovieContainer.js'</span></span><br><span class="line"><span class="comment">// import AboutContainer from '../containers/AboutContainer.js'</span></span><br><span class="line"><span class="comment">// import MovieListContainer from '../containers/MovieListContainer.js'</span></span><br><span class="line"><span class="comment">// import MovieDetailContainer from '../containers/MovieDetailContainer.js'</span></span><br><span class="line"><span class="comment">// import MovieSearchContainer from '../containers/MovieSearchContainer.js'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Routers</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props)</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;Router history=&#123;browserHistory&#125;&gt;</span><br><span class="line">        &lt;Route path=<span class="string">"/"</span> component=&#123;AppContainer&#125;&gt;</span><br><span class="line">          &lt;IndexRoute component=&#123;HomeContainer&#125;/&gt;</span><br><span class="line">          &lt;Route path=<span class="string">"home"</span> component=&#123;HomeContainer&#125;/&gt;</span><br><span class="line">          &#123;<span class="comment">/* 首页不需要的模块改为异步加载 */</span>&#125;</span><br><span class="line">          &lt;Route path=<span class="string">"movie"</span></span><br><span class="line">            getComponent=&#123;</span><br><span class="line">              (nextState, callback)=&gt; &#123;</span><br><span class="line">                <span class="built_in">require</span>.ensure([], (<span class="built_in">require</span>)=&gt; &#123;</span><br><span class="line">                  callback(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">"../containers/MovieContainer.js"</span>).default)</span><br><span class="line">                &#125;, <span class="string">"movie"</span>)</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            &gt;</span><br><span class="line">            &lt;IndexRoute</span><br><span class="line">              getComponent=&#123;</span><br><span class="line">                (nextState, callback)=&gt; &#123;</span><br><span class="line">                  <span class="built_in">require</span>.ensure([], (<span class="built_in">require</span>)=&gt; &#123;</span><br><span class="line">                    callback(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">"../containers/MovieListContainer.js"</span>).default)</span><br><span class="line">                  &#125;, <span class="string">"movieList"</span>)</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">              /&gt;</span><br><span class="line">            &lt;Route path=<span class="string">"movieList/:movieType"</span></span><br><span class="line">              getComponent=&#123;</span><br><span class="line">                (nextState, callback)=&gt; &#123;</span><br><span class="line">                  <span class="built_in">require</span>.ensure([], (<span class="built_in">require</span>)=&gt; &#123;</span><br><span class="line">                    callback(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">"../containers/MovieListContainer.js"</span>).default)</span><br><span class="line">                  &#125;, <span class="string">"movieList"</span>)</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">              /&gt;</span><br><span class="line">            &lt;Route path=<span class="string">"movieDetail/:id"</span></span><br><span class="line">              getComponent=&#123;</span><br><span class="line">                (nextState, callback)=&gt; &#123;</span><br><span class="line">                  <span class="built_in">require</span>.ensure([], (<span class="built_in">require</span>)=&gt; &#123;</span><br><span class="line">                    callback(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">"../containers/MovieDetailContainer.js"</span>).default)</span><br><span class="line">                  &#125;, <span class="string">"movieDetail"</span>)</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">              /&gt;</span><br><span class="line">            &lt;Route path=<span class="string">"movieSearch/:keyword"</span></span><br><span class="line">              getComponent=&#123;</span><br><span class="line">                (nextState, callback)=&gt; &#123;</span><br><span class="line">                  <span class="built_in">require</span>.ensure([], (<span class="built_in">require</span>)=&gt; &#123;</span><br><span class="line">                    callback(<span class="literal">null</span>, <span class="built_in">require</span>(<span class="string">"../containers/MovieSearchContainer.js"</span>).default)</span><br><span class="line">                  &#125;, <span class="string">"movieSearch"</span>)</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">              /&gt;</span><br><span class="line">          &lt;<span class="regexp">/Route&gt;</span></span><br><span class="line"><span class="regexp">          &lt;Route path="About"</span></span><br><span class="line"><span class="regexp">            getComponent=&#123;</span></span><br><span class="line"><span class="regexp">              (nextState, callback)=&gt; &#123;</span></span><br><span class="line"><span class="regexp">                require.ensure([], (require)=&gt; &#123;</span></span><br><span class="line"><span class="regexp">                  callback(null, require("../</span>containers/AboutContainer.js<span class="string">").default)</span></span><br><span class="line"><span class="string">                &#125;, "</span>about<span class="string">")</span></span><br><span class="line"><span class="string">              &#125;</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">            /&gt;</span></span><br><span class="line"><span class="string">        &lt;/Route&gt;</span></span><br><span class="line"><span class="string">      &lt;/Router&gt;</span></span><br><span class="line"><span class="string">    )</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改 webpack.publish.config.js</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 指定项目构建的输出位置</span></span><br><span class="line">output: &#123;</span><br><span class="line">  path: path.resolve(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">  filename: <span class="string">'bundle.js'</span>,</span><br><span class="line">  <span class="comment">// 将异步加载的模块路径全部改为以 '/' 开头</span></span><br><span class="line">  publicPath:<span class="string">'/'</span>,</span><br><span class="line">  <span class="comment">// 异步加载文件名称设置，name 表示 React 路由模块异步加载写法中定义的模块名称</span></span><br><span class="line">  chunkFilename: <span class="string">'[name]_[chunkhash:8]_chunk.js'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h2><h3 id="修改项目配置"><a href="#修改项目配置" class="headerlink" title="修改项目配置"></a>修改项目配置</h3><ul>
+<li>修改代理服务器</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> request=<span class="built_in">require</span>(<span class="string">'request'</span>)</span><br><span class="line"><span class="keyword">const</span> port = process.env.PORT || <span class="number">3006</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">'body-parser'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"></span><br><span class="line">app.use(express.static(__dirname + <span class="string">'/public'</span>))</span><br><span class="line">app.use(bodyParser.urlencoded(&#123; <span class="attr">extended</span>: <span class="literal">false</span> &#125;))</span><br><span class="line">app.use(bodyParser.json())</span><br><span class="line"></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span> (<span class="params">req,res,next</span>) </span>&#123;</span><br><span class="line">  res.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>);</span><br><span class="line">  res.header(<span class="string">"Access-Control-Allow-Headers"</span>, <span class="string">"Content-Type,Content-Length, Authorization, Accept,X-Requested-With"</span>);</span><br><span class="line">  res.header(<span class="string">"Access-Control-Allow-Methods"</span>,<span class="string">"PUT,POST,GET,DELETE,OPTIONS"</span>);</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/getMovieListData'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">req,res,next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> message=<span class="built_in">JSON</span>.parse(req.query.message)</span><br><span class="line">  <span class="keyword">var</span> url=<span class="string">`https://api.douban.com/v2/movie/<span class="subst">$&#123;message.movieType&#125;</span>?start=<span class="subst">$&#123;message.start&#125;</span>&amp;count=<span class="subst">$&#123;message.count&#125;</span>`</span></span><br><span class="line">  request(url, <span class="function"><span class="keyword">function</span> (<span class="params">error, response, body</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!error) &#123;</span><br><span class="line">      res.send(body)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">app.get(<span class="string">'/searchMovieListData'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">req,res,next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> message=<span class="built_in">JSON</span>.parse(req.query.message)</span><br><span class="line">  <span class="keyword">let</span> keyword=<span class="built_in">encodeURI</span>(message.keyword)</span><br><span class="line">  <span class="keyword">var</span> url=<span class="string">`https://api.douban.com/v2/movie/search?start=<span class="subst">$&#123;message.start&#125;</span>&amp;count=<span class="subst">$&#123;message.count&#125;</span>&amp;q=<span class="subst">$&#123;keyword&#125;</span>`</span></span><br><span class="line">  request(url, <span class="function"><span class="keyword">function</span> (<span class="params">error, response, body</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!error) &#123;</span><br><span class="line">      res.send(body)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">app.get(<span class="string">'/getMovieDetailData'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">req,res,next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> id=req.query.message</span><br><span class="line">  <span class="keyword">var</span> url=<span class="string">`https://api.douban.com/v2/movie/subject/<span class="subst">$&#123;id&#125;</span>`</span></span><br><span class="line">  request(url, <span class="function"><span class="keyword">function</span> (<span class="params">error, response, body</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!error) &#123;</span><br><span class="line">      res.send(body)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为了解决url跨标签访问问题，需要将构建出的代码全部复制到代理服务器目录下的 public 文件夹</span></span><br><span class="line"><span class="comment">// 任何请求均返回 index.html, 需要具备 bundle.js vendors.js 才能启动 spa 应用</span></span><br><span class="line">app.get(<span class="string">'*'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">  res.sendFile(path.resolve(__dirname, <span class="string">'public'</span>, <span class="string">'index.html'</span>))</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4、启动服务器</span></span><br><span class="line"><span class="keyword">const</span> server = app.listen(port, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> host = server.address().address;</span><br><span class="line">  <span class="keyword">const</span> port = server.address().port;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Example app listening at http://%s:%s'</span>, host, port);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><ul>
+<li>重新构建，修改 config 配置为真实的服务器 URL 地址</li>
+<li>使用 filezilla 上传文件到服务器</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
+<li>setState 方法不是立即赋值，而是在 componentDidUpdate 方法之后才重新为 state 赋值</li>
+<li>如果全局为 div 设置了宽高100%，后面组件里面会自动继承全局的，然后效果是撑满全屏，如果只想撑满父组件，需要在 div 中从新设置htight=100%</li>
+</ul>
+<h3 id="快速启动"><a href="#快速启动" class="headerlink" title="快速启动"></a>快速启动</h3><ul>
+<li>安装环境：<code>npm install</code></li>
+<li>项目开发环境：<code>npm run develop</code></li>
+<li>项目部署环境：<code>npm run publish</code></li>
+<li>gulp和webpack的集成：<code>npm run gulp</code></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React/" rel="tag"># React</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/18/framework/React/react-router 简介/" rel="next" title="react-router 简介">
+                <i class="fa fa-chevron-left"></i> react-router 简介
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/18/framework/React/React Native 基础/" rel="prev" title="React Native 基础">
+                React Native 基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="SanCola" />
+            
+              <p class="site-author-name" itemprop="name">SanCola</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhanggy911" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/zhanggy911" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目初始化"><span class="nav-number">1.</span> <span class="nav-text">项目初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拆分组件"><span class="nav-number">1.1.</span> <span class="nav-text">拆分组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#确定需求"><span class="nav-number">1.2.</span> <span class="nav-text">确定需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#API-接口"><span class="nav-number">1.3.</span> <span class="nav-text">API 接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#技术栈"><span class="nav-number">2.</span> <span class="nav-text">技术栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建项目结构"><span class="nav-number">3.</span> <span class="nav-text">搭建项目结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置路由"><span class="nav-number">4.</span> <span class="nav-text">配置路由</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#navBar-导航路由"><span class="nav-number">4.1.</span> <span class="nav-text">navBar 导航路由</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sideBar-导航路由"><span class="nav-number">4.2.</span> <span class="nav-text">sideBar 导航路由</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-React-中使用-CSS"><span class="nav-number">5.</span> <span class="nav-text">在 React 中使用 CSS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽取公共组件"><span class="nav-number">6.</span> <span class="nav-text">抽取公共组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#请求数据"><span class="nav-number">7.</span> <span class="nav-text">请求数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用配置文件"><span class="nav-number">7.1.</span> <span class="nav-text">使用配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用代理服务器"><span class="nav-number">7.2.</span> <span class="nav-text">使用代理服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求数据方法"><span class="nav-number">7.3.</span> <span class="nav-text">请求数据方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用数据"><span class="nav-number">7.4.</span> <span class="nav-text">使用数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码异步加载"><span class="nav-number">8.</span> <span class="nav-text">代码异步加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布"><span class="nav-number">9.</span> <span class="nav-text">发布</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改项目配置"><span class="nav-number">9.1.</span> <span class="nav-text">修改项目配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署"><span class="nav-number">9.2.</span> <span class="nav-text">部署</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">10.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">10.1.</span> <span class="nav-text">注意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速启动"><span class="nav-number">10.2.</span> <span class="nav-text">快速启动</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SanCola</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

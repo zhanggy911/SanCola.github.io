@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="AngularJS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="ngRoute Angular官方编写的路由插件，用于配合 AngularJS 使用   安装  1npm install --save angular-route  引包，在 angular.js之前之后均可  1&amp;lt;script src=&quot;/node_modules/angular-route/angular-route.js&quot;&amp;gt;&amp;lt;/script&amp;gt;">
+<meta name="keywords" content="AngularJS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AngularJS 扩展">
+<meta property="og:url" content="http://yoursite.com/2018/01/18/framework/AngularJS/AngularJS 扩展/index.html">
+<meta property="og:site_name" content="SanCola">
+<meta property="og:description" content="ngRoute Angular官方编写的路由插件，用于配合 AngularJS 使用   安装  1npm install --save angular-route  引包，在 angular.js之前之后均可  1&amp;lt;script src=&quot;/node_modules/angular-route/angular-route.js&quot;&amp;gt;&amp;lt;/script&amp;gt;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-18T08:01:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AngularJS 扩展">
+<meta name="twitter:description" content="ngRoute Angular官方编写的路由插件，用于配合 AngularJS 使用   安装  1npm install --save angular-route  引包，在 angular.js之前之后均可  1&amp;lt;script src=&quot;/node_modules/angular-route/angular-route.js&quot;&amp;gt;&amp;lt;/script&amp;gt;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/18/framework/AngularJS/AngularJS 扩展/"/>
+
+
+
+
+
+  <title>AngularJS 扩展 | SanCola</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SanCola</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life is a Rock N' Roll Train</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/18/framework/AngularJS/AngularJS 扩展/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SanCola">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SanCola">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">AngularJS 扩展</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-18T15:53:40+08:00">
+                2018-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/framework/" itemprop="url" rel="index">
+                    <span itemprop="name">framework</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="ngRoute"><a href="#ngRoute" class="headerlink" title="ngRoute"></a>ngRoute</h2><blockquote>
+<p>Angular官方编写的路由插件，用于配合 AngularJS 使用</p>
+</blockquote>
+<ul>
+<li>安装</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save angular-route</span><br></pre></td></tr></table></figure>
+<ul>
+<li>引包，在 angular.js之前之后均可</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/node_modules/angular-route/angular-route.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li>在相应的模块中引入依赖</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 只要文件中引入了 ngRouter 路由模块，则 ngRoute 路由模块自己也创建了一个模块 ngRoute</span></span><br><span class="line"><span class="comment">// 需要通过在创建 app 模块的时候通过第二个参数数组，在数组中通过模块的标识名称指明依赖项</span></span><br><span class="line">angular.module(<span class="string">'app'</span>, [<span class="string">'ngRoute'</span>])</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在加载了依赖的模块上通过 <code>config</code> 进行配置</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">angular</span><br><span class="line">  .module(<span class="string">'app'</span>, [<span class="string">'ngRoute'</span>])</span><br><span class="line">  .controller(<span class="string">'ListController'</span>, [<span class="string">'$scope'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope</span>) </span>&#123;</span><br><span class="line">    $scope.foo = <span class="string">'list'</span></span><br><span class="line">  &#125;])</span><br><span class="line">  <span class="comment">// 同样需要使用数组的方式挂载参数，可以避免在压缩的时候出现问题</span></span><br><span class="line">  <span class="comment">// $routeProvider, $locationProvider是固定写法，是 ngRoute 提供的对象</span></span><br><span class="line">  .config([</span><br><span class="line">    <span class="string">'$routeProvider'</span>, </span><br><span class="line">    <span class="string">'$locationProvider'</span>, </span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">$routeProvider, $locationProvider</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 通过 routeProvider 配置路由表</span></span><br><span class="line">      <span class="comment">// 响应与请求相对应的页面，以及挂载处理函数</span></span><br><span class="line">      $routeProvider</span><br><span class="line">        .when(<span class="string">'/'</span>, &#123;</span><br><span class="line">        templateUrl: <span class="string">'views/list.html'</span>, </span><br><span class="line">        controller: <span class="string">'ListController'</span></span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="comment">// 没有匹配到请求的时候</span></span><br><span class="line">      .otherwise(&#123;</span><br><span class="line">        <span class="comment">// 使用 templateUrl 只有在页面上点击页面上的链接但是匹配不到时才会响应404</span></span><br><span class="line">        <span class="comment">// 此时在地址栏输入地址并不能跳转到404，因为会直接对服务器端发送数据</span></span><br><span class="line">        <span class="comment">// templateUrl: 'views/404.html'</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 直接跳转到首页</span></span><br><span class="line">        redirectTo: <span class="string">'/'</span></span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="comment">// 配置 url 路径的 html5 模式，需要在 html 页面配置 &lt;base&gt; 标签</span></span><br><span class="line">      $locationProvider.html5Mode(<span class="literal">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  ])</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在 html 页面中使用 <code>ng-view</code> 配合 <code>ngRoute</code> 渲染</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">  ng-view 是 ng 内置的一个指令，用来和 ngRoute 结合使用的</span></span><br><span class="line"><span class="comment">  当 when 方法中的 hash 路径匹配成功的时候，</span></span><br><span class="line"><span class="comment">  会把 对应的 template 渲染到作用了 ng-view 指令的元素中</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-view</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>URL 路径配置</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 使用 hash 的方式进行跳转 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#!/"</span>&gt;</span>index<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#!/login"</span>&gt;</span>login<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  angular.module(<span class="string">'app'</span>, [<span class="string">'ngRoute'</span>])</span></span><br><span class="line"><span class="javascript">    .config([<span class="string">'$routeProvider'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$routeProvider</span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">      $routeProvider</span></span><br><span class="line"><span class="javascript">        .when(<span class="string">'/'</span>, &#123;</span></span><br><span class="line"><span class="xml">        template: '<span class="tag">&lt;<span class="name">h1</span>&gt;</span>hello index<span class="tag">&lt;/<span class="name">h1</span>&gt;</span>'</span></span><br><span class="line"><span class="undefined">      &#125;)</span></span><br><span class="line"><span class="javascript">        .when(<span class="string">'/login'</span>, &#123;</span></span><br><span class="line"><span class="xml">        template: '<span class="tag">&lt;<span class="name">h1</span>&gt;</span>hello login<span class="tag">&lt;/<span class="name">h1</span>&gt;</span>'</span></span><br><span class="line"><span class="undefined">      &#125;)</span></span><br><span class="line"><span class="undefined">    &#125;])</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 使用 html5 模式进行跳转 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">base</span> <span class="attr">href</span>=<span class="string">"/"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">ng-app</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">      1. $locationProvider.html5Mode(true)</span></span><br><span class="line"><span class="comment">      2. 在 index.html 中加入 base 标签：&lt;base href="/"&gt;</span></span><br><span class="line"><span class="comment">      3. a 链接的路径直接写相对路径即可，例如 &lt;li&gt;&lt;a href="/login"&gt;login&lt;/a&gt;&lt;/li&gt;</span></span><br><span class="line"><span class="comment">      4. 路由中的匹配判断都以 / 开头</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/"</span>&gt;</span>index<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/login"</span>&gt;</span>login<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span> <span class="attr">ng-view</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"node_modules/angular/angular.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"node_modules/angular-route/angular-route.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    angular.module(<span class="string">'app'</span>, [<span class="string">'ngRoute'</span>])</span></span><br><span class="line"><span class="undefined">      .config([</span></span><br><span class="line"><span class="javascript">      	<span class="string">'$routeProvider'</span>, </span></span><br><span class="line"><span class="javascript">      	<span class="string">'$locationProvider'</span>, </span></span><br><span class="line"><span class="javascript">      	<span class="function"><span class="keyword">function</span> (<span class="params">$routeProvider, $locationProvider</span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">          $routeProvider</span></span><br><span class="line"><span class="javascript">            .when(<span class="string">'/'</span>, &#123;</span></span><br><span class="line"><span class="xml">            template: '<span class="tag">&lt;<span class="name">h1</span>&gt;</span>hello index<span class="tag">&lt;/<span class="name">h1</span>&gt;</span>'</span></span><br><span class="line"><span class="undefined">          &#125;)</span></span><br><span class="line"><span class="javascript">            .when(<span class="string">'/login'</span>, &#123;</span></span><br><span class="line"><span class="xml">            template: '<span class="tag">&lt;<span class="name">h1</span>&gt;</span>hello login<span class="tag">&lt;/<span class="name">h1</span>&gt;</span>'</span></span><br><span class="line"><span class="undefined">          &#125;)</span></span><br><span class="line"><span class="javascript">          <span class="comment">// 使用 html5 模式</span></span></span><br><span class="line"><span class="javascript">          $locationProvider.html5Mode(<span class="literal">true</span>)</span></span><br><span class="line"><span class="undefined">        &#125;])</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="ngResource"><a href="#ngResource" class="headerlink" title="ngResource"></a>ngResource</h2><blockquote>
+<p>用来与服务端交互数据</p>
+</blockquote>
+<ul>
+<li>安装</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save angular-resource</span><br></pre></td></tr></table></figure>
+<ul>
+<li>引包</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/node_modules/angular-resource/angular-resource.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>引入依赖</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">'app'</span>, [<span class="string">'ngResource'</span>])</span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">angular</span>) </span>&#123;</span><br><span class="line">  angular.module(<span class="string">'app'</span>, [<span class="string">'ngRoute'</span>])</span><br><span class="line">    .config([<span class="string">'$sceDelegateProvider'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$sceDelegateProvider</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 配置请求白名单，对于本站的一定要加上 self 表示本站</span></span><br><span class="line">      $sceDelegateProvider.resourceUrlWhitelist([</span><br><span class="line">        <span class="string">'self'</span>, <span class="comment">// 配置支持本站内部的，否则本站内都不允许请求</span></span><br><span class="line">        <span class="string">'http://127.0.0.1:3000/**'</span></span><br><span class="line">      ]);</span><br><span class="line">    &#125;])</span><br><span class="line">    <span class="comment">// $http 是 ng 内置的一个 ajax 交互 API</span></span><br><span class="line">    <span class="comment">// 它内部帮你封装提供了类似于</span></span><br><span class="line">    .controller(<span class="string">'ListController'</span>, [<span class="string">'$scope'</span>, <span class="string">'$http'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope, $http</span>) </span>&#123;</span><br><span class="line">      $scope.contacts = []</span><br><span class="line">      $http.get(<span class="string">'http://127.0.0.1:3000/contacts'</span>)</span><br><span class="line">        .then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">          <span class="built_in">console</span>.log(data)</span><br><span class="line">          <span class="comment">// $scope.contacts = data.data.result</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;])</span><br><span class="line">    .controller(<span class="string">'AddController'</span>, [<span class="string">'$scope'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope</span>) </span>&#123;</span><br><span class="line">      $scope.foo = <span class="string">'add'</span></span><br><span class="line">    &#125;])</span><br><span class="line">    .controller(<span class="string">'EditController'</span>, [<span class="string">'$scope'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">$scope</span>) </span>&#123;</span><br><span class="line">      $scope.foo = <span class="string">'edit'</span></span><br><span class="line">    &#125;])</span><br><span class="line">&#125;)(angular)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AngularJS/" rel="tag"># AngularJS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/18/framework/AngularJS/AngularJS 控制器、过滤器/" rel="next" title="AngularJS 控制器、过滤器">
+                <i class="fa fa-chevron-left"></i> AngularJS 控制器、过滤器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/18/framework/AngularJS/AngularJS 联系人 demo/" rel="prev" title="AngularJS 联系人 demo">
+                AngularJS 联系人 demo <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="SanCola" />
+            
+              <p class="site-author-name" itemprop="name">SanCola</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhanggy911" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/zhanggy911" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ngRoute"><span class="nav-number">1.</span> <span class="nav-text">ngRoute</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngResource"><span class="nav-number">2.</span> <span class="nav-text">ngResource</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SanCola</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

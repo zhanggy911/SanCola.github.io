@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="NodeJS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="公共部分创建用户数据模型1234567891011// modelsimport mongoose from &apos;mongoose&apos;const managerSchema = new mongoose.Schema(&amp;#123;  username: &amp;#123; type: String, required: true &amp;#125;,  password: &amp;#123; type: String,">
+<meta name="keywords" content="NodeJS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node 在线教育后台项目-注册登录">
+<meta property="og:url" content="http://yoursite.com/2018/01/18/NodeJS/Node 在线教育后台项目-注册登录/index.html">
+<meta property="og:site_name" content="SanCola">
+<meta property="og:description" content="公共部分创建用户数据模型1234567891011// modelsimport mongoose from &apos;mongoose&apos;const managerSchema = new mongoose.Schema(&amp;#123;  username: &amp;#123; type: String, required: true &amp;#125;,  password: &amp;#123; type: String,">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-18T07:03:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node 在线教育后台项目-注册登录">
+<meta name="twitter:description" content="公共部分创建用户数据模型1234567891011// modelsimport mongoose from &apos;mongoose&apos;const managerSchema = new mongoose.Schema(&amp;#123;  username: &amp;#123; type: String, required: true &amp;#125;,  password: &amp;#123; type: String,">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/18/NodeJS/Node 在线教育后台项目-注册登录/"/>
+
+
+
+
+
+  <title>Node 在线教育后台项目-注册登录 | SanCola</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SanCola</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life is a Rock N' Roll Train</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/18/NodeJS/Node 在线教育后台项目-注册登录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SanCola">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SanCola">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Node 在线教育后台项目-注册登录</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-18T14:55:59+08:00">
+                2018-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NodeJS/" itemprop="url" rel="index">
+                    <span itemprop="name">NodeJS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="公共部分"><a href="#公共部分" class="headerlink" title="公共部分"></a>公共部分</h2><h3 id="创建用户数据模型"><a href="#创建用户数据模型" class="headerlink" title="创建用户数据模型"></a>创建用户数据模型</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// models</span></span><br><span class="line"><span class="keyword">import</span> mongoose <span class="keyword">from</span> <span class="string">'mongoose'</span></span><br><span class="line"><span class="keyword">const</span> managerSchema = <span class="keyword">new</span> mongoose.Schema(&#123;</span><br><span class="line">  username: &#123; <span class="attr">type</span>: <span class="built_in">String</span>, <span class="attr">required</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  password: &#123; <span class="attr">type</span>: <span class="built_in">String</span>, <span class="attr">required</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  email: &#123; <span class="attr">type</span>: <span class="built_in">String</span>, <span class="attr">required</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  create_time: &#123; <span class="attr">type</span>: <span class="built_in">Date</span>, <span class="attr">default</span>: <span class="built_in">Date</span>.now &#125;,</span><br><span class="line">  last_modified: &#123; <span class="attr">type</span>: <span class="built_in">Date</span>, <span class="attr">default</span>: <span class="built_in">Date</span>.now &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> mongoose.model(<span class="string">'Manager'</span>, managerSchema)</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="创建公共-model"><a href="#创建公共-model" class="headerlink" title="创建公共 model"></a>创建公共 model</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 挂挂载所有模型</span></span><br><span class="line"><span class="keyword">import</span> mongoose <span class="keyword">from</span> <span class="string">'mongoose'</span></span><br><span class="line"><span class="keyword">import</span> Manager <span class="keyword">from</span> <span class="string">'./manager'</span></span><br><span class="line"><span class="keyword">import</span> Advert <span class="keyword">from</span> <span class="string">'./advert'</span></span><br><span class="line"><span class="keyword">import</span> Course <span class="keyword">from</span> <span class="string">'./course'</span></span><br><span class="line"></span><br><span class="line">mongoose.connect(<span class="string">'mongodb://localhost/edu'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123; </span><br><span class="line">  Manager,</span><br><span class="line">  Advert,</span><br><span class="line">  Course</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="路由文件提取"><a href="#路由文件提取" class="headerlink" title="路由文件提取"></a>路由文件提取</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// router</span></span><br><span class="line"><span class="keyword">import</span> express <span class="keyword">from</span> <span class="string">'express'</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> managerController <span class="keyword">from</span> <span class="string">'../controllers/manager'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = express.Router()</span><br><span class="line"></span><br><span class="line">router</span><br><span class="line">  .get(<span class="string">'/register'</span>, managerController.showRegister)</span><br><span class="line">  .post(<span class="string">'/register'</span>, managerController.doRegister)</span><br><span class="line">  .get(<span class="string">'/login'</span>, managerController.showLogin)</span><br><span class="line">  .post(<span class="string">'/login'</span>, managerController.doLogin)</span><br><span class="line">  .get(<span class="string">'/logout'</span>, managerController.logout)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router</span><br></pre></td></tr></table></figure>
+<h3 id="请求处理函数"><a href="#请求处理函数" class="headerlink" title="请求处理函数"></a>请求处理函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// controllers 当文件夹下有 index 文件时，会自动加载该文件</span></span><br><span class="line"><span class="keyword">import</span> &#123; Manager &#125; <span class="keyword">from</span> <span class="string">'../models'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 渲染注册页</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">showRegister</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 渲染登录页</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">showLogin</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 处理注册请求</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">doRegister</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 处理登录请求</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">doLogin</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h2 id="注册功能"><a href="#注册功能" class="headerlink" title="注册功能"></a>注册功能</h2><h3 id="异步注册请求"><a href="#异步注册请求" class="headerlink" title="异步注册请求"></a>异步注册请求</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 页面一加载就先获取一个验证码</span></span><br><span class="line">getVerifyCode()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getVerifyCode</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  $.ajax(&#123;</span><br><span class="line">    url: <span class="string">'/verifycode'</span>,</span><br><span class="line">    type: <span class="string">'get'</span>,</span><br><span class="line">    dataType: <span class="string">'json'</span></span><br><span class="line">  &#125;).then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (data.err_code === <span class="number">0</span>) &#123;</span><br><span class="line">      $(<span class="string">'#verify'</span>).html(data.verify)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$(<span class="string">'#verify'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  getVerifyCode()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">$(<span class="string">'form'</span>).on(<span class="string">'submit'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  $.ajax(&#123;</span><br><span class="line">    url: $(<span class="keyword">this</span>).attr(<span class="string">'action'</span>),</span><br><span class="line">    type: $(<span class="keyword">this</span>).attr(<span class="string">'method'</span>),</span><br><span class="line">    data: $(<span class="keyword">this</span>).serialize(),</span><br><span class="line">    dataType: <span class="string">'json'</span>, </span><br><span class="line">  &#125;).then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> err_code = data.err_code</span><br><span class="line">    <span class="keyword">if</span> (err_code === <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="built_in">window</span>.location.href = <span class="string">'/login'</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (err_code === <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="built_in">window</span>.alert(<span class="string">'用户名被占用，请重新注册'</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (err_code === <span class="number">2</span>) &#123;</span><br><span class="line">      <span class="comment">// 验证码错误，更换验证码</span></span><br><span class="line">      getVerifyCode() </span><br><span class="line">      <span class="built_in">window</span>.alert(<span class="string">'验证码不正确'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="node-处理函数"><a href="#node-处理函数" class="headerlink" title="node 处理函数"></a>node 处理函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 生成验证码</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">verifycode</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> code = _.random(<span class="number">1000</span>, <span class="number">10000</span>) + <span class="string">''</span></span><br><span class="line">  req.session.verify_code = code</span><br><span class="line">  res.json(&#123;</span><br><span class="line">    err_code: <span class="number">0</span>,</span><br><span class="line">    verify: code</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">doRegister</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; username, password, email, verify_code &#125; = req.body</span><br><span class="line">  <span class="comment">// 验证码校验</span></span><br><span class="line">  <span class="keyword">if</span> (verify_code !== req.session.verify_code) &#123;</span><br><span class="line">    <span class="keyword">return</span> res.json(&#123;</span><br><span class="line">      err_code: <span class="number">2</span>,</span><br><span class="line">      message: <span class="string">'验证码错误'</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  Manager</span><br><span class="line">    .findOne(&#123;</span><br><span class="line">      username</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// Promise 流程中的 then 里面的 return 起到两个作用</span></span><br><span class="line">      <span class="comment">//   第一就是阻止当前函数内代码继续向后执行</span></span><br><span class="line">      <span class="comment">//   第二作为下一个 then 中指定的回调处理函数的结果</span></span><br><span class="line">      <span class="keyword">if</span> (result) &#123;</span><br><span class="line">        res.json(&#123;</span><br><span class="line">          err_code: <span class="number">1</span>,</span><br><span class="line">          message: <span class="string">'用户名被占用'</span></span><br><span class="line">        &#125;)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> manager = <span class="keyword">new</span> Manager(&#123;</span><br><span class="line">          username,</span><br><span class="line">          password,</span><br><span class="line">          email</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> manager.save()</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (!result) &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// Can 't set headers after they are sent</span></span><br><span class="line">      res.json(&#123;</span><br><span class="line">        err_code: <span class="number">0</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">      next(err)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="验证码交互流程"><a href="#验证码交互流程" class="headerlink" title="验证码交互流程"></a>验证码交互流程</h3><ul>
+<li>页面第一次加载，请求生成验证码的接口，拿到验证码，将验证码绑定到展示的地方</li>
+<li>服务端生成验证码的时候，将验证码保存到 Session 中，后续做校验处理的时候要通过 Session</li>
+<li>用户在文本框中输入对应的验证码，发请求</li>
+<li>通过 Session 读取到刚才保存的验证码和用户通过输入表单提交上来的验证码做比对</li>
+<li>如果成功，则成功处理</li>
+<li>如果失败，则告诉用户，验证码错误，然后在客户端重新发请求，获取新的验证码</li>
+</ul>
+<h3 id="md5-加密处理-password"><a href="#md5-加密处理-password" class="headerlink" title="md5 加密处理 password"></a>md5 加密处理 password</h3><ul>
+<li>使用 <code>blueimp-md5</code> 插件</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">doRegister</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  ... </span><br><span class="line">  Manager</span><br><span class="line">    .findOne(&#123;</span><br><span class="line">      username</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (result) &#123;</span><br><span class="line">        res.json(&#123;</span><br><span class="line">          err_code: <span class="number">1</span>,</span><br><span class="line">          message: <span class="string">'用户名被占用'</span></span><br><span class="line">        &#125;)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> manager = <span class="keyword">new</span> Manager(&#123;</span><br><span class="line">          username,</span><br><span class="line">          <span class="comment">// 使用 md5 加密</span></span><br><span class="line">          password: md5(password),</span><br><span class="line">          email</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> manager.save()</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">doLogin</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; username, password &#125; = req.body</span><br><span class="line">  Manager</span><br><span class="line">    .findOne(&#123;</span><br><span class="line">      username: username</span><br><span class="line">    &#125;)</span><br><span class="line">    .then(<span class="function"><span class="params">manager</span> =&gt;</span> &#123;</span><br><span class="line">	 ...</span><br><span class="line">      <span class="comment">// 先加密用户输入的密码，之后再校验密码是否正确</span></span><br><span class="line">      <span class="keyword">if</span> (md5(password) !== manager.password) &#123;</span><br><span class="line">        <span class="keyword">return</span> res.json(&#123;</span><br><span class="line">          err_code: <span class="number">1</span>,</span><br><span class="line">          message: <span class="string">'用户名或密码不正确'</span></span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">	 ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="登录功能"><a href="#登录功能" class="headerlink" title="登录功能"></a>登录功能</h2><h3 id="异步请登录请求"><a href="#异步请登录请求" class="headerlink" title="异步请登录请求"></a>异步请登录请求</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取 Cookie</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCookies</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> cookies = &#123;&#125;</span><br><span class="line">  <span class="built_in">document</span>.cookie.split(<span class="string">';'</span>).forEach(<span class="function"><span class="keyword">function</span> (<span class="params">cookie</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (cookie) &#123;</span><br><span class="line">      <span class="keyword">var</span> item = cookie.split(<span class="string">'='</span>)</span><br><span class="line">      cookies[item[<span class="number">0</span>].trim()] = item[<span class="number">1</span>].trim()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> cookies</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> cookies = getCookies()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断并设定 Cookie</span></span><br><span class="line"><span class="keyword">if</span> (cookies[<span class="string">'username'</span>]) &#123;</span><br><span class="line">  $(<span class="string">'#username'</span>).val(cookies[<span class="string">'username'</span>])</span><br><span class="line">&#125;</span><br><span class="line">$(<span class="string">'form'</span>).on(<span class="string">'submit'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  $.ajax(&#123;</span><br><span class="line">    url: $(<span class="keyword">this</span>).attr(<span class="string">'action'</span>),</span><br><span class="line">    type: $(<span class="keyword">this</span>).attr(<span class="string">'method'</span>),</span><br><span class="line">    data: $(<span class="keyword">this</span>).serialize(),</span><br><span class="line">    dataType: <span class="string">'json'</span></span><br><span class="line">  &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data)</span><br><span class="line">    <span class="keyword">if</span> (data.err_code === <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="comment">// 登陆成功，跳转到首页</span></span><br><span class="line">      <span class="built_in">document</span>.cookie = <span class="string">'username='</span> + $(<span class="string">'#username'</span>).val()</span><br><span class="line">      <span class="built_in">window</span>.location.href = <span class="string">'/'</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (data.err_code === <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="built_in">window</span>.alert(<span class="string">'用户名或者密码错误'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="node-处理函数-1"><a href="#node-处理函数-1" class="headerlink" title="node 处理函数"></a>node 处理函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 处理登录请求</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">doLogin</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; username, password &#125; = req.body</span><br><span class="line">  Manager</span><br><span class="line">    .findOne(&#123;</span><br><span class="line">    username: username</span><br><span class="line">  &#125;)</span><br><span class="line">    .then(<span class="function"><span class="params">manager</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 校验用户是否存在</span></span><br><span class="line">    <span class="keyword">if</span> (!manager) &#123;</span><br><span class="line">      <span class="keyword">return</span> res.json(&#123;</span><br><span class="line">        err_code: <span class="number">1</span>,</span><br><span class="line">        message: <span class="string">'用户名或密码不正确'</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 校验密码是否正确</span></span><br><span class="line">    <span class="keyword">if</span> (password !== manager.password) &#123;</span><br><span class="line">      <span class="keyword">return</span> res.json(&#123;</span><br><span class="line">        err_code: <span class="number">1</span>,</span><br><span class="line">        message: <span class="string">'用户名或密码不正确'</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 登陆成功，通过 Session 记录登陆状态</span></span><br><span class="line">    req.session.manager = manager</span><br><span class="line">    req.session.cookie.maxAge = <span class="number">1000</span> * <span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span> * <span class="number">3</span> <span class="comment">// 设置当前客户端登陆过期时间</span></span><br><span class="line">    req.setSession(<span class="string">'manager'</span>, manager)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 登陆成功</span></span><br><span class="line">    res.json(&#123;</span><br><span class="line">      err_code: <span class="number">0</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="退出登录"><a href="#退出登录" class="headerlink" title="退出登录"></a>退出登录</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">logout</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 1. 清除登陆状态</span></span><br><span class="line">  req.session.manager = <span class="literal">null</span></span><br><span class="line">  <span class="comment">// 2. 跳转到登陆页</span></span><br><span class="line">  res.redirect(<span class="string">'/login'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="配置页面访问权限"><a href="#配置页面访问权限" class="headerlink" title="配置页面访问权限"></a>配置页面访问权限</h3><ul>
+<li>页面是否可访问的分类<ul>
+<li>必需登录才能访问的页面</li>
+<li>只能在非登录状态才可以访问的页面</li>
+<li>无论是登录还是未登录都可以访问的页面</li>
+<li>没有登录可以访问，登录状态不能访问（注册页面）</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="comment">// 挂载路由之前</span></span><br><span class="line">app.use(<span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> arr = [<span class="string">'/login'</span>, <span class="string">'/register'</span>, <span class="string">'/verifycode'</span>]</span><br><span class="line">  <span class="comment">// 如果当前请求路径是 /login 或者 /register 则不需要登陆状态，让中间件继续向后匹配执行</span></span><br><span class="line">  <span class="keyword">if</span> (arr.includes(req.path)) &#123;</span><br><span class="line">    <span class="keyword">return</span> next()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 如果是 / /advert /course /course/info ... 等路由，则必须具有登陆状态，才可以访问</span></span><br><span class="line">  <span class="comment">// 如果没有登陆，则让客户端跳转到 /login 页面</span></span><br><span class="line">  <span class="comment">// 如果登陆了，则让中间件继续向后匹配执行</span></span><br><span class="line">  <span class="keyword">if</span> (!req.session.manager) &#123;</span><br><span class="line">    <span class="keyword">return</span> res.redirect(<span class="string">'/login'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// controllers/manager</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">showRegister</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (req.session.manager) &#123;</span><br><span class="line">    <span class="comment">// 重定向到请求来源页</span></span><br><span class="line">    <span class="keyword">return</span> res.redirect(<span class="string">'back'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  res.render(<span class="string">'register.html'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">showLogin</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (req.session.manager) &#123;</span><br><span class="line">    <span class="keyword">return</span> res.redirect(<span class="string">'back'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  res.render(<span class="string">'login.html'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NodeJS/" rel="tag"># NodeJS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/18/NodeJS/Node 在线教育后台项目（2）/" rel="next" title="Node 在线教育后台项目-广告管理">
+                <i class="fa fa-chevron-left"></i> Node 在线教育后台项目-广告管理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/18/NodeJS/Node 在线教育后台项目-课程管理/" rel="prev" title="Node 在线教育后台项目-课程管理">
+                Node 在线教育后台项目-课程管理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="SanCola" />
+            
+              <p class="site-author-name" itemprop="name">SanCola</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhanggy911" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/zhanggy911" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#公共部分"><span class="nav-number">1.</span> <span class="nav-text">公共部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建用户数据模型"><span class="nav-number">1.1.</span> <span class="nav-text">创建用户数据模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建公共-model"><span class="nav-number">1.2.</span> <span class="nav-text">创建公共 model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由文件提取"><span class="nav-number">1.3.</span> <span class="nav-text">路由文件提取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请求处理函数"><span class="nav-number">1.4.</span> <span class="nav-text">请求处理函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注册功能"><span class="nav-number">2.</span> <span class="nav-text">注册功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#异步注册请求"><span class="nav-number">2.1.</span> <span class="nav-text">异步注册请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#node-处理函数"><span class="nav-number">2.2.</span> <span class="nav-text">node 处理函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证码交互流程"><span class="nav-number">2.3.</span> <span class="nav-text">验证码交互流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#md5-加密处理-password"><span class="nav-number">2.4.</span> <span class="nav-text">md5 加密处理 password</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#登录功能"><span class="nav-number">3.</span> <span class="nav-text">登录功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#异步请登录请求"><span class="nav-number">3.1.</span> <span class="nav-text">异步请登录请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#node-处理函数-1"><span class="nav-number">3.2.</span> <span class="nav-text">node 处理函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#退出登录"><span class="nav-number">3.3.</span> <span class="nav-text">退出登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置页面访问权限"><span class="nav-number">3.4.</span> <span class="nav-text">配置页面访问权限</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SanCola</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ES6," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="includes()、startsWith()、endsWith include() 返回布尔值，表示是否找到了参数字符串   startsWith() 返回布尔值，表示参数字符串是否在源字符串的头部   endsWith() 返回布尔值，表示参数字符串是否在源字符串   上面三个方法都支持第二个参数，表示从何处开始搜索  12345var s = &apos;Hello world!&apos;;s.startsW">
+<meta name="keywords" content="ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6 字符串扩展">
+<meta property="og:url" content="http://yoursite.com/2018/01/18/ES6/ES6 字符串扩展/index.html">
+<meta property="og:site_name" content="SanCola">
+<meta property="og:description" content="includes()、startsWith()、endsWith include() 返回布尔值，表示是否找到了参数字符串   startsWith() 返回布尔值，表示参数字符串是否在源字符串的头部   endsWith() 返回布尔值，表示参数字符串是否在源字符串   上面三个方法都支持第二个参数，表示从何处开始搜索  12345var s = &apos;Hello world!&apos;;s.startsW">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-18T02:47:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6 字符串扩展">
+<meta name="twitter:description" content="includes()、startsWith()、endsWith include() 返回布尔值，表示是否找到了参数字符串   startsWith() 返回布尔值，表示参数字符串是否在源字符串的头部   endsWith() 返回布尔值，表示参数字符串是否在源字符串   上面三个方法都支持第二个参数，表示从何处开始搜索  12345var s = &apos;Hello world!&apos;;s.startsW">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/18/ES6/ES6 字符串扩展/"/>
+
+
+
+
+
+  <title>ES6 字符串扩展 | SanCola</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SanCola</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life is a Rock N' Roll Train</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/18/ES6/ES6 字符串扩展/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SanCola">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SanCola">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ES6 字符串扩展</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-18T10:37:30+08:00">
+                2018-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="includes-、startsWith-、endsWith"><a href="#includes-、startsWith-、endsWith" class="headerlink" title="includes()、startsWith()、endsWith"></a>includes()、startsWith()、endsWith</h2><ul>
+<li><code>include()</code><ul>
+<li>返回布尔值，表示是否找到了参数字符串</li>
+</ul>
+</li>
+<li><code>startsWith()</code><ul>
+<li>返回布尔值，表示参数字符串是否在源字符串的头部</li>
+</ul>
+</li>
+<li><code>endsWith()</code><ul>
+<li>返回布尔值，表示参数字符串是否在源字符串</li>
+</ul>
+</li>
+<li>上面三个方法都支持第二个参数，表示从何处开始搜索</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'Hello world!'</span>;</span><br><span class="line"></span><br><span class="line">s.startsWith(<span class="string">'world'</span>, <span class="number">6</span>) <span class="comment">// true</span></span><br><span class="line">s.endsWith(<span class="string">'Hello'</span>, <span class="number">5</span>) <span class="comment">// true</span></span><br><span class="line">s.includes(<span class="string">'Hello'</span>, <span class="number">6</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="repeat"><a href="#repeat" class="headerlink" title="repeat()"></a>repeat()</h2><ul>
+<li>返回一个新的字符串，用于将源字符串重复 n 次</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'x'</span>.repeat(<span class="number">3</span>) <span class="comment">// "xxx"</span></span><br><span class="line"><span class="string">'hello'</span>.repeat(<span class="number">2</span>) <span class="comment">// "hellohello"</span></span><br><span class="line"><span class="string">'na'</span>.repeat(<span class="number">0</span>) <span class="comment">// ""</span></span><br></pre></td></tr></table></figure>
+<h2 id="padStart-、padEnd"><a href="#padStart-、padEnd" class="headerlink" title="padStart()、padEnd()"></a>padStart()、padEnd()</h2><ul>
+<li><code>padStart()</code><ul>
+<li>头部补全</li>
+</ul>
+</li>
+<li><code>padEnd()</code><ul>
+<li>尾部补全</li>
+</ul>
+</li>
+<li>接收两个参数，分别用来指定字符串最小长度，以及指定用来补全的字符串</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'x'</span>.padStart(<span class="number">5</span>, <span class="string">'ab'</span>) <span class="comment">// 'ababx'</span></span><br><span class="line"><span class="string">'x'</span>.padStart(<span class="number">4</span>, <span class="string">'ab'</span>) <span class="comment">// 'abax'</span></span><br><span class="line"></span><br><span class="line"><span class="string">'x'</span>.padEnd(<span class="number">5</span>, <span class="string">'ab'</span>) <span class="comment">// 'xabab'</span></span><br><span class="line"><span class="string">'x'</span>.padEnd(<span class="number">4</span>, <span class="string">'ab'</span>) <span class="comment">// 'xaba'</span></span><br></pre></td></tr></table></figure>
+<h2 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h2><ul>
+<li>使用 ` ` 标识字符串</li>
+<li>嵌入字符串需要将变量名写在 ${ } 中</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 普通字符串</span></span><br><span class="line"><span class="string">`In JavaScript '\n' is a line-feed.`</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 多行字符串</span></span><br><span class="line"><span class="string">`In JavaScript this is</span></span><br><span class="line"><span class="string"> not legal.`</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`string text line 1</span></span><br><span class="line"><span class="string">string text line 2`</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串中嵌入变量</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">"Bob"</span>, time = <span class="string">"today"</span>;</span><br><span class="line"><span class="string">`Hello <span class="subst">$&#123;name&#125;</span>, how are you <span class="subst">$&#123;time&#125;</span>?`</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>模板字符串表示多行字符串时，所有空格和缩进会保留</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#list'</span>).html(<span class="string">`</span></span><br><span class="line"><span class="string">&lt;ul&gt;</span></span><br><span class="line"><span class="string">  &lt;li&gt;first&lt;/li&gt;</span></span><br><span class="line"><span class="string">  &lt;li&gt;second&lt;/li&gt;</span></span><br><span class="line"><span class="string">&lt;/ul&gt;</span></span><br><span class="line"><span class="string">`</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>大括号内部可以放入任意 JavaScript 表达式，也可以调用函数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> y = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="string">`<span class="subst">$&#123;x&#125;</span> + <span class="subst">$&#123;y * <span class="number">2</span>&#125;</span> = <span class="subst">$&#123;x + y * <span class="number">2</span>&#125;</span>`</span></span><br><span class="line"><span class="comment">// "1 + 4 = 5"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span>&#125;;</span><br><span class="line"><span class="string">`<span class="subst">$&#123;obj.x + obj.y&#125;</span>`</span></span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 嵌入函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"Hello World"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="string">`foo <span class="subst">$&#123;fn()&#125;</span> bar`</span></span><br><span class="line"><span class="comment">// foo Hello World bar</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>模板字符串支持嵌套</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> tmpl = <span class="function"><span class="params">addrs</span> =&gt;</span> <span class="string">`</span></span><br><span class="line"><span class="string">  &lt;table&gt;</span></span><br><span class="line"><span class="string">  <span class="subst">$&#123;addrs.map(addr =&gt; <span class="string">`</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">    &lt;tr&gt;&lt;td&gt;<span class="subst">$&#123;addr.first&#125;</span>&lt;/td&gt;&lt;/tr&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">    &lt;tr&gt;&lt;td&gt;<span class="subst">$&#123;addr.last&#125;</span>&lt;/td&gt;&lt;/tr&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">  `</span>).join(<span class="string">''</span>)&#125;</span></span></span><br><span class="line"><span class="string">  &lt;/table&gt;</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> data = [</span><br><span class="line">    &#123; <span class="attr">first</span>: <span class="string">'&lt;Jane&gt;'</span>, <span class="attr">last</span>: <span class="string">'Bond'</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">first</span>: <span class="string">'Lars'</span>, <span class="attr">last</span>: <span class="string">'&lt;Croft&gt;'</span> &#125;,</span><br><span class="line">];</span><br><span class="line"><span class="built_in">console</span>.log(tmpl(data));</span><br></pre></td></tr></table></figure>
+<ul>
+<li>允许引用模板字符串，在需要的时候执行</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 写法一</span></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">'return '</span> + <span class="string">'`Hello $&#123;name&#125;!`'</span>;</span><br><span class="line"><span class="keyword">let</span> func = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'name'</span>, str);</span><br><span class="line">func(<span class="string">'Jack'</span>) <span class="comment">// "Hello Jack!"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 写法二</span></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">'(name) =&gt; `Hello $&#123;name&#125;!`'</span>;</span><br><span class="line"><span class="keyword">let</span> func = <span class="built_in">eval</span>.call(<span class="literal">null</span>, str);</span><br><span class="line">func(<span class="string">'Jack'</span>) <span class="comment">// "Hello Jack!"</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ES6/" rel="tag"># ES6</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/18/ES6/ES6  解构赋值/" rel="next" title="ES6 解构赋值">
+                <i class="fa fa-chevron-left"></i> ES6 解构赋值
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/18/ES6/ES6 数组扩展/" rel="prev" title="ES6 数组扩展">
+                ES6 数组扩展 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="SanCola" />
+            
+              <p class="site-author-name" itemprop="name">SanCola</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhanggy911" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/zhanggy911" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#includes-、startsWith-、endsWith"><span class="nav-number">1.</span> <span class="nav-text">includes()、startsWith()、endsWith</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#repeat"><span class="nav-number">2.</span> <span class="nav-text">repeat()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#padStart-、padEnd"><span class="nav-number">3.</span> <span class="nav-text">padStart()、padEnd()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板字符串"><span class="nav-number">4.</span> <span class="nav-text">模板字符串</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SanCola</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

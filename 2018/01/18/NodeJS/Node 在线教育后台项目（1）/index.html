@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="NodeJS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="项目初始化 准备静态页面 使用 git 作为版本管理 初始化项目 — npm init 或 npm install 配置 babel 转码规则 .babelrc  main.js 入口文件   项目安装 babel-cli 配置 package.json">
+<meta name="keywords" content="NodeJS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node 在线教育后台项目-公共部分">
+<meta property="og:url" content="http://yoursite.com/2018/01/18/NodeJS/Node 在线教育后台项目（1）/index.html">
+<meta property="og:site_name" content="SanCola">
+<meta property="og:description" content="项目初始化 准备静态页面 使用 git 作为版本管理 初始化项目 — npm init 或 npm install 配置 babel 转码规则 .babelrc  main.js 入口文件   项目安装 babel-cli 配置 package.json">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-18T07:02:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node 在线教育后台项目-公共部分">
+<meta name="twitter:description" content="项目初始化 准备静态页面 使用 git 作为版本管理 初始化项目 — npm init 或 npm install 配置 babel 转码规则 .babelrc  main.js 入口文件   项目安装 babel-cli 配置 package.json">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/18/NodeJS/Node 在线教育后台项目（1）/"/>
+
+
+
+
+
+  <title>Node 在线教育后台项目-公共部分 | SanCola</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SanCola</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life is a Rock N' Roll Train</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/18/NodeJS/Node 在线教育后台项目（1）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SanCola">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SanCola">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Node 在线教育后台项目-公共部分</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-18T14:52:25+08:00">
+                2018-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NodeJS/" itemprop="url" rel="index">
+                    <span itemprop="name">NodeJS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="项目初始化"><a href="#项目初始化" class="headerlink" title="项目初始化"></a>项目初始化</h2><ul>
+<li>准备静态页面</li>
+<li>使用 git 作为版本管理</li>
+<li>初始化项目 — npm init 或 npm install</li>
+<li>配置 babel<ul>
+<li>转码规则</li>
+<li>.babelrc </li>
+<li>main.js 入口文件</li>
+</ul>
+</li>
+<li>项目安装 babel-cli</li>
+<li>配置 package.json</li>
+</ul>
+<a id="more"></a>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"edu"</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="string">"description"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="string">"main"</span>: <span class="string">"app.js"</span>,</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 自动转码规则</span></span><br><span class="line">    <span class="comment">// npm run build</span></span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"babel src -d dist"</span>,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// babel register 入口文件，仅在开发时使用</span></span><br><span class="line">    <span class="comment">// npm run dev</span></span><br><span class="line">    <span class="string">"dev"</span>: <span class="string">"node main.js"</span>,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 在 start之前执行 build</span></span><br><span class="line">    <span class="string">"prestart"</span>: <span class="string">"npm run build"</span>,</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 生产环境的入口文件</span></span><br><span class="line">    <span class="comment">// npm start</span></span><br><span class="line">    <span class="string">"start"</span>: <span class="string">"node dist/app.js"</span></span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"keywords"</span>: [],</span><br><span class="line">  <span class="string">"author"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="string">"license"</span>: <span class="string">"ISC"</span>,</span><br><span class="line">  <span class="comment">// 生产依赖</span></span><br><span class="line">  <span class="string">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"bootstrap"</span>: <span class="string">"^3.3.7"</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 开发依赖</span></span><br><span class="line">  <span class="string">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"babel-cli"</span>: <span class="string">"^6.22.2"</span>,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>生成app.js</li>
+<li>下载依赖包</li>
+</ul>
+<h2 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h2><ul>
+<li>项目根目录添加文件 <code>.gitignore</code>，配置不需要git 跟踪的项目</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">node_modules</span><br><span class="line">demo</span><br><span class="line">dist</span><br><span class="line">public/uploads</span><br></pre></td></tr></table></figure>
+<ul>
+<li>上传到 git 远程仓库并建立相应的分支</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># git 初始化</span></span><br><span class="line">$ git add</span><br><span class="line">$ git commit -m <span class="string">'git init'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 建立分支</span></span><br><span class="line">$ git branch develop</span><br><span class="line">$ git checkout develop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交分支到远程仓库</span></span><br><span class="line">$ git remote add origin URL</span><br><span class="line">$ git push origin master</span><br><span class="line">$ git push origin develop</span><br></pre></td></tr></table></figure>
+<ul>
+<li>npm install 安装源问题</li>
+</ul>
+<blockquote>
+<p>一般一个第三方项目都会存放在 github 上和 npm 上，有时候出现问题，例如 npm 上的包和 github 源代码仓库中的代码版本不一致，这个时候如果需要使用 github 上最新的源代码，就不要去 npm 上下载了，npm 支持直接通过 github 源代码仓库进行下载：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># npm install --save https://github.com/esimakin/twbs-pagination.git</span></span><br><span class="line"><span class="comment"># yarn add https://github.com/esimakin/twbs-pagination.git</span></span><br></pre></td></tr></table></figure>
+<p>通过这种形式安装下来的包，同样会自动放到 node_modules 目录中，同时 package.json 文件中的依赖项变为：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">"dependencies": &#123;</span><br><span class="line">  "twbs-pagination": "https://github.com/esimakin/twbs-pagination.git"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="路由设计"><a href="#路由设计" class="headerlink" title="路由设计"></a>路由设计</h2><ul>
+<li>生成项目目录<ul>
+<li>dist — 转码完成的业务逻辑代码</li>
+<li>publice — 公共文件 ( img,less,js…. )<ul>
+<li>img</li>
+<li>js</li>
+<li>less</li>
+</ul>
+</li>
+<li>src — 直接编写的业务逻辑代码<ul>
+<li>controllers<ul>
+<li>路由执行后的处理函数</li>
+</ul>
+</li>
+<li>middlewares<ul>
+<li>中间件</li>
+</ul>
+</li>
+<li>models<ul>
+<li>数据模型</li>
+</ul>
+</li>
+<li>router<ul>
+<li>路由</li>
+</ul>
+</li>
+<li>app.js<ul>
+<li>入口文件</li>
+</ul>
+</li>
+<li>config.js<ul>
+<li>配置文件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>view — 视图文件</li>
+<li>.babelrc — 转码配置文件</li>
+<li>main.js — 开发阶段入口文件</li>
+<li>package.json — 项目配置文件</li>
+</ul>
+</li>
+<li>生成模板<ul>
+<li>使用 nunjucks 生成模板页面( header,footer,nabber,sidebar 等)</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>路由设计 — 广告管理功能</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>请求方法</th>
+<th>请求路径</th>
+<th>查询字符串</th>
+<th>请求体</th>
+<th>路径参数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>/advert</td>
+<td></td>
+<td></td>
+<td></td>
+<td>渲染广告管理列表页</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>/advert/add</td>
+<td></td>
+<td></td>
+<td></td>
+<td>渲染广告添加页面</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>/advert/add</td>
+<td></td>
+<td>image、link、start_time、end_time、title 、create_time、last_modified</td>
+<td></td>
+<td>处理添加广告请求</td>
+</tr>
+<tr>
+<td>….</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="公共部分功能实现"><a href="#公共部分功能实现" class="headerlink" title="公共部分功能实现"></a>公共部分功能实现</h2><h3 id="配置中间件"><a href="#配置中间件" class="headerlink" title="配置中间件"></a>配置中间件</h3><h4 id="处理post-请求"><a href="#处理post-请求" class="headerlink" title="处理post 请求"></a>处理post 请求</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> queryString <span class="keyword">from</span> <span class="string">'querystring'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (req, res, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (req.method.toLowerCase() === <span class="string">'get'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> next()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 如果是有文件的表单POST，则不处理</span></span><br><span class="line">  <span class="keyword">if</span>( req.headers[<span class="string">'content-type'</span>].startsWith(<span class="string">'multipart/form-data'</span>) ) &#123;</span><br><span class="line">    <span class="comment">// 为防止 next() 执行两次，此处代码必需写 return next()</span></span><br><span class="line">    <span class="keyword">return</span> next()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> data = <span class="string">''</span></span><br><span class="line">  req.on(<span class="string">'data'</span>, chunk =&gt; &#123;</span><br><span class="line">    data += chunk</span><br><span class="line">  &#125;)</span><br><span class="line">  req.on(<span class="string">'end'</span>, () =&gt; &#123;</span><br><span class="line">    req.body = queryString.parse(data)</span><br><span class="line">    next()</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="全局错误处理"><a href="#全局错误处理" class="headerlink" title="全局错误处理"></a>全局错误处理</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mongodb <span class="keyword">from</span> <span class="string">'mongodb'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 配置 mongodb</span></span><br><span class="line"><span class="keyword">const</span> MongoClient = mongodb.MongoClient</span><br><span class="line"><span class="keyword">const</span> url = <span class="string">'mongodb://localhost:27017/edu'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (errLog, req, res, next) =&gt; &#123;</span><br><span class="line">  <span class="comment">// 记录数据</span></span><br><span class="line">  MongoClient.connect(url, (err, db) =&gt; &#123;</span><br><span class="line">    db</span><br><span class="line">      .collection(<span class="string">'error_logs'</span>)</span><br><span class="line">      .insertOne(&#123;</span><br><span class="line">        name: errLog.name,</span><br><span class="line">        message: errLog.message,</span><br><span class="line">        stack: errLog.stack,</span><br><span class="line">        time: <span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">      &#125;, (err, result) =&gt; &#123;</span><br><span class="line">        res.json(&#123;</span><br><span class="line">          err_code: <span class="number">500</span>,</span><br><span class="line">          message: errLog.message</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    db.close()</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="入口文件及配置"><a href="#入口文件及配置" class="headerlink" title="入口文件及配置"></a>入口文件及配置</h3><h4 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> express <span class="keyword">from</span> <span class="string">'express'</span></span><br><span class="line"><span class="keyword">import</span> config <span class="keyword">from</span> <span class="string">'./config'</span></span><br><span class="line"><span class="keyword">import</span> nunjucks <span class="keyword">from</span> <span class="string">'nunjucks'</span></span><br><span class="line"><span class="keyword">import</span> indexRouter <span class="keyword">from</span> <span class="string">'./routes/index'</span></span><br><span class="line"><span class="keyword">import</span> advertRouter <span class="keyword">from</span> <span class="string">'./routes/advert'</span></span><br><span class="line"><span class="keyword">import</span> queryString <span class="keyword">from</span> <span class="string">'querystring'</span></span><br><span class="line"><span class="keyword">import</span> bodyParser <span class="keyword">from</span> <span class="string">'./middlewares/body-parser'</span></span><br><span class="line"><span class="keyword">import</span> errLog <span class="keyword">from</span> <span class="string">'./middlewares/error-log'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = express()</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/node_modules'</span>, express.static(config.node_modules_path))</span><br><span class="line">app.use(<span class="string">'/public'</span>, express.static(config.public_path))</span><br><span class="line"></span><br><span class="line"><span class="comment">// 配置使用 nunjucks 模板引擎</span></span><br><span class="line">nunjucks.configure(config.viewPath, &#123;</span><br><span class="line">  autoescape: <span class="literal">true</span>,</span><br><span class="line">  express: app,</span><br><span class="line">  noCache: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 挂载解析表单 POST 请求体中间件</span></span><br><span class="line">app.use(bodyParser)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 挂载路由容器（路由容器中组织了网站功能处理路由中间件）</span></span><br><span class="line">app.use(indexRouter)</span><br><span class="line">app.use(advertRouter)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 挂载全局错误处理中间件</span></span><br><span class="line">app.use(errLog)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'server is running at port 3000...'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="config-js"><a href="#config-js" class="headerlink" title="config.js"></a>config.js</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 值导入 path 模块的 join 方法</span></span><br><span class="line"><span class="keyword">import</span> &#123; join &#125; <span class="keyword">from</span> <span class="string">'path'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="comment">// 路径以 config 文件所在文件夹为定位</span></span><br><span class="line">  <span class="comment">// 视图路径</span></span><br><span class="line">  viewPath: join(__dirname, <span class="string">'../views'</span>),</span><br><span class="line">  <span class="comment">// node_modules 路径</span></span><br><span class="line">  node_modules_path: join(__dirname, <span class="string">'../node_modules'</span>),</span><br><span class="line">  <span class="comment">// 公共文件路径</span></span><br><span class="line">  public_path: join(__dirname, <span class="string">'../public'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NodeJS/" rel="tag"># NodeJS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/18/NodeJS/Node 简单学生管理系统/" rel="next" title="Node 简单学生管理系统">
+                <i class="fa fa-chevron-left"></i> Node 简单学生管理系统
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/18/NodeJS/Node 在线教育后台项目（2）/" rel="prev" title="Node 在线教育后台项目-广告管理">
+                Node 在线教育后台项目-广告管理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="SanCola" />
+            
+              <p class="site-author-name" itemprop="name">SanCola</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhanggy911" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/zhanggy911" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目初始化"><span class="nav-number">1.</span> <span class="nav-text">项目初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本控制"><span class="nav-number">2.</span> <span class="nav-text">版本控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由设计"><span class="nav-number">3.</span> <span class="nav-text">路由设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#公共部分功能实现"><span class="nav-number">4.</span> <span class="nav-text">公共部分功能实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置中间件"><span class="nav-number">4.1.</span> <span class="nav-text">配置中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#处理post-请求"><span class="nav-number">4.1.1.</span> <span class="nav-text">处理post 请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#全局错误处理"><span class="nav-number">4.1.2.</span> <span class="nav-text">全局错误处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#入口文件及配置"><span class="nav-number">4.2.</span> <span class="nav-text">入口文件及配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#app-js"><span class="nav-number">4.2.1.</span> <span class="nav-text">app.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#config-js"><span class="nav-number">4.2.2.</span> <span class="nav-text">config.js</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SanCola</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

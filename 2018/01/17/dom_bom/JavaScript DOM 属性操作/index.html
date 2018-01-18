@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Ubuntu:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="DOM," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="DOM 对象的属性和HTML的标签属性几乎是一致的，常用的有 src、title、className、href 和 style，其中className 对应就是标签的 class 属性，但是由于 class 在 JS 中是关键字，所以变成了className  获取 / 设置属性 基本方法 获取 元素对象.属性名   设置 元素对象.属性名 = “属性值”;      123var bigImg">
+<meta name="keywords" content="DOM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript DOM 属性操作">
+<meta property="og:url" content="http://yoursite.com/2018/01/17/dom_bom/JavaScript DOM 属性操作/index.html">
+<meta property="og:site_name" content="SanCola">
+<meta property="og:description" content="DOM 对象的属性和HTML的标签属性几乎是一致的，常用的有 src、title、className、href 和 style，其中className 对应就是标签的 class 属性，但是由于 class 在 JS 中是关键字，所以变成了className  获取 / 设置属性 基本方法 获取 元素对象.属性名   设置 元素对象.属性名 = “属性值”;      123var bigImg">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/zhanggy911/markdown_img/blob/master/x-y.png?raw=true">
+<meta property="og:image" content="https://github.com/zhanggy911/markdown_img/blob/master/getAttribute.png?raw=true">
+<meta property="og:updated_time" content="2018-01-18T06:18:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript DOM 属性操作">
+<meta name="twitter:description" content="DOM 对象的属性和HTML的标签属性几乎是一致的，常用的有 src、title、className、href 和 style，其中className 对应就是标签的 class 属性，但是由于 class 在 JS 中是关键字，所以变成了className  获取 / 设置属性 基本方法 获取 元素对象.属性名   设置 元素对象.属性名 = “属性值”;      123var bigImg">
+<meta name="twitter:image" content="https://github.com/zhanggy911/markdown_img/blob/master/x-y.png?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":20,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/17/dom_bom/JavaScript DOM 属性操作/"/>
+
+
+
+
+
+  <title>JavaScript DOM 属性操作 | SanCola</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SanCola</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life is a Rock N' Roll Train</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/17/dom_bom/JavaScript DOM 属性操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SanCola">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SanCola">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript DOM 属性操作</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-17T23:08:08+08:00">
+                2018-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>DOM 对象的属性和HTML的标签属性几乎是一致的，常用的有 src、title、className、href 和 style，其中className 对应就是标签的 class 属性，但是由于 class 在 JS 中是关键字，所以变成了className</p>
+</blockquote>
+<h2 id="获取-设置属性"><a href="#获取-设置属性" class="headerlink" title="获取 / 设置属性"></a>获取 / 设置属性</h2><ul>
+<li>基本方法<ul>
+<li>获取<ul>
+<li>元素对象.属性名</li>
+</ul>
+</li>
+<li>设置<ul>
+<li>元素对象.属性名 = “属性值”;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bigImg = <span class="built_in">document</span>.getElementById(<span class="string">'bigImg'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(bigImg.src)   				  <span class="comment">// 获取</span></span><br><span class="line">bigImg.src = <span class="string">"images/0"</span>+num+<span class="string">"big.jpg"</span>;     <span class="comment">// 设置</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li>获取属性值：<code>getComputedStyle</code><ul>
+<li>在元素应用完有效样式且计算完成所有属性的值后，获取 CSS 值并返回</li>
+<li>返回的数值是只读的，带单位</li>
+<li>可以从伪元素获取 CSS 属性</li>
+<li>存在兼容性问题</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 封装 getComputedStyle 兼容函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getStyle</span>(<span class="params">obj, attr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">window</span>.getComputedStyle) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">window</span>.getComputedStyle(obj, <span class="literal">null</span>)[attr];</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> obj.currentStyle[attr];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h2><ul>
+<li><code>src</code>：引用位置</li>
+<li><code>title</code>：名称</li>
+<li><code>href</code>：引用位置</li>
+<li><code>className</code>：类名</li>
+<li><code>style</code>：样式</li>
+</ul>
+<h2 id="表单属性"><a href="#表单属性" class="headerlink" title="表单属性"></a>表单属性</h2><ul>
+<li><code>type</code>：设置 input 元素的类型（字符串）</li>
+<li><code>value</code>：设置 input 元素的值（字符串）</li>
+<li><code>checked</code>：设置 input 元素是否选中（boolean值）</li>
+<li><code>selected</code>：设置下拉列表 select 中的 option 是否被选中（boolean值）</li>
+<li><code>disabled</code>：设置 input 元素是否被禁用（boolean值）</li>
+<li><code>setCustomValidity</code>：自定义表单验证</li>
+</ul>
+<h2 id="样式属性"><a href="#样式属性" class="headerlink" title="样式属性"></a>样式属性</h2><ul>
+<li>概念<ul>
+<li>style 属性是对象，style 对象的属性是字符串</li>
+<li>style 只能获取和设置行内样式</li>
+<li>DOM 对象中 style 的属性和标签中 style 内的值几乎一样<ul>
+<li>带有 <code>-</code> 的属性名在JS中不能识别需要转换，形如 background-color -&gt; backgroundColor</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>设置和获取样式<ul>
+<li>通过对象的 style 属性只能设置和获取行内样式</li>
+<li>获取样式的时候，如果行内没有该样式，输出空字符串</li>
+<li>设置样式的时候，赋的值是一个字符串，如果这个属性有单位，一定要加单位</li>
+</ul>
+</li>
+<li>class 控制样式 与 style 控制样式<ul>
+<li>不严格的说<ul>
+<li>如果样式很多 通过 直接控制类名 的方式加样式</li>
+<li>如果样式比较少 通过直接设置比较方便</li>
+</ul>
+</li>
+<li>严格来说<ul>
+<li>从标准的角度讲，即使是样式比较少的时候，设置样式也要用类名</li>
+<li>但是有一类情况，是无论如何也必须直接通过JS加的，那就是涉及到计算的时候</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>classList 元素类名操作<ul>
+<li><code>classList.add()</code> — 添加类名</li>
+<li><code>classList.remove()</code> — 移除类名</li>
+<li><code>classList.toggle()</code> — 切换类名</li>
+<li><code>classList.contains()</code> — 查询类名</li>
+</ul>
+</li>
+</ul>
+<h2 id="文本属性"><a href="#文本属性" class="headerlink" title="文本属性"></a>文本属性</h2><ul>
+<li><code>innerHTML</code><ul>
+<li>获取和设置标签中的内容，设置的内容会当作节点对象被解析到DOM树上，可以写标签</li>
+</ul>
+</li>
+<li><code>innerText</code><ul>
+<li>获取和设置标签中的内容，设置的内容会被当作普通文本（有兼容性问题，旧版ff不支持），不可以写标签</li>
+</ul>
+</li>
+<li><code>textContent</code><ul>
+<li>获取和设置标签中的内容，设置的内容会被当作普通文本（有兼容性问题，旧版IE（9以下）不支持）</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可以通过能力检测封装兼容函数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取对象内部文本</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getInnerText</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> element.innerText === <span class="string">"string"</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> element.innertext</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> element.textContent</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 设置对象内部文本</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setInnerText</span>(<span class="params">element, content</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> element.innerText === <span class="string">"string"</span>) &#123;</span><br><span class="line">    element.innerText = content;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    element.textContent = content;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="图形属性"><a href="#图形属性" class="headerlink" title="图形属性"></a>图形属性</h2><h3 id="offset-系列"><a href="#offset-系列" class="headerlink" title="offset 系列"></a>offset 系列</h3><ul>
+<li><code>offsetHeight</code> — 元素实际高度<ul>
+<li>offseHeight = height + padding + border</li>
+<li>offsetHeight 与 style.height的区别<ul>
+<li>style.height 只能获取行内样式</li>
+<li>style.height 是字符串，带单位，offsetHeight 是数值，不带单位</li>
+<li>style.height 可以设置行内样式，offsetHeight 是只读属性，不能设置</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>offsetWidth</code> — 元素实际宽度<ul>
+<li>用法与 offsetHeight 一致</li>
+</ul>
+</li>
+<li><code>offsetLeft</code> — 元素左边距（相对于带定位的父元素）<ul>
+<li>到距离自身最近的（带有定位的）父元素的 左侧 的距离</li>
+<li>如果所有父级都没有定位则以 body 为准</li>
+<li>offsetLeft 是自身 border 左侧到父级 padding 左侧的距离</li>
+<li>offsetLeft 是就近取整的</li>
+<li>offsetLeft 与 style.left的区别<ul>
+<li>style.left 只能获取行内样式</li>
+<li>offsetLeft 只读，style.left 可读可写</li>
+<li>offsetLeft 是数值，style.left 是字符串并且有单位px</li>
+<li>如果没有加定位，style.left 获取的数值可能是无效的</li>
+<li>offsetLeft 以 <strong>border 左上角为基准</strong>，style.left 以 <strong>margin 左上角为基准 </strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>offsetTop</code> — 元素顶部距离（相对于带定位的父元素）<ul>
+<li>用法与 offsetRight相同</li>
+</ul>
+</li>
+<li><code>offsetParent</code><ul>
+<li>返回该对象距离最近的带有定位的父级</li>
+<li>如果当前元素的所有父级元素都没有定位（position为absolute或relative），offsetParent为body</li>
+<li>如果当前元素的父级元素中有定位（position为absolute或relative），offsetParent取最近的父级元素</li>
+</ul>
+</li>
+</ul>
+<h3 id="scroll-系列"><a href="#scroll-系列" class="headerlink" title="scroll 系列"></a>scroll 系列</h3><ul>
+<li><code>scrollWidth</code><ul>
+<li>元素自身除去 border 的宽度（内部可用宽度），包含不可见部分</li>
+</ul>
+</li>
+<li><code>scrollHeight</code><ul>
+<li>元素自身除去 border 的高度（内部可用高度），包含不可见部分</li>
+</ul>
+</li>
+<li><code>scrollLeft</code><ul>
+<li>页面整体可以滚动时，页面整体被卷去的左侧宽度</li>
+</ul>
+</li>
+<li><code>scrollTop</code><ul>
+<li>页面整体可以滚动时，页面整体被卷去的上方高度</li>
+</ul>
+</li>
+<li>滚动坐标存在兼容性问题</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 兼容函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">scroll</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    top: <span class="built_in">window</span>.pageYOffset || <span class="built_in">document</span>.documentElement.scrollTop || <span class="built_in">document</span>.body.scrollTop || <span class="number">0</span>,</span><br><span class="line">    left: <span class="built_in">window</span>.pageXOffset || <span class="built_in">document</span>.documentElement.scrollLeft || <span class="built_in">document</span>.body.scrollLeft || <span class="number">0</span></span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="client-系列"><a href="#client-系列" class="headerlink" title="client 系列"></a>client 系列</h3><ul>
+<li><code>clientWidth</code><ul>
+<li>元素自身除去 border 的宽度（内部可用宽度），不包含不可见部分</li>
+</ul>
+</li>
+<li><code>clientWidth</code><ul>
+<li>元素自身除去 border 的高度（内部可用高度），不包含不可见部分</li>
+</ul>
+</li>
+<li><code>clientTop</code><ul>
+<li>大小等于 borderTop，如果有滚动条会包含滚动条宽度</li>
+</ul>
+</li>
+<li><code>clientLeft</code><ul>
+<li>大小等于 borderLeft，如果有滚动条会包含滚动条宽度</li>
+</ul>
+</li>
+<li>页面可视宽度存在兼容问题</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> clientWidth = <span class="built_in">window</span>.innerWidth|| <span class="built_in">document</span>.documentElement.clientWidth|| <span class="built_in">document</span>.body.clientWidth|| <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<p><img src="https://github.com/zhanggy911/markdown_img/blob/master/x-y.png?raw=true" alt="image"></p>
+<h2 id="自定义属性"><a href="#自定义属性" class="headerlink" title="自定义属性"></a>自定义属性</h2><ul>
+<li>自定义属性的概念</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> box = <span class="built_in">document</span>.getElementById(<span class="string">"box"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(box.id);	<span class="comment">// 标签中有规定的属性 会反映到对象上</span></span><br><span class="line"><span class="built_in">console</span>.log(box.aaa);	<span class="comment">// 标签中没有规定的属性 不会反映到对象上</span></span><br><span class="line">box.className = <span class="string">"ccc"</span>;	<span class="comment">// 标签中有规定的属性 在对象身上修改 会影响标签</span></span><br><span class="line">box.bbb = <span class="string">"222"</span>;	    <span class="comment">// 标签中没有规定的属性 在对象身上修改 不会影响标签</span></span><br></pre></td></tr></table></figure>
+<p>  <img src="https://github.com/zhanggy911/markdown_img/blob/master/getAttribute.png?raw=true" alt="image"></p>
+<ul>
+<li><p>自定义属性的方法</p>
+<ul>
+<li><code>getAttribute</code> — 获取标签属性</li>
+<li><code>setAttribute</code> — 设置标签属性</li>
+<li><code>removeAttribute</code> — 移除标签属性</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.getAttribute(<span class="string">'current'</span>)</span><br><span class="line"><span class="keyword">this</span>.setAttribute(<span class="string">"current"</span>, <span class="string">"true"</span>)</span><br><span class="line"><span class="keyword">this</span>.removeAttribute(<span class="string">"current"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>大部分的浏览器规定，HTML 中规定的属性，默认属性操作方式及自定义属性操作方式可以相互设置及获取，但是在使用时还是尽量加以区别</p>
+<ul>
+<li>使用 setAttribute 设置的就用 getAttribute 方式获取</li>
+<li>使用默认属性操作方式设置的，就使用默认方式获取</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DOM/" rel="tag"># DOM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/17/dom_bom/JavaScript DOM 获取元素、节点操作/" rel="next" title="JavaScript DOM 获取元素、节点操作">
+                <i class="fa fa-chevron-left"></i> JavaScript DOM 获取元素、节点操作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/17/dom_bom/JavaScript DOM 事件操作/" rel="prev" title="JavaScript DOM 事件操作">
+                JavaScript DOM 事件操作 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="SanCola" />
+            
+              <p class="site-author-name" itemprop="name">SanCola</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">105</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhanggy911" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/zhanggy911" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取-设置属性"><span class="nav-number">1.</span> <span class="nav-text">获取 / 设置属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用属性"><span class="nav-number">2.</span> <span class="nav-text">常用属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单属性"><span class="nav-number">3.</span> <span class="nav-text">表单属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样式属性"><span class="nav-number">4.</span> <span class="nav-text">样式属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本属性"><span class="nav-number">5.</span> <span class="nav-text">文本属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图形属性"><span class="nav-number">6.</span> <span class="nav-text">图形属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#offset-系列"><span class="nav-number">6.1.</span> <span class="nav-text">offset 系列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scroll-系列"><span class="nav-number">6.2.</span> <span class="nav-text">scroll 系列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#client-系列"><span class="nav-number">6.3.</span> <span class="nav-text">client 系列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义属性"><span class="nav-number">7.</span> <span class="nav-text">自定义属性</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SanCola</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
